@@ -87,7 +87,7 @@ puts "Finished seeding admin profiles"
 # faker
 
 puts 'Creating user db through FAKER...'
-30.times do (
+10.times do (
   user = User.create(
     email: Faker::Internet.email,
     password: "password"
