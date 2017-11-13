@@ -26,14 +26,14 @@ profile = Profile.create(
   city: "Brussels",
   country: "Belgium",
   phone_number: "0476322388",
-  remote_photo_url: 'http://res.cloudinary.com/dwuowqi7r/image/upload/v1510307634/uvj61qklprcafvsjpz86.jpg',
+  photo: '',
   gender: "Male",
   comment: "No comments needed",
   user_id: user.id
   )
 
 admin = Admin.create(
-  user_id: user.id
+  profile_id: user.id
   )
 
 # user n°2 who is an admin
@@ -50,13 +50,13 @@ profile = Profile.create(
   city: "Brussels",
   country: "Belgium",
   phone_number: "0477985918",
-  remote_photo_url: '',
+  photo: '',
   gender: "Male",
   comment: "Allergic to chicken",
   user_id: user.id
   )
 admin = Admin.create(
-  user_id: user.id
+  profile_id: user.id
   )
 
 # user n°3 who is an admin
@@ -73,13 +73,13 @@ profile = Profile.create(
   city: "Brussels",
   country: "Belgium",
   phone_number: "0497485083",
-  remote_photo_url: '',
+  photo: '',
   gender: "Female",
   comment: "No comments needed",
   user_id: user.id
   )
 admin = Admin.create(
-  user_id: user.id
+  profile_id: user.id
   )
 
 puts "Finished seeding admin profiles"
@@ -102,7 +102,7 @@ puts 'Creating user db through FAKER...'
     city: Faker::Address.city,
     country: Faker::Address.country,
     phone_number: Faker::PhoneNumber.phone_number,
-    remote_photo_url: '',
+    photo: '',
     gender: "Male",
     comment: "No comments needed",
     user_id: user.id
