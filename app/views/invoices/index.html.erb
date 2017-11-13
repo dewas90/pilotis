@@ -8,5 +8,7 @@
 <li><%= invoice.profile.last_name  %> </li>
 <li><%= invoice.amount %> € </li>
 <li><%= invoice.status %> </li>
+<li> <%= link_to "edit", edit_invoice_path(:invoice_id) %></li>
+<li> <%= link_to "show", invoice_path(invoice.id) %></li>
 </ul>
 <% end %>
