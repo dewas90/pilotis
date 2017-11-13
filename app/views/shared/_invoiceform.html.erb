@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="forms">
+      <% if @invoice.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @invoice.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+  <%= simple_form_for [@invoice] do |f| %>
+  <%= f.input :title %>
+  <label class="control-label string required" for="camp_site_description">
+    <abbr title="required">*</abbr>
+    Description
+  </label>
+  <%= f.input :date %>
+  <%= f.input :amount %>
+  <%= f.input :bank_account %>
+  <%= f.submit "generate invoice", class: "btn"%>
+<% end %>
+</div>
+</div>
+</div>
