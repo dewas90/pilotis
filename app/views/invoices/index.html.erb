@@ -16,6 +16,8 @@
       <td><%= invoice.profile.last_name  %></td>
       <td><%= invoice.amount %> €</td>
       <td><%= invoice.status %></td>
+      <td><%= link_to "edit", edit_invoice_path(:invoice_id) %></td>
+      <td><%= link_to "show", invoice_path(invoice.id) %></td>
     </tr>
   <% end %></tbody>
 </table>
