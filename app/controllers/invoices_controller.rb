@@ -44,13 +44,14 @@ class InvoicesController < ApplicationController
   private
 
   def create_invoice
-   # @invoice = Invoice.find(params[:id])
-   @admin = current_user.profile.admin
-   @invoice = Invoice.new(admin:@admin)
-   @invoice.save
+    @admin = current_user.profile.admin
+    User.all.each do |user|
+      if user != current_user
+        @invoice = Invoice.new(admin:@admin, user:user)
+        @invoice.save
+      end
+    end
   end
-
-
 
   def set_invoices
     @invoice = Invoice.find(params[:id])
