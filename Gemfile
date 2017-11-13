@@ -4,6 +4,9 @@ ruby '2.3.5'
 # data faker
 gem 'faker'
 
+#excel generation
+gem 'axlsx_rails'
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
