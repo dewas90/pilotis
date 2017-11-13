@@ -1,0 +1,13 @@
+
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "profiles") do |sheet|
+    @profiles.each do |profile|
+      wb.styles do |style|
+          cell = style.add_style(num_fmt: 8, border: Axlsx::STYLE_THIN_BORDER)
+          date_cell = style.add_style(format_code: "yyyy-mm-dd", border: Axlsx::STYLE_THIN_BORDER)
+
+      sheet.add_row [profile.first_name, profile.last_name, profile.totem, profile.gender, profile.birth_date, profile.address, profile.phone_number], style: [cell, cell, cell, cell, date_cell, cell, cell]
+    end
+  end
+end
