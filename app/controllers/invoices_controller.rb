@@ -17,7 +17,7 @@ class InvoicesController < ApplicationController
     create_invoice
 
     if @invoice.save
-      redirect_to camp_site_path(@camp_site)
+      redirect_to invoice_path(@invoice)
     else
       render :new
     end
@@ -44,10 +44,11 @@ class InvoicesController < ApplicationController
   private
 
   def create_invoice
-    @admin = current_user.profile.admin
-    User.all.each do |user|
-      if user != current_user
-        @invoice = Invoice.new(admin:@admin, user:user)
+    Profile.all.each do |profile|
+      if profile.user != current_user
+        @invoice = Invoice.new(invoice_params)
+        @invoice.admin = current_user.profile.admin
+        @invoice.profile = profile
         @invoice.save
       end
     end
@@ -58,6 +59,6 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    params.require(:invoice).permit(:user_id, :admin_id, :date, :amount, :title, :bank_account, :status)
+    params.require(:invoice).permit(:profile_id, :admin_id, :date, :amount, :title, :bank_account, :status)
   end
 end
