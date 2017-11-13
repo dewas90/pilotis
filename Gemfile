@@ -4,6 +4,9 @@ ruby '2.3.5'
 # data faker
 gem 'faker'
 
+# mailer gem
+gem "letter_opener", group: :development
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
