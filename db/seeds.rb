@@ -107,7 +107,26 @@ puts 'Creating user db through FAKER...'
     comment: "No comments needed",
     user_id: user.id
     )
+  invoice = Invoice.create(
+    admin_id: 1,
+    profile_id: profile.id,
+    date: "30.09.2017",
+    amount: "€150",
+    title: "2017 - Cotisation début d'année",
+    bank_account: "BE50 5000 5000 5000",
+    due_date: "31.01.2017",
   )
+    invoice = Invoice.create(
+    admin_id: 2,
+    profile_id: profile.id,
+    date: "31.10.2017",
+    amount: "€155",
+    title: "2017 - Rappel cotisation début d'année",
+    bank_account: "BE50 5000 5000 5000",
+    due_date: "30.11.2017",
+  )
+)
 end
+
 puts 'Finished seeding user db!'
 
