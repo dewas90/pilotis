@@ -1,10 +1,26 @@
-<%= simple_form_for :global_search do |f| %>
-  <%= f.input :query , placeholder: "#", label: false %>
-  <%= f.submit "Search", class: "btn large" %>
-
-<% end %>
 
 <h2>All invoices</h2>
+
+<%= simple_form_for :global_search do |f| %>
+  <%= f.input :query , placeholder:"title", label: "title", collection: Invoice.uniq.pluck(:title)  %>
+  <%= f.submit "Search", class: "btn large" %>
+<% end %>
+
+<%= simple_form_for :global_search do |f| %>
+<%= f.input :query , placeholder:"date", label: "date", collection: Invoice.uniq.pluck(:date)  %>
+<%= f.submit "Search", class: "btn large" %>
+<% end %>
+
+<%= simple_form_for :global_search do |f| %>
+<%= f.input :query , placeholder:"status", label: "status", collection: Invoice.uniq.pluck(:status)  %>
+<%= f.submit "Search", class: "btn large" %>
+<% end %>
+
+<%= simple_form_for :global_search do |f| %>
+<%= f.input :query , placeholder:"search by user name" %>
+<%= f.submit "Search", class: "btn large" %>
+<% end %>
+
 <table class="table table-hover">
   <thead>
     <tr>
