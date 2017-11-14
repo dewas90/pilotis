@@ -1,46 +1,47 @@
-
 <h2>All invoices</h2>
 
-<%= simple_form_for :global_search do |f| %>
-  <%= f.input :query , placeholder:"title", label: "title", collection: Invoice.uniq.pluck(:title)  %>
-  <%= f.submit "Search", class: "btn large" %>
-<% end %>
-
-<%= simple_form_for :global_search do |f| %>
-<%= f.input :query , placeholder:"date", label: "date", collection: Invoice.uniq.pluck(:date)  %>
-<%= f.submit "Search", class: "btn large" %>
-<% end %>
-
-<%= simple_form_for :global_search do |f| %>
-<%= f.input :query , placeholder:"status", label: "status", collection: Invoice.uniq.pluck(:status)  %>
-<%= f.submit "Search", class: "btn large" %>
-<% end %>
-
-<%= simple_form_for :global_search do |f| %>
-<%= f.input :query , placeholder:"search by user name" %>
-<%= f.submit "Search", class: "btn large" %>
-<% end %>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Amount</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody><% @invoices.each do |invoice|%>
-    <tr>
-      <td><%= invoice.title %></td>
-      <td><%= invoice.profile.first_name %></td>
-      <td><%= invoice.profile.last_name  %></td>
-      <td><%= invoice.amount %> €</td>
-      <td><%= invoice.status %></td>
-      <td><%= link_to "edit", edit_invoice_path(:invoice_id) %></td>
-      <td><%= link_to "show", invoice_path(invoice.id) %></td>
-    </tr>
-  <% end %></tbody>
-</table>
-<%= link_to 'download as .xlsx', invoices_path(format: :xlsx, global_search:{query: @query}) %>
+<main>
+  <form class="form-inline">
+    <%= simple_form_for :global_search do |f| %>
+    <%= f.input :query , placeholder:"Search by keyword", label: false%>
+    <%= f.submit "Search", class: "btn large" %>
+    <% end %>
+  </form>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Status <%= render "search_by_status" %></th>
+        <th>Title <%= render "search_by_title" %></th>
+        <th>Date <%= render "search_by_date" %></th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody><% @invoices.each do |invoice|%>
+      <tr class="clickable" data-toggle="collapse" id="<%= invoice.id %>" data-target=".<%= invoice.id %>collapsed">
+        <td><%= invoice.status %></td>
+        <td><%= invoice.title %></td>
+        <td><%= invoice.date %></td>
+        <td><%= invoice.profile.first_name %> <%= invoice.profile.last_name %></td>
+        <td><%= invoice.amount %> €</td>
+        <td><%= link_to edit_invoice_path(:invoice_id) do%>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <% end %>
+        </td>
+      </tr>
+      <tr class="collapse out budgets <%= invoice.id %>collapsed">
+        <td colspan = "6">
+          <ul>
+            <li><%= invoice.title %></li>
+            <li><%= invoice.profile.first_name.capitalize %> <%= invoice.profile.last_name.upcase %></li>
+            <li><%= invoice.amount %> €</li>
+            <li><%= invoice.status %></li>
+            <li></li>
+          </ul>
+        </td>
+      </tr>
+      <% end %></tbody>
+    </table>
+    <%= link_to 'download as .xlsx', invoices_path(format: :xlsx, global_search:{query: @query}) %>
+  </main>
