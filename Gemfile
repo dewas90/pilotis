@@ -10,6 +10,9 @@ gem "letter_opener", group: :development
 #excel generation
 gem 'axlsx_rails'
 
+#excel filter
+gem 'pg_search'
+
 
 gem 'devise'
 gem 'figaro'

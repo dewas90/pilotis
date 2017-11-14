@@ -1,15 +1,27 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoices, only: [:show, :approve, :cancel]
+  before_action :set_invoices, only: [:show, :approve, :cancel, :paid]
 
   def index
-    @invoices = Invoice.all
+    if params[:global_search]  && params[:global_search][:query]
+      @invoices = Invoice.global_search(params[:global_search][:query])
+      @query = params[:global_search][:query]
+
+    else
+      @invoices = Invoice.all
+      @query = nil
+    end
     respond_to do |format|
       format.html
       format.xlsx {
         response.headers['Content-Disposition'] = 'attachment; filename="all_invoices.xlsx"'
       }
     end
+  end
+
+
+  def custom_index
+    @invoices = Invoice.global_search()
   end
 
   def show
@@ -39,7 +51,7 @@ class InvoicesController < ApplicationController
 
   def paid
     @invoice.status = "paid"
-    @invoice.save
+    redirect_to invoices_path
   end
 
   def unpaid
