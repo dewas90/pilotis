@@ -1,13 +1,12 @@
 <h2>All invoices</h2>
 
-<form class="form-inline">
-  <%= simple_form_for :global_search do |f| %>
-  <%= f.input :query , placeholder:"Search by user name", label: false%>
-  <%= f.submit "Search", class: "btn large" %>
-  <% end %>
-</form>
-
 <main>
+  <form class="form-inline">
+    <%= simple_form_for :global_search do |f| %>
+    <%= f.input :query , placeholder:"Search by keyword", label: false%>
+    <%= f.submit "Search", class: "btn large" %>
+    <% end %>
+  </form>
   <table class="table table-hover">
     <thead>
       <tr>
