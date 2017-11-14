@@ -3,6 +3,12 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
+      respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="all_profiles.xlsx"'
+      }
+    end
   end
 
   def show
