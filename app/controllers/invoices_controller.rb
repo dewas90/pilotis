@@ -3,13 +3,23 @@ class InvoicesController < ApplicationController
   before_action :set_invoices, only: [:show, :approve, :cancel]
 
   def index
-    @invoices = Invoice.all
+    if params[:global_search]  && params[:global_search][:query]
+      @invoices = Invoice.global_search(params[:global_search][:query])
+      @query = params[:global_search][:query]
+    else
+      @invoices = Invoice.all
+      @query = nil
+    end
     respond_to do |format|
       format.html
       format.xlsx {
         response.headers['Content-Disposition'] = 'attachment; filename="all_invoices.xlsx"'
       }
     end
+  end
+
+  def custom_index
+    @invoices = Invoice.global_search()
   end
 
   def show
