@@ -1,10 +1,25 @@
 <h2>All invoices</h2>
 
+<%= simple_form_for :global_search do |f| %>
+  <%= f.input :query , placeholder:"title", label: false, collection: Invoice.uniq.pluck(:title)  %>
+  <%= f.submit "Search", class: "btn large" %>
+<% end %>
+
+<%= simple_form_for :global_search do |f| %>
+<%= f.input :query , placeholder:"date", label: false, collection: Invoice.uniq.pluck(:date)  %>
+<%= f.submit "Search", class: "btn large" %>
+<% end %>
+
+<%= simple_form_for :global_search do |f| %>
+<%= f.input :query , placeholder:"status", label: false, collection: Invoice.uniq.pluck(:status)  %>
+<%= f.submit "Search", class: "btn large" %>
+<% end %>
+
 <main>
   <form class="form-inline">
     <%= simple_form_for :global_search do |f| %>
-    <%= f.input :query , placeholder:"Search by keyword", label: false%>
-    <%= f.submit "Search", class: "btn large" %>
+    <%= f.input :query , placeholder:"search by user name" , label: false, input_html: { id: 'invoice_search_input' } %>
+    <%= f.submit "Search", class: "btn large", id: 'invoice_search_button'  %>
     <% end %>
   </form>
   <table class="table table-hover">
@@ -44,4 +59,5 @@
       <% end %></tbody>
     </table>
     <%= link_to 'download as .xlsx', invoices_path(format: :xlsx, global_search:{query: @query}) %>
+
   </main>
