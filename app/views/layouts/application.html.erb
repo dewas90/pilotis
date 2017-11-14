@@ -10,11 +10,17 @@
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
   </head>
   <body>
+    <div class="col-xs-1 col-sm-1 col-md-3">
     <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+    </div>
+    <div class="col-xs-11 col-sm-11 col-md-9">
+      <%= render 'shared/banner' %>
+      <%= render 'shared/flashes' %>
     <div class="container">
       <%= yield %>
+    </div>
     </div>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
+

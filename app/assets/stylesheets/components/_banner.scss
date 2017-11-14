@@ -1,0 +1,25 @@
+  .card {
+  position: fixed;
+  top: 0;
+  left: 180px;
+  width: 86%;
+  height: 200px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+}
+
+@media (max-width: 992px) {
+  .card {
+    left: 45px ;
+    width: 95%;
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    left: 45px ;
+    width: 88% !important;
+  }
+}
