@@ -86,8 +86,9 @@
     position: absolute;
     top: 0;
     width: 180px;
+    overflow-y: auto;
     font-size: 14px;
-    margin-top: 150%;
+    margin-top: 275px;
     padding: 0;
     list-style: none;
 }
@@ -152,12 +153,21 @@
       height: 35px !important;
     }
 
+    .sidebar-title {
+      display: none;
+    }
+
+    .sidebar-icon {
+      background-color: #428bca;
+    }
+
     .block-avatar {
     padding: 5px;
+    margin-top: 20px !important;
     }
     
     .dropdown-menu-right {
-    left: 30px;
+    left: 40px;
     right: auto;
     }
 

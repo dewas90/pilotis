@@ -9,9 +9,17 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-    <!-- <div class="col-xs-1 col-sm-1 col-md-3"> -->
+    <div class="col-xs-1 col-sm-1 col-md-3">
     <%= render 'shared/navbar' %>
-
+    </div>
+    <div class="col-xs-11 col-sm-11 col-md-9">
+      <%= render 'shared/banner' %>
+      <%= render 'shared/flashes' %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    </div>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
+
