@@ -1,39 +1,159 @@
-<h2>Profiles Table</h2>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody><% @profiles.each do |profile| %>
-    <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
-      <td><%= profile.first_name %></td>
-      <td><%= profile.last_name %></td>
-      <td><%= profile.user.email %></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr class="collapse out budgets <%= profile.id %>collapsed">
-      <td>
-        <ul>
-          <li><%= profile.first_name %></li>
-          <li><%= profile.last_name %></li>
-          <li><%= profile.totem %></li>
-          <li><%= profile.user.email %></li>
-          <li><%= profile.gender %></li>
-          <li><%= profile.birth_date %></li>
-          <li><%= profile.address %></li>
-          <li><%= profile.zip_code %></li>
-          <li><%= profile.city %></li>
-          <li><%= profile.country %></li>
-          <li><%= profile.phone_number %></li>
-          <li><%= profile.comment %></li>
-        </ul>
-      </td>
-      <td>&nbsp;</td>
+<h1>Profiles</h1>
 
-    </tr>
-  <% end %></tbody>
-</table>
-<%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
+<main>
+
+  <input id="tab1" type="radio" name="tabs" checked>
+  <label for="tab1">All</label>
+
+  <input id="tab2" type="radio" name="tabs">
+  <label for="tab2">Baladins</label>
+
+  <input id="tab3" type="radio" name="tabs">
+  <label for="tab3">Nutons</label>
+
+  <input id="tab4" type="radio" name="tabs">
+  <label for="tab4">Louveteaux</label>
+
+  <section id="content1">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody><% @profiles.each do |profile| %>
+        <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
+          <td><%= profile.first_name %></td>
+          <td><%= profile.last_name %></td>
+          <td><%= profile.user.email %></td>
+        </tr>
+        <tr class="collapse out budgets <%= profile.id %>collapsed">
+          <td colspan = "3">
+            <ul>
+              <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
+              <li><%= profile.user.email %></li>
+              <li><%= profile.phone_number %></li>
+              <li><%= profile.gender %></li>
+              <li><%= profile.birth_date %></li>
+              <li><%= profile.address %></li>
+              <li><%= profile.zip_code %> <%= profile.city %></li>
+              <li><%= profile.country %></li>
+              <li><%= profile.comment %></li>
+            </ul>
+          </td>
+        </tr>
+      <% end %></tbody>
+    </table>
+    <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
+  </section>
+
+  <section id="content2">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody><% @profiles.each do |profile| %>
+        <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
+          <td><%= profile.first_name %></td>
+          <td><%= profile.last_name %></td>
+          <td><%= profile.user.email %></td>
+        </tr>
+        <tr class="collapse out budgets <%= profile.id %>collapsed">
+          <td colspan = "3">
+            <ul>
+              <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
+              <li><%= profile.user.email %></li>
+              <li><%= profile.phone_number %></li>
+              <li><%= profile.gender %></li>
+              <li><%= profile.birth_date %></li>
+              <li><%= profile.address %></li>
+              <li><%= profile.zip_code %> <%= profile.city %></li>
+              <li><%= profile.country %></li>
+              <li><%= profile.comment %></li>
+            </ul>
+          </td>
+        </tr>
+      <% end %></tbody>
+    </table>
+    <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
+  </section>
+
+  <section id="content3">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody><% @profiles.each do |profile| %>
+        <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
+          <td><%= profile.first_name %></td>
+          <td><%= profile.last_name %></td>
+          <td><%= profile.user.email %></td>
+        </tr>
+        <tr class="collapse out budgets <%= profile.id %>collapsed">
+          <td colspan = "3">
+            <ul>
+              <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
+              <li><%= profile.user.email %></li>
+              <li><%= profile.phone_number %></li>
+              <li><%= profile.gender %></li>
+              <li><%= profile.birth_date %></li>
+              <li><%= profile.address %></li>
+              <li><%= profile.zip_code %> <%= profile.city %></li>
+              <li><%= profile.country %></li>
+              <li><%= profile.comment %></li>
+            </ul>
+          </td>
+        </tr>
+      <% end %></tbody>
+    </table>
+    <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
+  </section>
+
+  <section id="content4">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody><% @profiles.each do |profile| %>
+        <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
+          <td><%= profile.first_name %></td>
+          <td><%= profile.last_name %></td>
+          <td><%= profile.user.email %></td>
+        </tr>
+        <tr class="collapse out budgets <%= profile.id %>collapsed">
+          <td colspan = "3">
+            <ul>
+              <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
+              <li><%= profile.user.email %></li>
+              <li><%= profile.phone_number %></li>
+              <li><%= profile.gender %></li>
+              <li><%= profile.birth_date %></li>
+              <li><%= profile.address %></li>
+              <li><%= profile.zip_code %> <%= profile.city %></li>
+              <li><%= profile.country %></li>
+              <li><%= profile.comment %></li>
+            </ul>
+          </td>
+        </tr>
+      <% end %></tbody>
+    </table>
+    <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
+  </section>
+
+</main>
+
+
