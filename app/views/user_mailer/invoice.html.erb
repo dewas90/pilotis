@@ -1,0 +1,17 @@
+<p>Dear Mr <%= @user.profile.last_name %>,</p>
+
+<p>We are glad to welcome your child in our movement for this year.</p>
+
+<p>
+  <% if @invoices.nil? || @invoices.count == 0 %>
+    <p>We have no pending invoices for your children</p>
+  <% else %>
+    <p>Your pending invoices are the following: </p>
+    <% @invoices.each do |invoice| %>
+      <ul><%= invoice.title %> : <%= invoice.amount %> (<%= invoice.due_date %>)</ul>
+    <% end %>
+  <% end %>
+</p>
+
+<p>Scoutement vôtre,</p>
+<p>Le Staff d'Unité</p>

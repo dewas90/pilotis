@@ -10,4 +10,5 @@ class Invoice < ApplicationRecord
   validates :title, presence: true
   validates :bank_account, presence: true
   validates :status, presence: true
+
 end
