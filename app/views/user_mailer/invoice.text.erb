@@ -1,0 +1,16 @@
+Dear Mr <%= @user.profile.last_name %>,
+
+We are glad to welcome your child in our movement for this year.
+
+  <% if @invoices.nil? || @invoices.count == 0 %>
+    We have no pending invoices for your children
+  <% else %>
+    Your pending invoices are the following:
+    <% @invoices.each do |invoice| %>
+      <%= invoice.title %> : <%= invoice.amount %> (<%= invoice.due_date %>)
+    <% end %>
+  <% end %>
+
+
+Scoutement vôtre,
+Le Staff d'Unité

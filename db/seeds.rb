@@ -82,6 +82,29 @@ admin = Admin.create(
   profile_id: user.id
   )
 
+# user n°4 who is an admin
+user = User.create(
+  email: "yasser1911@hotmail.com",
+  password: "password")
+profile = Profile.create(
+  first_name: "Yasser",
+  last_name: "Barona",
+  totem: "Narval",
+  birth_date: "Sept 23 1991",
+  address: "Jules Van Praet 23",
+  zip_code: "1000",
+  city: "Brussels",
+  country: "Belgium",
+  phone_number: "0493169067",
+  photo: '',
+  gender: "Male",
+  comment: "No comments needed",
+  user_id: user.id
+  )
+admin = Admin.create(
+  profile_id: user.id
+  )
+
 puts "Finished seeding admin profiles"
 
 # faker
@@ -116,15 +139,15 @@ puts 'Creating user db through FAKER...'
     bank_account: "BE50 5000 5000 5000",
     due_date: "31.01.2017",
   )
-    invoice = Invoice.create(
-    admin_id: 2,
-    profile_id: profile.id,
-    date: "31.10.2017",
-    amount: "€155",
-    title: "2017 - Rappel cotisation début d'année",
-    bank_account: "BE50 5000 5000 5000",
-    due_date: "30.11.2017",
-  )
+    # invoice = Invoice.create(
+    # admin_id: 2,
+    # profile_id: profile.id,
+    # date: "31.10.2017",
+    # amount: "€155",
+    # title: "2017 - Rappel cotisation début d'année",
+    # bank_account: "BE50 5000 5000 5000",
+    # due_date: "30.11.2017",
+  # )
 )
 end
 
