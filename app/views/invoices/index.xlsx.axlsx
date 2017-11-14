@@ -1,0 +1,17 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Invoices") do |sheet|
+    @invoices.each do |invoice|
+      wb.styles do |style|
+        if invoice.status == "paid"
+          status_cell = style.add_style(bg_color: "5FAD56", border: Axlsx::STYLE_THIN_BORDER)
+        else
+          status_cell = style.add_style(bg_color: "E85F5C", border: Axlsx::STYLE_THIN_BORDER)
+        end
+          date_cell = style.add_style(format_code: "yyyy-mm-dd", border: Axlsx::STYLE_THIN_BORDER)
+          price_cell = style.add_style(:format_code => '#.##', border: Axlsx::STYLE_THIN_BORDER)
+          cell = style.add_style(num_fmt: 8, border: Axlsx::STYLE_THIN_BORDER)
+
+      sheet.add_row [invoice.profile.first_name, invoice.profile.last_name, invoice.title, invoice.amount, invoice.created_at, invoice.status], style: [cell, cell, cell, price_cell, date_cell, status_cell]
+    end
+  end
+end

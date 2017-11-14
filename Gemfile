@@ -4,8 +4,13 @@ ruby '2.3.5'
 # data faker
 gem 'faker'
 
+<<<<<<< HEAD
 # mailer gem
 gem "letter_opener", group: :development
+=======
+#excel generation
+gem 'axlsx_rails'
+>>>>>>> 3b0a6707b275a34f92461f11f32556fd1d44c7d7
 
 gem 'devise'
 gem 'figaro'
