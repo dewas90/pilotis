@@ -2,23 +2,23 @@
 <h2>All invoices</h2>
 
 <%= simple_form_for :global_search do |f| %>
-  <%= f.input :query , placeholder:"title", label: "title", collection: Invoice.uniq.pluck(:title)  %>
+  <%= f.input :query , placeholder:"title", label: false, collection: Invoice.uniq.pluck(:title)  %>
   <%= f.submit "Search", class: "btn large" %>
 <% end %>
 
 <%= simple_form_for :global_search do |f| %>
-<%= f.input :query , placeholder:"date", label: "date", collection: Invoice.uniq.pluck(:date)  %>
+<%= f.input :query , placeholder:"date", label: false, collection: Invoice.uniq.pluck(:date)  %>
 <%= f.submit "Search", class: "btn large" %>
 <% end %>
 
 <%= simple_form_for :global_search do |f| %>
-<%= f.input :query , placeholder:"status", label: "status", collection: Invoice.uniq.pluck(:status)  %>
+<%= f.input :query , placeholder:"status", label: false, collection: Invoice.uniq.pluck(:status)  %>
 <%= f.submit "Search", class: "btn large" %>
 <% end %>
 
 <%= simple_form_for :global_search do |f| %>
-<%= f.input :query , placeholder:"search by user name" %>
-<%= f.submit "Search", class: "btn large" %>
+<%= f.input :query , placeholder:"search by user name" , label: false, input_html: { id: 'invoice_search_input' } %>
+<%= f.submit "Search", class: "btn large", id: 'invoice_search_button'  %>
 <% end %>
 
 <table class="table table-hover">
@@ -40,6 +40,7 @@
       <td><%= invoice.status %></td>
       <td><%= link_to "edit", edit_invoice_path(:invoice_id) %></td>
       <td><%= link_to "show", invoice_path(invoice.id) %></td>
+      <td><%= hidden_field_tag('seen[]', invoice.id) -%></td>
     </tr>
   <% end %></tbody>
 </table>
