@@ -1,3 +1,11 @@
+
+<style>
+  #tag {
+    display: flex;
+    /*justify-content: space-between;*/
+  }
+</style>
+
 <h2>Quick Overview</h2>
 
 
@@ -28,6 +36,10 @@
 
 
 <h2>All invoices</h2>
+
+<ul id="tags-list">
+
+</ul>
 <main>
   <form class="form-inline">
     <%= simple_form_for :global_search do |f| %>
@@ -48,7 +60,8 @@
     </thead>
     <tbody>
       <% @invoices.each do |invoice|%>
-        <tr class="clickable" data-toggle="collapse" id="<%= invoice.id %>" data-target=".<%= invoice.id %>collapsed">
+        <tr class="clickable diogo" data-toggle="collapse" id="<%= invoice.id %>" data-target=".<%= invoice.id %>collapsed">
+          <td class="data-tags" hidden></td>
           <td><%= invoice.status %></td>
           <td><%= invoice.title %></td>
           <td><%= invoice.date %></td>
@@ -76,3 +89,5 @@
   </table>
   <%= link_to 'download as .xlsx', invoices_path(format: :xlsx, global_search:{query: @query}) %>
 </main>
+
+<a href=""></a>
