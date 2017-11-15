@@ -31,6 +31,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'jquery-easing-rails'
 gem 'sass-rails'
 gem 'simple_form'
 

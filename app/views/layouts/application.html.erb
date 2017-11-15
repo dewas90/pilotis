@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Piloti app</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="col-xs-1 col-sm-1 col-md-3">
-    <%= render 'shared/navbar' %>
-    </div>
-    <div class="col-xs-11 col-sm-11 col-md-9">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Piloti app</title>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+</head>
+<body>
+  <%= render 'shared/navbar' %>
   <!--  < %= render 'shared/banner' %>  -->
-      <%= render 'shared/flashes' %>
-    <div class="container">
-      <%= yield %>
-    </div>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
 
-  </body>
+  <%= render 'shared/flashes' %>
+  <%= yield %>
+  <%= render 'shared/footer' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_pack_tag 'application' %>
+</body>
 </html>
 

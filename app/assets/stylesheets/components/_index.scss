@@ -3,9 +3,10 @@
 @import "navbar";
 @import "avatar";
 @import "banner";
-
-.container {
-	margin-top: 220px;
-}
-
+@import "footer";
+@import "signup";
 @import "tabs";
+
+.content {
+	min-height:90vh;
+}
