@@ -30,7 +30,6 @@ gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
-gem 'uglifier'
 
 group :development, :test do
   gem 'pry-byebug'
