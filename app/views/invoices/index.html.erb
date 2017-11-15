@@ -42,7 +42,7 @@
         <td><%= invoice.date %></td>
         <td><%= invoice.profile.first_name %> <%= invoice.profile.last_name %></td>
         <td><%= invoice.amount %> €</td>
-        <td><%= link_to edit_invoice_path(:invoice_id) do%>
+        <td><%= link_to edit_invoice_path(invoice.id) do%>
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           <% end %>
         </td>
