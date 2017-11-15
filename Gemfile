@@ -13,6 +13,9 @@ gem 'axlsx_rails'
 #excel filter
 gem 'pg_search'
 
+#charts
+gem "chartkick"
+
 
 gem 'devise'
 gem 'figaro'
