@@ -1,4 +1,4 @@
-<h2>All invoices</h2>
+<h2>Quick Overview</h2>
 
 <%= link_to "Add a new invoice", new_invoice_path, class:"btn btn-danger"%>
 
@@ -7,21 +7,39 @@
   <%= f.submit "Search", class: "btn large" %>
 <% end %>
 
-<%= simple_form_for :global_search do |f| %>
-<%= f.input :query , placeholder:"date", label: false, collection: Invoice.uniq.pluck(:date)  %>
-<%= f.submit "Search", class: "btn large" %>
-<% end %>
 
-<%= simple_form_for :global_search do |f| %>
-<%= f.input :query , placeholder:"status", label: false, collection: Invoice.uniq.pluck(:status)  %>
-<%= f.submit "Search", class: "btn large" %>
-<% end %>
+<table class="table table-hover">
+  <thead>
+      <tr>
+        <th>Invoice Title
+        <th>Number of invoices</th>
+        <th>Invoices Paid</th>
+        <th>Invoices pending</th>
+        <th>Amount currently collected</th>
+        <th>Amount still due</th>
+      </tr>
+    </thead>
+  <tbody>
+    <% Invoice.uniq.pluck(:title).each_with_index do |invoice_title, i| %>
+      <tr class="clickable" data-toggle="collapse" id="clickable<%= i + 1 %>" data-target="#collapsed<%= i + 1 %>">
+        <td> <%= invoice_title %> </td>
+        <td> <%= Invoice.where("title = ?", invoice_title).count %></td>
+        <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").count %></td>
+        <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").count %></td>
+        <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").pluck(:amount).sum %>€</td>
+        <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").pluck(:amount).sum %>€</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
+
+<h2>All invoices</h2>
 <main>
   <form class="form-inline">
     <%= simple_form_for :global_search do |f| %>
-    <%= f.input :query , placeholder:"search by user name" , label: false, input_html: { id: 'invoice_search_input' } %>
-    <%= f.submit "Search", class: "btn large", id: 'invoice_search_button'  %>
+      <%= f.input :query , placeholder:"search by user name" , label: false, input_html: { id: 'invoice_search_input' } %>
+      <%= f.submit "Search", class: "btn large", id: 'invoice_search_button'  %>
     <% end %>
   </form>
   <table class="table table-hover">
@@ -58,7 +76,8 @@
           </ul>
         </td>
       </tr>
-      <% end %></tbody>
+      <% end %>
+    </tbody>
     </table>
     <%= link_to 'download as .xlsx', invoices_path(format: :xlsx, global_search:{query: @query}) %>
 

@@ -32,9 +32,9 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    create_invoice
-
+    create_invoices
     if @invoice.save
+      flash[:notice] = "Invoices successfully created"
       redirect_to invoice_path(@invoice)
     else
       render :new
@@ -65,13 +65,18 @@ class InvoicesController < ApplicationController
 
   private
 
-  def create_invoice
+  def create_invoices
     Profile.all.each do |profile|
       if profile.user != current_user
         @invoice = Invoice.new(invoice_params)
         @invoice.admin = current_user.profile.admin
         @invoice.profile = profile
-        @invoice.save
+        if @invoice.save
+          @invoice.save
+          UserMailer.invoice(@invoice.profile.user).deliver_now
+        else
+          render :new
+        end
       end
     end
   end

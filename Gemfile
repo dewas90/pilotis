@@ -13,8 +13,11 @@ gem 'axlsx_rails'
 #excel filter
 gem 'pg_search'
 
-#JS asset precompile
+#charts
+gem "chartkick"
+
 gem 'webpacker', '~> 3.0'
+
 
 gem 'devise'
 gem 'figaro'
@@ -28,6 +31,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'jquery-easing-rails'
 gem 'sass-rails'
 gem 'simple_form'
 
