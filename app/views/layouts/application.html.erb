@@ -10,14 +10,18 @@
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
   </head>
   <body>
+    <div class="col-xs-1 col-sm-1 col-md-3">
+    <%= render 'shared/navbar' %>
+    </div>
+    <div class="col-xs-11 col-sm-11 col-md-9">
+  <!--  < %= render 'shared/banner' %>  -->
+      <%= render 'shared/flashes' %>
     <div class="container">
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    <%= javascript_pack_tag 'application' %>
 
-    <%= yield :charts_js %>
-    <%= yield(:after_js) %>
   </body>
 </html>
 
