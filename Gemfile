@@ -13,8 +13,11 @@ gem 'axlsx_rails'
 #excel filter
 gem 'pg_search'
 
-#JS asset precompile
+#charts
+gem "chartkick"
+
 gem 'webpacker', '~> 3.0'
+
 
 gem 'devise'
 gem 'figaro'

@@ -9,8 +9,8 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for :global_search do |f| %>
-        <%= f.input :query , placeholder:"date", label: false, collection: Invoice.uniq.pluck(:date)  %>
-        <%= f.submit "Search", class: "btn large" %>
+        <%= f.input :query , placeholder:"date", label: false, collection: Invoice.uniq.pluck(:date), input_html: { id: 'invoice_search_input' } %>
+        <%= f.submit "Search", class: "btn large", id: 'invoice_search_button' %>
         <% end %>
       </div>
     </div>
