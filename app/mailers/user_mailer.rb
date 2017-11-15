@@ -5,12 +5,10 @@ class UserMailer < ApplicationMailer
     # This will render a view in `app/views/user_mailer`!
   end
 
-  def invoice(users)
-    users.each do |user|
+  def invoice(user)
       @user = user
-      @invoices = @user.profile.invoices
+      @invoice = @user.profile.invoices.last
       mail(to: @user.email, subject: 'Invoice')
-    end
   end
 
 end

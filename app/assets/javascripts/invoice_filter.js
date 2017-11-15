@@ -1,3 +1,4 @@
+
 const searchButton = document.querySelectorAll('#invoice_search_button')[0];
 let tagArray = [];
 let liArray = [];

@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoices, only: [:show, :approve, :cancel, :paid]
+  before_action :set_invoices, only: [:show, :approve, :edit, :update, :cancel, :paid]
 
   def index
     if params[:global_search]  && params[:global_search][:query]
@@ -32,9 +32,9 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    create_invoice
-
+    create_invoices
     if @invoice.save
+      flash[:notice] = "Invoices successfully created"
       redirect_to invoice_path(@invoice)
     else
       render :new
@@ -46,7 +46,11 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice.update(invoice_params)
-    redirect_to invoice_path(@invoice)
+    if @invoice.save
+      redirect_to invoice_path(@invoice)
+    else
+      render :edit
+    end
   end
 
   def paid
@@ -61,13 +65,18 @@ class InvoicesController < ApplicationController
 
   private
 
-  def create_invoice
+  def create_invoices
     Profile.all.each do |profile|
       if profile.user != current_user
         @invoice = Invoice.new(invoice_params)
         @invoice.admin = current_user.profile.admin
         @invoice.profile = profile
-        @invoice.save
+        if @invoice.save
+          @invoice.save
+          UserMailer.invoice(@invoice.profile.user).deliver_now
+        else
+          render :new
+        end
       end
     end
   end

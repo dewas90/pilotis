@@ -16,6 +16,8 @@ gem 'pg_search'
 #charts
 gem "chartkick"
 
+gem 'webpacker', '~> 3.0'
+
 
 gem 'devise'
 gem 'figaro'
@@ -29,9 +31,9 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'jquery-easing-rails'
 gem 'sass-rails'
 gem 'simple_form'
-gem 'uglifier'
 
 group :development, :test do
   gem 'pry-byebug'
