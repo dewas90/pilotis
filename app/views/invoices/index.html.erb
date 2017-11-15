@@ -1,5 +1,7 @@
 <h2>All invoices</h2>
 
+<%= link_to "Add a new invoice", new_invoice_path, class:"btn btn-danger"%>
+
 <%= simple_form_for :global_search do |f| %>
   <%= f.input :query , placeholder:"title", label: false, collection: Invoice.uniq.pluck(:title)  %>
   <%= f.submit "Search", class: "btn large" %>
