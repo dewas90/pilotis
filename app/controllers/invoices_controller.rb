@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_invoices, only: [:show, :approve, :cancel, :paid]
+  before_action :set_invoices, only: [:show, :approve, :edit, :update, :cancel, :paid]
 
   def index
     if params[:global_search]  && params[:global_search][:query]
@@ -46,7 +46,11 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice.update(invoice_params)
-    redirect_to invoice_path(@invoice)
+    if @invoice.save
+      redirect_to invoice_path(@invoice)
+    else
+      render :edit
+    end
   end
 
   def paid
