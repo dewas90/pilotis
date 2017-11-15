@@ -3,9 +3,9 @@
 @import "navbar";
 @import "avatar";
 @import "banner";
+@import "tabs";
+@import "sidebar";
 
 .container {
-	margin-top: 220px;
+  width: 100%;
 }
-
-@import "tabs";
