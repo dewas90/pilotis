@@ -6,23 +6,26 @@
   </a> -->
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <h4 class="navbar-wagon-item navbar-wagon-link"><%= current_user.profile.first_name.capitalize %> <%= current_user.profile.last_name %></h4>
-
-    <!-- Profile picture with dropdown list -->
-    <div class="navbar-wagon-item">
-      <div class="dropdown">
-
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-        <!-- < %= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown'} %> -->
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><%= link_to "Profile", profile_path(current_user.profile) %></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"%></li>
-          </li>
-        </ul>
+  <% if !current_user.nil? || !current_user.profile.nil?%>
+    <h4 class="navbar-wagon-item navbar-wagon-link">
+      <%= link_to "Join Us", new_user_registration_path %>
+    </h4>
+  <% else %>
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+      <h4 class="navbar-wagon-item navbar-wagon-link"><%= current_user.profile.first_name.capitalize %> <%= current_user.profile.last_name %></h4>
+      <!-- Profile picture with dropdown list -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <!-- < %= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown'} %> -->
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to "Profile", profile_path(current_user.profile) %></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"%></li>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
