@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="forms">
+      <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+  <%= simple_form_for [@event] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "generate event", class: "btn"%>
+<% end %>
+</div>
+</div>
+</div>
