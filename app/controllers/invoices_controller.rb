@@ -35,7 +35,7 @@ class InvoicesController < ApplicationController
     create_invoices
     if @invoice.save
       flash[:notice] = "Invoices successfully created"
-      redirect_to invoice_path(@invoice)
+      redirect_to invoices_path
     else
       render :new
     end
@@ -47,7 +47,7 @@ class InvoicesController < ApplicationController
   def update
     @invoice.update(invoice_params)
     if @invoice.save
-      redirect_to invoice_path(@invoice)
+      redirect_to invoices_path
     else
       render :edit
     end
