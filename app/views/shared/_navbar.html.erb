@@ -6,7 +6,7 @@
   </a> -->
 
   <!-- Right Navigation -->
-  <% if !current_user.nil? || !current_user.profile.nil?%>
+  <% if current_user.nil? || current_user.profile.nil?%>
     <h4 class="navbar-wagon-item navbar-wagon-link">
       <%= link_to "Join Us", new_user_registration_path %>
     </h4>
