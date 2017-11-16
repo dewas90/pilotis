@@ -16,6 +16,9 @@ gem 'pg_search'
 #charts
 gem "chartkick"
 
+#table
+gem "bootstrap-table-rails"
+
 gem 'webpacker', '~> 3.0'
 
 
