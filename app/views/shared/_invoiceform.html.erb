@@ -13,6 +13,7 @@
   <%= simple_form_for [@invoice] do |f| %>
   <%= f.input :title %>
   <%= f.input :date %>
+  <%= f.input :due_date %>
   <%= f.input :amount %>
   <%= f.input :bank_account %>
   <%= f.submit "generate invoice", class: "btn"%>

@@ -134,7 +134,7 @@ puts 'Creating user db through FAKER...'
     admin_id: 1,
     profile_id: profile.id,
     date: "30.09.2017",
-    amount: "€150",
+    amount: 150,
     title: "2017 - Cotisation début d'année",
     bank_account: "BE50 5000 5000 5000",
     due_date: "31.01.2017",
