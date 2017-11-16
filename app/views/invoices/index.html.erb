@@ -1,92 +1,83 @@
+<div class="invoices-index">
+  <%= content_for(:after_js) do %>
+  <h2>Quick Overview
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"%>
+  </h2>
 
-<%= content_for(:after_js) do %>
-<h2>Quick Overview <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"%> </h2>
+  <button class="new-invoice-btn">
+    <%= link_to "Add a new invoice", new_invoice_path%>
+  </button>
 
-
-<div class="container">
-  <%= link_to "Add a new invoice", new_invoice_path, class:"btn btn-danger"%>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th
-        <th>Invoice Title
-          <th>Number of invoices</th>
-          <th>Invoices Paid</th>
-          <th>Invoices pending</th>
-          <th>Amount currently collected</th>
-          <th>Amount still due</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% Invoice.uniq.pluck(:title).each_with_index do |invoice_title, i| %>
-        <tr class="clickable" data-toggle="collapse" id="clickable<%= i + 1 %>" data-target="#collapsed<%= i + 1 %>">
-          <td> <%= invoice_title %> </td>
-          <td> <%= Invoice.where("title = ?", invoice_title).count %></td>
-          <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").count %></td>
-          <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").count %></td>
-          <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").pluck(:amount).sum %>€</td>
-          <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").pluck(:amount).sum %>€</td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-
-  <h2>All invoices</h2>
   <main>
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Status <%= render "search_by_status" %></th>
-          <th>Title <%= render "search_by_title" %></th>
-          <th>Date <%= render "search_by_date" %></th>
-          <th>Name</th>
-          <th>Amount</th>
-          <th></th>
-        </tr>
-      </thead>
+
+          <th>Title</th>
+          <th>Paid</th>
+          <th>Pending</th>
+          <th>Total</th>
+          <th>Collected amount</th>
+          <th>Due amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Invoice.uniq.pluck(:title).each_with_index do |invoice_title, i| %>
+          <tr class="clickable" data-toggle="collapse" id="clickable<%= i + 1 %>" data-target="#collapsed<%= i + 1 %>">
+            <td> <%= invoice_title %> </td>
+            <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").count %></td>
+            <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").count %></td>
+            <td> <%= Invoice.where("title = ?", invoice_title).count %></td>
+            <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").pluck(:amount).sum %>€</td>
+            <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").pluck(:amount).sum %>€</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </main>
 
-    <div id="toolbar">
-      <select class="form-control">
-        <option value="">Export Basic</option>
-        <option value="all">Export All</option>
-        <option value="selected">Export Selected</option>
-      </select>
-    </div>
-    <table id="table"
-    data-toggle="table"
-    data-search="true"
-    data-filter-control="true"
-    data-show-export="true"
-    data-click-to-select="true"
-    data-toolbar="#toolbar">
-    <thead>
-      <tr>
-        <th data-field="state" data-checkbox="true" data-sortable="true">status></th>
-        <th data-field="title" data-filter-control="input" data-sortable="true">title</th>
-        <th data-field="date" data-filter-control="select" data-sortable="true">Date</th>
-        <th data-field="name" data-filter-control="select" data-sortable="true">name</th>
-        <th data-field="amount" data-sortable="true">Amount</th>
-        <th data-field="status" data-sortable="true">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @invoices.each_with_index do |invoice, i|%>
-      <tr>
-        <td><input data-index="<% i %>" name="btSelectItem" type="checkbox" id="checkboxfourInput"></td>
-        <td> <%= invoice.title %> </td>
-        <td><%= invoice.date %></td>
-        <td><%= invoice.profile.first_name %> <%= invoice.profile.last_name %></td>
-        <td><%= invoice.amount %> €</td>
-        <td><%= invoice.status %></td>
-      </tr>
-      <% end %>
+    <h2>All invoices</h2>
+    <main>
 
-    </tbody>
-  </table>
+      <div id="toolbar">
+        <select class="form-control">
+          <option value="">Export Basic</option>
+          <option value="all">Export All</option>
+          <option value="selected">Export Selected</option>
+        </select>
+      </div>
 
+      <table class="table table-hover"
+      data-toggle="table"
+      data-search="true"
+      data-filter-control="true"
+      data-show-export="true"
+      data-click-to-select="true"
+      data-toolbar="#toolbar">
+      <thead>
+        <tr>
+          <th data-field="state" data-checkbox="true" data-sortable="true"></th>
+          <th data-field="title" data-filter-control="input" data-sortable="true">title</th>
+          <th data-field="date" data-filter-control="select" data-sortable="true">Date</th>
+          <th data-field="name" data-filter-control="select" data-sortable="true">name</th>
+          <th data-field="amount" data-sortable="true">Amount</th>
+          <th data-field="status" data-sortable="true">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoices.each_with_index do |invoice, i|%>
+        <tr>
+          <td><input data-index="<% i %>" name="btSelectItem" type="checkbox" id="checkboxfourInput"></td>
+          <td> <%= invoice.title %> </td>
+          <td><%= invoice.date %></td>
+          <td><%= invoice.profile.first_name %> <%= invoice.profile.last_name %></td>
+          <td><%= invoice.amount %> €</td>
+          <td><%= invoice.status %></td>
+        </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </main>
+  <% end %>
 </div>
-
-<% end %>
