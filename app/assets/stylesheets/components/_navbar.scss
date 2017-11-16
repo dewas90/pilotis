@@ -1,5 +1,7 @@
 /* Main navbar */
 .navbar-wagon {
+  font-family: $body-font;
+  font-weight: lighter;
   position: fixed;
   width: 100%;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
@@ -51,10 +53,11 @@
 /* Navbar link */
 .navbar-wagon-link {
   color: $white;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 300;
 }
 .navbar-wagon-link:hover {
-  color: $light-gray;
+  color: $white;
   text-decoration: none;
 }
 

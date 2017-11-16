@@ -8,14 +8,16 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Add current user first name and last name</a>
+    <h4 class="navbar-wagon-item navbar-wagon-link"><%= current_user.profile.first_name.capitalize %> <%= current_user.profile.last_name %></h4>
 
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
+
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <!-- < %= cl_image_tag current_user.profile.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown'} %> -->
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
+          <li><%= link_to "Profile", profile_path(current_user.profile) %></li>
           <li><a href="#">Dashboard</a></li>
           <li><li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"%></li>
           </li>
