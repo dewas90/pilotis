@@ -1,7 +1,3 @@
-<style>
-.table-responsive {height:400px;}
-</style>
-
 <div class="invoices-index">
   <%= content_for(:after_js) do %>
   <h2>Quick Overview
@@ -16,7 +12,6 @@
     <table class="table table-hover">
       <thead>
         <tr>
-
           <th>Title</th>
           <th>Paid</th>
           <th>Pending</th>
@@ -40,34 +35,34 @@
     </table>
   </main>
 
+  <h2>All invoices</h2>
   <main>
-    <h2>All invoices</h2>
-      <div class="row">
-        <div id="toolbar">
-          <select class="form-control">
-            <option value="">Export Basic</option>
-            <option value="all">Export All</option>
-            <option value="selected">Export Selected</option>
-          </select>
-        </div>
-        <div class="table-responsive">
-          <table class="table table-hover"
-          data-toggle="table"
-          data-search="true"
-          data-filter-control="true"
-          data-show-export="true"
-          data-click-to-select="true"
-          data-toolbar="#toolbar">
-          <thead>
-            <tr>
-              <th data-field="state" data-checkbox="true" data-sortable="true"></th>
-              <th data-field="title" data-filter-control="input" data-sortable="true">title</th>
-              <th data-field="date" data-filter-control="select" data-sortable="true">Date</th>
-              <th data-field="name" data-filter-control="select" data-sortable="true">name</th>
-              <th data-field="amount" data-sortable="true">Amount</th>
-              <th data-field="status" data-sortable="true">Status</th>
-            </tr>
-          </thead>
+    <div class="row">
+      <div id="toolbar">
+        <select class="form-control">
+          <option value="">Export Basic</option>
+          <option value="all">Export All</option>
+          <option value="selected">Export Selected</option>
+        </select>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover"
+        data-toggle="table"
+        data-search="true"
+        data-filter-control="true"
+        data-show-export="true"
+        data-click-to-select="true"
+        data-toolbar="#toolbar">
+        <thead>
+          <tr>
+            <th data-field="state" data-checkbox="true" data-sortable="true"></th>
+            <th data-field="title" data-filter-control="input" data-sortable="true">title</th>
+            <th data-field="date" data-filter-control="select" data-sortable="true">Date</th>
+            <th data-field="name" data-filter-control="select" data-sortable="true">name</th>
+            <th data-field="amount" data-sortable="true">Amount</th>
+            <th data-field="status" data-sortable="true">Status</th>
+          </tr>
+        </thead>
           <tbody id="myTable">
             <% @invoices.each_with_index do |invoice, i|%>
             <tr>
@@ -82,7 +77,8 @@
           </tbody>
         </table>
       </div>
-  </div>
-</main>
-<% end %>
+    </div>
+  </main>
+
+  <% end %>
 </div>
