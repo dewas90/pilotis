@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113160151) do
+ActiveRecord::Schema.define(version: 20171116161403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,27 @@ ActiveRecord::Schema.define(version: 20171113160151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_admins_on_profile_id", using: :btree
+  end
+
+  create_table "attendees", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendees_on_event_id", using: :btree
+    t.index ["profile_id"], name: "index_attendees_on_profile_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "admin_id"
+    t.integer  "invoice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_events_on_admin_id", using: :btree
+    t.index ["invoice_id"], name: "index_events_on_invoice_id", using: :btree
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -74,6 +95,10 @@ ActiveRecord::Schema.define(version: 20171113160151) do
   end
 
   add_foreign_key "admins", "profiles"
+  add_foreign_key "attendees", "events"
+  add_foreign_key "attendees", "profiles"
+  add_foreign_key "events", "admins"
+  add_foreign_key "events", "invoices"
   add_foreign_key "invoices", "admins"
   add_foreign_key "invoices", "profiles"
   add_foreign_key "profiles", "users"
