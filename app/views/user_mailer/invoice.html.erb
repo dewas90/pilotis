@@ -1,9 +1,13 @@
 <p>Dear Mr <%= @user.profile.last_name %>,</p>
 
-<p>We are glad to welcome your child in our movement for this year.</p>
+<p>You will find in this email all the needed information to pay the last invoice.</p>
+<p>The invoice <strong> "<%= @invoice.title %>" </strong> has to be paid before <%= @invoice.due_date %> on the following account: <strong> <%= @invoice.bank_account %> </strong>.</p>
 
-<p>@user.email</p>
-<p>@invoice.title</p>
+<p>As you can imagine, we send a lot of invoices to our member, so we kinly request that you pay this invoice in due time.</p>
+
+<p>Thanks in advance for your cooperation.</p>
+
+<p>See you soon!</p>
 
 <p>Scoutement vôtre,</p>
 <p>Le Staff d'Unité</p>
