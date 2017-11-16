@@ -1,6 +1,8 @@
-<%= simple_form_for(@profile) do |f| %>
+<%= simple_form_for(@profile, html: {id: :msform}) do |f| %>
   <%=  f.error_notification %>
 
+<fieldset>
+<h2>Edit profile</h2>
   <div class="form-inputs">
     <%= f.input :first_name %>
     <%= f.input :last_name %>
@@ -17,4 +19,5 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+</fieldset>
 <% end %>
