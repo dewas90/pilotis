@@ -4,14 +4,18 @@
 @import "avatar";
 @import "banner";
 @import "footer";
-@import "signup";
+@import "new-profile";
 @import "tabs";
 @import "sidebar";
+@import "signup";
 @import "checkbox";
+
 .container {
-	min-height:82vh;
+	min-height:92.5vh;
 }
 
 .container {
-  width: 90%;
+    width: 100%;
+    padding-left: 75px;
+    padding-top: 80px;
 }
