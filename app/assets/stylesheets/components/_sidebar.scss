@@ -1,8 +1,8 @@
 
-.fa-2x {
+.main-menu .fa-2x {
 font-size: 2em;
 }
-.fa {
+.main-menu .fa {
 position: relative;
 display: table-cell;
 width: 60px;
@@ -19,9 +19,10 @@ overflow:visible;
 }
 
 .main-menu {
+	position: fixed;
+	margin-top: 65px;
 background: $brown;
 border-right:1px solid $brown;
-position:absolute;
 top:0;
 bottom:0;
 height:100vh;
