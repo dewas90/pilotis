@@ -10,7 +10,11 @@
       </div>
       <% end %>
 
-  <%= simple_form_for [@invoice] do |f| %>
+
+
+  <%= simple_form_for @invoice, html: {id: :msform} do |f| %>
+  <fieldset>
+<h2>Invoice</h2>
   <%= f.input :title %>
   <%= f.input :date %>
   <%= f.input :due_date %>
