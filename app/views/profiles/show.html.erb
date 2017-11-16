@@ -1,5 +1,28 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
-
-<%= @profile.first_name %>
-<%= @profile.last_name %>
+<h1>Your profile</h1>
+<div class="profile-card-body">
+  <div class="profile-info">
+      <h4>
+        <strong>NAME :</strong>  <%= current_user.profile.first_name %> <%= current_user.profile.last_name %> (<%= current_user.profile.totem %>)
+      </h4>
+    <hr>
+      <h4>
+        <strong>EMAIL :</strong>  <%= current_user.profile.user.email %>
+      </h4>
+    <hr>
+      <h4>
+        <strong>BIRTH DATE :</strong>  <%= current_user.profile.birth_date %>
+      </h4>
+    <hr>
+      <h4>
+        <strong>ADDRESS :</strong>  <%= current_user.profile.address %> - <%= current_user.profile.zip_code %> - <%= current_user.profile.city %> (<%= current_user.profile.country %>)
+      </h4>
+    <hr>
+      <h4><strong>PHONE NUMBER :</strong>  <%= current_user.profile.phone_number %></h4>
+    <hr>
+      <h4><strong>COMMENTS :</strong>  <%= current_user.profile.comment %></h4>
+    <hr>
+    <div class="form-group btn-div">
+      <%= link_to 'Edit your info', edit_profile_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
