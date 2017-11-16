@@ -4,6 +4,5 @@
 //= require bootstrap-sprockets
 //= require Chart.bundle
 //= require chartkick
-//= require bootstrap-table
 //= require_tree .
 
