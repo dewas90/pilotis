@@ -1,11 +1,19 @@
-<div id="wrapper">
-  <div id="sidebar-wrapper">
-    <aside id="sidebar">
-      <div class="block-avatar">
-        
-        <div class="navbar-wagon-item">
+<div class="navbar-wagon">
+  <!-- Logo -->
+  <h2><i class="fa fa-home" aria-hidden="true"></i> Pilotis</h2>
+<!--   <a href="/" class="navbar-wagon-brand">
+    <img src="images/logo.png" alt="logo">
+  </a> -->
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <a href="" class="navbar-wagon-item navbar-wagon-link">I don't know what to write here</a>
+
+    <!-- Profile picture with dropdown list -->
+    <div class="navbar-wagon-item">
       <div class="dropdown">
-        <%= image_tag "logo.png", class: "avatar-medium", id: "navbar-wagon-menu", data: { toggle: 'dropdown'} %>
+        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><a href="#">Profile</a></li>
           <li><a href="#">Dashboard</a></li>
@@ -13,50 +21,5 @@
         </ul>
       </div>
     </div>
-        
-      </div>            
-      <ul id="sidemenu" class="sidebar-nav">
-        <li>
-          <a href="#">
-            <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
-            <span class="sidebar-title">Home</span>
-          </a>
-        </li>
-        <li>
-          <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
-            <span class="sidebar-icon"><i class="fa fa-users"></i></span>
-            <span class="sidebar-title">Management</span>
-            <b class="caret"></b>
-          </a>
-          <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu">
-            <li><a href="#"><i class="fa fa-caret-right"></i>Users</a></li>
-            <li><a href="#"><i class="fa fa-caret-right"></i>Roles</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-3">
-            <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
-            <span class="sidebar-title">Blog</span>
-            <b class="caret"></b>
-          </a>
-          <ul id="submenu-3" class="panel-collapse collapse panel-switch" role="menu">
-            <li><a href="#"><i class="fa fa-caret-right"></i>Posts</a></li>
-            <li><a href="#"><i class="fa fa-caret-right"></i>Comments</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">
-            <span class="sidebar-icon"><i class="fa fa-database"></i></span>
-            <span class="sidebar-title">Data</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="sidebar-icon"><i class="fa fa-terminal"></i></span>
-            <span class="sidebar-title">Console</span>
-          </a>
-        </li>
-      </ul>
-    </aside>
   </div>
 </div>
