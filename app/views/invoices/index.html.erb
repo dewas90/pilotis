@@ -35,7 +35,7 @@
 
   <h2>All invoices</h2>
   <main>
-    <table class="table table-hover">
+    <table class="table table-hover hidden">
       <thead>
         <tr>
           <th>Status <%= render "search_by_status" %></th>
@@ -46,47 +46,50 @@
           <th></th>
         </tr>
       </thead>
-    </main>
 
-    <div id="toolbar">
-      <select class="form-control">
-        <option value="">Export Basic</option>
-        <option value="all">Export All</option>
-        <option value="selected">Export Selected</option>
-      </select>
-    </div>
-    <table id="table"
+      <div id="toolbar">
+        <select class="form-control">
+          <option value="">Export Basic</option>
+          <option value="all">Export All</option>
+          <option value="selected">Export Selected</option>
+        </select>
+      </div>
+
+    <table
     data-toggle="table"
     data-search="true"
     data-filter-control="true"
     data-show-export="true"
     data-click-to-select="true"
     data-toolbar="#toolbar">
-    <thead>
-      <tr>
-        <th data-field="state" data-checkbox="true" data-sortable="true">status></th>
-        <th data-field="title" data-filter-control="input" data-sortable="true">title</th>
-        <th data-field="date" data-filter-control="select" data-sortable="true">Date</th>
-        <th data-field="name" data-filter-control="select" data-sortable="true">name</th>
-        <th data-field="amount" data-sortable="true">Amount</th>
-        <th data-field="status" data-sortable="true">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @invoices.each_with_index do |invoice, i|%>
-      <tr>
-        <td><input data-index="<% i %>" name="btSelectItem" type="checkbox" id="checkboxfourInput"></td>
-        <td> <%= invoice.title %> </td>
-        <td><%= invoice.date %></td>
-        <td><%= invoice.profile.first_name %> <%= invoice.profile.last_name %></td>
-        <td><%= invoice.amount %> €</td>
-        <td><%= invoice.status %></td>
-      </tr>
-      <% end %>
+      <thead>
+        <tr>
+          <th data-field="state" data-checkbox="true" data-sortable="true">status></th>
+          <th data-field="title" data-filter-control="input" data-sortable="true">title</th>
+          <th data-field="date" data-filter-control="select" data-sortable="true">Date</th>
+          <th data-field="name" data-filter-control="select" data-sortable="true">name</th>
+          <th data-field="amount" data-sortable="true">Amount</th>
+          <th data-field="status" data-sortable="true">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invoices.each_with_index do |invoice, i|%>
+          <tr>
+            <td><input data-index="<% i %>" name="btSelectItem" type="checkbox" id="checkboxfourInput"></td>
+            <td> <%= invoice.title %> </td>
+            <td><%= invoice.date %></td>
+            <td><%= invoice.profile.first_name %> <%= invoice.profile.last_name %></td>
+            <td><%= invoice.amount %> €</td>
+            <td><%= invoice.status %></td>
+          </tr>
+        <% end %>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
 
+  </main>
 </div>
-
 <% end %>
+
+
+
