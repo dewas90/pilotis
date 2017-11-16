@@ -31,7 +31,7 @@
         <% end %>
       </tbody>
     </table>
-  </div>
+
 
   <h2>All invoices</h2>
   <main>
@@ -56,12 +56,12 @@
       </select>
     </div>
     <table id="table"
-       data-toggle="table"
-       data-search="true"
-       data-filter-control="true"
-       data-show-export="true"
-       data-click-to-select="true"
-       data-toolbar="#toolbar">
+    data-toggle="table"
+    data-search="true"
+    data-filter-control="true"
+    data-show-export="true"
+    data-click-to-select="true"
+    data-toolbar="#toolbar">
     <thead>
       <tr>
         <th data-field="state" data-checkbox="true" data-sortable="true">status></th>
@@ -74,10 +74,7 @@
     </thead>
     <tbody>
       <% @invoices.each_with_index do |invoice, i|%>
-
-
       <tr>
-
         <td><input data-index="<% i %>" name="btSelectItem" type="checkbox" id="checkboxfourInput"></td>
         <td> <%= invoice.title %> </td>
         <td><%= invoice.date %></td>
@@ -89,8 +86,7 @@
 
     </tbody>
   </table>
+
 </div>
-
-
 
 <% end %>
