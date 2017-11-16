@@ -5,4 +5,6 @@
 //= require Chart.bundle
 //= require chartkick
 //= require_tree .
-
+$(document).ready(function(){
+  $(".alert").delay(3000).slideUp();
+});
