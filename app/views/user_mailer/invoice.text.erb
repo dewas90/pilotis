@@ -1,16 +1,13 @@
 Dear Mr <%= @user.profile.last_name %>,
 
-We are glad to welcome your child in our movement for this year.
+You will find in this email all the needed information to pay the last invoice.
+The invoice <strong> "<%= @invoice.title %>" </strong> has to be paid before <%= @invoice.due_date %> on the following account: <strong> <%= @invoice.bank_account %> </strong>.
 
-  <% if @invoices.nil? || @invoices.count == 0 %>
-    We have no pending invoices for your children
-  <% else %>
-    Your pending invoices are the following:
-    <% @invoices.each do |invoice| %>
-      <%= invoice.title %> : <%= invoice.amount %> (<%= invoice.due_date %>)
-    <% end %>
-  <% end %>
+As you can imagine, we send a lot of invoices to our member, so we kinly request that you pay this invoice in due time.
 
+Thanks in advance for your cooperation.
+
+See you soon!
 
 Scoutement vôtre,
 Le Staff d'Unité
