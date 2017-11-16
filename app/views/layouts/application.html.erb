@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Piloti app</title>
-  <%= csrf_meta_tags %>
-  <%= action_cable_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-</head>
-<body>
- <!-- <#%= render "shared/navbar" %> -->
- <div class="side-navbar-wrapper col-xs-3 col-ms-2 col-md-1 col-lg-1">
-   </div>
-    <!-- <#%= render 'shared/navbar' %> -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Piloti app</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  </head>
+  <body>
+    <%= render "shared/navbar" %>
     <%= render 'shared/flashes' %>
-     <div class="col-xs-9 col-ms-10 col-md-11 col-lg-11">
+    <div class="side-navbar-wrapper col-xs-3 col-ms-2 col-md-1 col-lg-1">
+      <%= render "shared/sidebar" %>
+    </div>
       <div class="container">
         <%= yield %>
       </div>
-     </div>
-     <%= yield(:after_js) %>
-     <%= javascript_include_tag 'application' %>
-     <!-- <#%= javascript_pack_tag 'application' %> -->
-</body>
-</html>
+      <div class="footer">
+    <%= render 'shared/footer' %>
+    </div>
+  </body>
+  <%= yield(:after_js) %>
 
+  <%= javascript_include_tag 'application' %>
+</html>
