@@ -15,8 +15,8 @@
       <tbody><% @events.each do |event| %>
         <tr class="clickable" data-toggle="collapse" id="<%= event.id %>" data-target=".<%= event.id %>collapsed">
           <td><%= event.name %></td>
-          <td><%= event.start_date %></td>
-          <td><%= event.end_date %></td>
+          <td><%= event.start_time %></td>
+          <td><%= event.end_time %></td>
           <td><%= link_to 'Show', event_path(event.id), class:"btn-primary" %></td>
           <td><%= link_to 'Edit', edit_event_path(event.id), class:"btn-primary" %></td>
           <td><%= link_to 'Delete', event_path(event.id), method: :delete, class:"btn-danger" %></td>
@@ -27,3 +27,12 @@
 </main>
 
 
+<%= month_calendar events: @events do |date, events| %>
+  <%= date %>
+  <% events.each do |event| %>
+    <div>
+      <%= event.name %>
+      <%= event.description %>
+    </div>
+  <% end %>
+<% end %>
