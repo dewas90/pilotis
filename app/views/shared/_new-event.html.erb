@@ -12,6 +12,7 @@
 
   <%= simple_form_for [@event] do |f| %>
   <%= f.input :name %>
+  <%= f.input :description %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.submit "generate event", class: "btn"%>
