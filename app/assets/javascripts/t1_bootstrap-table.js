@@ -267,7 +267,7 @@
         responseHandler: function (res) {
             return res;
         },
-        pagination: false,
+        pagination: true,
         onlyInfoPagination: false,
         sidePagination: 'client', // client or server
         totalRows: 0, // server side need to set
