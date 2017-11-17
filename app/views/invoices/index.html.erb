@@ -1,11 +1,44 @@
 <div class="invoices-index">
   <%= content_for(:after_js) do %>
-  <h2>Invoices</h2>
+    <h2>Invoices</h2>
+
     <main class=invoice-tab-box>
 
       <div class="tabs-bar">
-        <button class="tabs-bar-item tab-button" onclick="openTab('overview')">Overview</button>
-        <button class="tabs-bar-item tab-button" onclick="openTab('all-invoices')">All Invoices</button>
+
+<!-- tabs -->
+        <span>
+          <button class="tabs-bar-item tab-button" onclick="openTab('overview')">Overview</button>
+          <button class="tabs-bar-item tab-button" onclick="openTab('all-invoices')">All Invoices</button>
+        </span>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="new-invoice-btn" data-toggle="modal" data-target="#newInvoiceModal">
+          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="new-invoice-modal modal fade" id="newInvoiceModal" tabindex="-1" role="dialog" aria-labelledby="newInvoiceModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newInvoiceModalLabel">New invoice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= render 'shared/invoiceform' %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
 
 
@@ -85,13 +118,6 @@
       </div>
 
     </main>
-
-
-        <h3>New Invoice</h3>
-        <button class="new-invoice-btn">
-        <%= link_to "Add a new invoice", new_invoice_path%>
-        </button>
-
 
   <% end %>
 </div>

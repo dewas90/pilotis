@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171117140740) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20171117140740) do
     t.datetime "updated_at"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
+
 
   create_table "attendees", force: :cascade do |t|
     t.integer  "profile_id"
@@ -81,6 +83,14 @@ ActiveRecord::Schema.define(version: 20171117140740) do
     t.date     "due_date"
     t.index ["admin_id"], name: "index_invoices_on_admin_id", using: :btree
     t.index ["profile_id"], name: "index_invoices_on_profile_id", using: :btree
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "photo"
+    t.integer  "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_pictures_on_album_id", using: :btree
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -127,5 +137,6 @@ ActiveRecord::Schema.define(version: 20171117140740) do
   add_foreign_key "events", "invoices"
   add_foreign_key "invoices", "admins"
   add_foreign_key "invoices", "profiles"
+  add_foreign_key "pictures", "albums"
   add_foreign_key "profiles", "users"
 end
