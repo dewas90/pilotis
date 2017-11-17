@@ -1,0 +1,5 @@
+<%= link_to "create a new album", new_album_path, class: "btn btn-primary" %>
+<% @albums.each do |album| %>
+<%= link_to album.name, albums_path(album.id) %>
+<img src= <%= cl_image_path album.photos.first.path %>
+<% end %>

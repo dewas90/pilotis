@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  mount Attachinary::Engine => "/attachinary"
+
+  get 'photos/new'
+
+  get 'photos/create'
+
+  get 'photos/update'
+
+  get 'photos/edit'
+
+  get 'photos/destroy'
 
   # devise_for :users
   devise_for :users, controllers: { registrations: "registrations" }
@@ -19,5 +30,5 @@ Rails.application.routes.draw do
   end
 
   resources :events
-
+  resources :albums
 end

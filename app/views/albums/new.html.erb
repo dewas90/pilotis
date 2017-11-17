@@ -1,0 +1,23 @@
+<div class="form_wrapper">
+  <div class="container">
+    <div class="forms">
+      <% if @album.errors.any? %>
+        <div id="error_explanation">
+        <ul>
+          <% @album.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        </div>
+       <% end %>
+
+    <%= simple_form_for @album do |f| %>
+      <%= f.input :name %>
+      <%= f.input :photos, as: :attachinary %>
+      <%= f.submit "let's go", class: "btn", class: "btn large"%>
+  <!-- # render 'shared/button'  -->
+    <% end %>
+
+    </div>
+  </div>
+</div>
