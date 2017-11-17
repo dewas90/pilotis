@@ -28,11 +28,12 @@
 
       </li>
       <li class="has-subnav">
-          <a href="#">
+          <%= link_to events_path do%>
              <i class="fa fa-calendar fa-2x"></i>
               <span class="nav-text">
                   Calendar
               </span>
+              <% end %>
           </a>
 
       </li>
@@ -64,12 +65,12 @@
 
   <ul class="logout">
       <li>
-         <a href="#">
+          <%= link_to destroy_user_session_path, method: :delete do %>
                <i class="fa fa-power-off fa-2x"></i>
               <span class="nav-text">
                   Logout
               </span>
-          </a>
+          <% end %>
       </li>
   </ul>
 </nav>

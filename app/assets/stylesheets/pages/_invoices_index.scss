@@ -1,10 +1,21 @@
 
 .invoices-index{
-
+  margin: 0 auto;
 }
+.invoice-tab-box{
+      min-width: 320px;
+      max-width: 880px;
+      padding: 50px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      background: #fff;
+      min-height: 400px;
+    }
 body, table{
   font-family: $body-font;
   font-weight: 300 ;
+  font-size: 14px;
+  color: $brown;
   th{
     font-family: $headers-font;
     text-transform: uppercase;
@@ -15,4 +26,48 @@ body, table{
     text-transform: uppercase;
     font-weight: 400;
     font-size: 26px;
+
   }
+.tabs-bar{
+      text-align: center;
+      border-bottom: 2px;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      }
+.tab-button{
+  padding: 10px 20px 10px 20px;
+  background-color: $white;
+  border-color: $brown;
+  border-radius: 0%;
+  border-width: 0.2px;
+  border-bottom-width: 5px;
+  font-family: $headers-font;
+  text-transform: uppercase;
+  margin: 10px 20px 10px 20px;
+}
+.tab-button:hover{
+  color: $yellow;
+  border-bottom-color: $yellow;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+.tab-button:active{
+  color: $yellow;
+  border-bottom-color: $yellow;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+.new-invoice-modal{
+  margin-top: 15vW;
+}
+.new-invoice-btn{
+  color: $yellow;
+  font-size: 36px;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
