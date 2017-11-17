@@ -4,7 +4,7 @@
 <div class="flexbin flexbin-margin">
   <% @album.photos.each do |photo|  %>
   <a href="#">
-    <img src=<%= cl_image_path photo.path %> />
+    <img src=<%= cl_image_path photo.path %>>
   </a>
   <% end %>
 </div>
