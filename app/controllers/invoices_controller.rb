@@ -6,7 +6,6 @@ class InvoicesController < ApplicationController
     if params[:global_search]  && params[:global_search][:query]
       @invoices = Invoice.global_search(params[:global_search][:query])
       @query = params[:global_search][:query]
-
     else
       @invoices = Invoice.all
       @query = nil
@@ -17,6 +16,7 @@ class InvoicesController < ApplicationController
         response.headers['Content-Disposition'] = 'attachment; filename="all_invoices.xlsx"'
       }
     end
+    @invoice = Invoice.new
   end
 
 

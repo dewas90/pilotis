@@ -1,4 +1,4 @@
-<div class="container">
+
     <div class="forms">
       <% if @invoice.errors.any? %>
       <div id="error_explanation">
@@ -14,14 +14,12 @@
 
   <%= simple_form_for @invoice, html: {id: :msform} do |f| %>
   <fieldset>
-<h2>Invoice</h2>
-  <%= f.input :title %>
-  <%= f.input :date %>
-  <%= f.input :due_date %>
-  <%= f.input :amount %>
-  <%= f.input :bank_account %>
-  <%= f.submit "generate invoice", class: "btn"%>
-<% end %>
+    <%= f.input :title %>
+    <%= f.input :date %>
+    <%= f.input :due_date %>
+    <%= f.input :amount %>
+    <%= f.input :bank_account %>
+    <%= f.submit "generate invoice", class: "btn"%>
+  <% end %>
 </div>
-</div>
-</div>
+

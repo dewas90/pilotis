@@ -9,6 +9,7 @@
 @import "sidebar";
 @import "checkbox";
 @import "login";
+@import "dashboard";
 @import "calendar";
 
 .container {
@@ -19,4 +20,8 @@
     width: 100%;
     padding-left: 75px;
     padding-top: 80px;
+}
+
+.profile .main {
+    grid-row: 1 / span 2;
 }
