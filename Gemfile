@@ -21,6 +21,8 @@ gem "bootstrap-table-rails"
 
 gem 'webpacker', '~> 3.0'
 
+#calendar
+gem "simple_calendar", "~> 2.0"
 
 gem 'devise'
 gem 'figaro'
