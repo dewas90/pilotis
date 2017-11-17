@@ -9,6 +9,7 @@
 @import "sidebar";
 @import "checkbox";
 @import "login";
+@import "dashboard";
 
 .container {
 	min-height:92.5vh;
@@ -18,4 +19,8 @@
     width: 100%;
     padding-left: 75px;
     padding-top: 80px;
+}
+
+.profile .main {
+    grid-row: 1 / span 2;
 }
