@@ -24,6 +24,12 @@ gem 'webpacker', '~> 3.0'
 #calendar
 gem "simple_calendar", "~> 2.0"
 
+#photos
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
