@@ -5,6 +5,9 @@
 //= require Chart.bundle
 //= require chartkick
 //= require_tree .
+//= require jquery-fileupload/basic
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
 $(document).ready(function(){
   $(".alert").delay(3000).slideUp();
 });
