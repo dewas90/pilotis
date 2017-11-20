@@ -1,28 +1,33 @@
-<h1>Your profile</h1>
-<div class="profile-card-body">
-  <div class="profile-info">
-      <h4>
-        <strong>NAME :</strong>  <%= current_user.profile.first_name %> <%= current_user.profile.last_name %> (<%= current_user.profile.totem %>)
-      </h4>
-    <hr>
-      <h4>
-        <strong>EMAIL :</strong>  <%= current_user.profile.user.email %>
-      </h4>
-    <hr>
-      <h4>
-        <strong>BIRTH DATE :</strong>  <%= current_user.profile.birth_date %>
-      </h4>
-    <hr>
-      <h4>
-        <strong>ADDRESS :</strong>  <%= current_user.profile.address %> - <%= current_user.profile.zip_code %> - <%= current_user.profile.city %> (<%= current_user.profile.country %>)
-      </h4>
-    <hr>
-      <h4><strong>PHONE NUMBER :</strong>  <%= current_user.profile.phone_number %></h4>
-    <hr>
-      <h4><strong>COMMENTS :</strong>  <%= current_user.profile.comment %></h4>
-    <hr>
-    <div class="form-group btn-div">
-      <%= link_to 'Edit your info', edit_profile_path, class: "btn btn-primary" %>
+<div class="profile text-center">
+  <div class="main">
+    <div class="main-content">
+      <img src="images/seb.jpeg" alt="" width="150" class="img-circle">
+      <h2><%= current_user.profile.first_name %> <%= current_user.profile.last_name %></h2>
+      <p>( <%= current_user.profile.totem %>)</p>
+      <p><strong>EMAIL :</strong> <%= current_user.profile.user.email %></p>
+      <p><strong>BIRTH DATE :</strong> <%= current_user.profile.birth_date %></p>
+      <p><strong>ADDRESS :</strong>  <%= current_user.profile.address %> - <%= current_user.profile.zip_code %> - <%= current_user.profile.city %> (<%= current_user.profile.country %>)</p>
+      <p><strong>PHONE NUMBER :</strong>  <%= current_user.profile.phone_number %></p>
+      <p><strong>COMMENTS :</strong>  <%= current_user.profile.comment %></p>
+      <div class="form-group btn-div">
+        <%= link_to 'Edit your info', edit_profile_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="events">
+    <div class="description-content">
+      <h3>Upcoming Events</h3>
+      <p class="text-justify">
+        aaaaaa
+      </p>
+    </div>
+  </div>
+  <div class="invoices">
+    <div class="description-content">
+      <h3>Invoices overview</h3>
+      <p class="text-justify">
+        @invoices
+      </p>
     </div>
   </div>
 </div>
