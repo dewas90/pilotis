@@ -1,13 +1,12 @@
 <%= link_to "all albums", albums_path, class: "btn btn-primary" %>
+<%= link_to "delete this album", album_path(@album), method: :delete, class: "btn btn-danger" %>
 
-<div class="container">
+
 <div class="flexbin flexbin-margin">
   <% @album.photos.each do |photo|  %>
-  <a href="#">
+  <a href="">
     <img src=<%= cl_image_path photo.path %>>
   </a>
   <% end %>
 </div>
 
-
-</div>
