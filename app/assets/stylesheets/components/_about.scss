@@ -1,0 +1,89 @@
+.about-page {
+    width: 105%;
+  height: 100%;
+    background-size: cover !important;
+    margin-left: -60px;
+
+    h1{
+        text-align: center;
+        font-size: 80px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    
+    }
+    
+}
+.about {
+      background: white;
+      margin: -40px -15px 0px -15px;
+      padding : 15px;
+
+}
+
+.mission, .vision, .values{
+    padding: 50px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.profile {
+    display: flex !important;
+    grid-template-columns: 350px 1fr 1fr 1fr;
+    grid-template-rows: 50% 50%;
+    height: calc(100vh - 200px);
+    background: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.icon {
+    height: 100px;
+    width: 115px;
+    margin-left: 10px;
+    
+}
+
+.about-page .container {
+    background: $yellow;
+    color: white;
+    min-height: 0;
+    padding: 0px 50px 50px 50px;
+    margin: 0px -15px;
+    padding-left: 0px !important;
+    width: 102.5%;
+}
+
+.container .service{
+    height:100px;
+    width:100px;
+    background-color: white;
+    border-radius: 20%;
+    padding: 20px;
+}
+
+.row {
+ padding-left: 60px;
+
+ h1 {
+    margin-bottom: 40px;
+ }
+
+}
+
+#team {
+
+    .icon {
+    height: 100px;
+    width: 100px;
+    margin-left: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+ .mission, .vision, .values {
+     padding: 0px;
+    }
+}
