@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117140740) do
+ActiveRecord::Schema.define(version: 20171120140139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,14 @@ ActiveRecord::Schema.define(version: 20171117140740) do
     t.index ["profile_id"], name: "index_invoices_on_profile_id", using: :btree
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string   "photo"
+    t.integer  "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_pictures_on_album_id", using: :btree
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -99,7 +107,17 @@ ActiveRecord::Schema.define(version: 20171117140740) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "section_id"
+    t.index ["section_id"], name: "index_profiles_on_section_id", using: :btree
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "start_age"
+    t.integer  "end_age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -127,5 +145,7 @@ ActiveRecord::Schema.define(version: 20171117140740) do
   add_foreign_key "events", "invoices"
   add_foreign_key "invoices", "admins"
   add_foreign_key "invoices", "profiles"
+  add_foreign_key "pictures", "albums"
+  add_foreign_key "profiles", "sections"
   add_foreign_key "profiles", "users"
 end

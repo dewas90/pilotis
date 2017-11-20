@@ -6,7 +6,37 @@ Profile.destroy_all
 Invoice.destroy_all
 Admin.destroy_all
 puts "cleaning finished"
+sections = []
+puts "start creating sections"
 
+section1 = Section.create(
+  name: "baladin", start_age: 6,
+  end_age: 8)
+sections << section1
+section2 = Section.create(
+  name: "louveteau", start_age: 6,
+  end_age: 8)
+sections << section2
+section3 = Section.create(
+  name: "éclaireur", start_age: 6,
+  end_age: 8)
+sections << section3
+section4 = Section.create(
+  name: "pionnier", start_age: 6,
+  end_age: 8)
+sections << section4
+section5 = Section.create(
+  name: "guide", start_age: 6,
+  end_age: 8)
+sections << section5
+section6 = Section.create(
+  name: "lutin", start_age: 6,
+  end_age: 8)
+sections << section6
+section7 = Section.create(
+  name: "horizon", start_age: 6,
+  end_age: 8)
+sections << section7
 
 puts "Start seeding first profile"
 
@@ -29,7 +59,8 @@ profile = Profile.create(
   photo: '',
   gender: "Male",
   comment: "No comments needed",
-  user_id: user.id
+  user_id: user.id,
+  section_id: section5.id
   )
 
 admin = Admin.create(
@@ -53,7 +84,8 @@ profile = Profile.create(
   photo: '',
   gender: "Male",
   comment: "Allergic to chicken",
-  user_id: user.id
+  user_id: user.id,
+  section_id: section4.id
   )
 admin = Admin.create(
   profile_id: user.id
@@ -76,7 +108,8 @@ profile = Profile.create(
   photo: '',
   gender: "Female",
   comment: "No comments needed",
-  user_id: user.id
+  user_id: user.id,
+  section_id: section1.id
   )
 admin = Admin.create(
   profile_id: user.id
@@ -99,7 +132,8 @@ profile = Profile.create(
   photo: '',
   gender: "Male",
   comment: "No comments needed",
-  user_id: user.id
+  user_id: user.id,
+  section_id: section2.id
   )
 admin = Admin.create(
   profile_id: user.id
@@ -128,7 +162,8 @@ puts 'Creating user db through FAKER...'
     photo: '',
     gender: "Male",
     comment: "No comments needed",
-    user_id: user.id
+    user_id: user.id,
+    section_id: sections.sample.id
     )
   invoice = Invoice.create(
     admin_id: 1,
