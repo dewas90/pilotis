@@ -1,25 +1,27 @@
 
-    <div class="forms">
-      <% if @invoice.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-          <% @invoice.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
+
+  <% if @invoice.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @invoice.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
       <% end %>
-
-
+    </ul>
+  </div>
+  <% end %>
 
   <%= simple_form_for @invoice, html: {id: :msform} do |f| %>
-  <fieldset>
-    <%= f.input :title %>
-    <%= f.input :date %>
-    <%= f.input :due_date %>
-    <%= f.input :amount %>
-    <%= f.input :bank_account %>
-    <%= f.submit "generate invoice", class: "btn"%>
+
+    <div class="form-fields">
+      <%= f.input :title %>
+      <%= f.input :date %>
+      <%= f.input :due_date %>
+      <%= f.input :amount %>
+      <%= f.input :bank_account %>
+    </div>
+    <div class="submit-btn">
+      <%= f.submit "generate invoice", class: "btn"%>
+    </div>
   <% end %>
-</div>
+
 

@@ -1,0 +1,67 @@
+.new-modal{
+  margin-top: 10vW;
+  #msform{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  }
+  .modal-dialog {
+    width: 460px;
+  }
+  .modal-body{
+  padding: 1px;
+  overflow-y: scroll;
+}
+}
+.new-btn{
+  color: $yellow;
+  font-size: 36px;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
+.modal-title{
+  font-family: $headers-font;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 24px;
+  display: inline-block;
+}
+.close-btn{
+  display: inline-block;
+}
+
+.invoice-form{
+  .submit-btn{
+    font-family: $headers-font;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  .form-fields{
+    font-family: $body-font;
+    font-weight: 300;
+    color: $brown;
+  }
+  .simple_form .new_invoice{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+}
+
+.new-modal .form-inline {
+  width: 100%;
+  display: flex;
+  select{
+    font-family: $headers-font;
+    font-weight: 300;
+    font-size: 13px;
+    width: 100%;
+  }
+  .form-control{
+    width: 50%;
+}
+  #invoice_date_2i,
+  #invoice_due_date_2i{
+    width: 100%;
+  }
+}
