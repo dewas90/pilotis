@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sections/show'
+
+  get 'sections/index'
+
   mount Attachinary::Engine => "/attachinary"
 
   get 'photos/new'
@@ -31,4 +35,5 @@ Rails.application.routes.draw do
 
   resources :events
   resources :albums
+  resources :sections
 end
