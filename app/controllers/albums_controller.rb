@@ -1,13 +1,14 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_album, only: [:show, :edit, :update, :destroy]
+
   def new
     @album = Album.new
   end
 
   def create
     @album = Album.new(album_params)
-    @album.admin_id = current_user.profile.admin
+    @album.admin = current_user.profile.admin
     if @album.save
       redirect_to album_path(@album)
     else
@@ -42,7 +43,7 @@ private
   end
 
   def album_params
-    params.require(:album).permit(:name, photos: [])
+    params.require(:album).permit(:name, :admin_id, photos: [])
   end
 
 end
