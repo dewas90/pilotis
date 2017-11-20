@@ -66,7 +66,7 @@ class InvoicesController < ApplicationController
   private
 
   def create_invoices
-    Profile.all.each do |profile|
+    Profile.where(section_id: invoice_params[:section]).each do |profile|
       if profile.user != current_user
         @invoice = Invoice.new(invoice_params)
         @invoice.admin = current_user.profile.admin
@@ -86,6 +86,6 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    params.require(:invoice).permit(:profile_id, :admin_id, :date, :amount, :title, :bank_account, :status, :due_date)
+    params.require(:invoice).permit(:profile_id, :admin_id, :date, :amount, :title, :bank_account, :status, :due_date, :section)
   end
 end
