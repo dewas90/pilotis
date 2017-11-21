@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20171121114112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "photo"
+    t.string   "year"
     t.index ["admin_id"], name: "index_albums_on_admin_id", using: :btree
   end
 
