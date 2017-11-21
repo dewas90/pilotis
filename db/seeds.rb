@@ -1,4 +1,17 @@
 require 'faker'
+require 'open-uri'
+require 'nokogiri'
+
+def get_pokemon_image(pokemon)
+  image = []
+  url = "https://pokemondb.net/pokedex/#{pokemon}"
+  html_file = open(url).read
+  html_doc = Nokogiri::HTML(html_file)
+  html_doc.search('.figure').each do |element|
+    image << element.search('img').first.attributes.first[1].value
+  end
+  image
+end
 
 puts "cleaning started"
 User.destroy_all
@@ -149,17 +162,18 @@ puts 'Creating user db through FAKER...'
     email: Faker::Internet.email,
     password: "password"
     )
+  pokemon = Faker::Pokemon.name
   profile = Profile.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    totem: Faker::Pokemon.name,
+    totem: pokemon,
     birth_date: Faker::Date.birthday(18, 65),
     address: Faker::Address.street_address,
     zip_code: Faker::Address.zip_code,
     city: Faker::Address.city,
     country: Faker::Address.country,
     phone_number: Faker::PhoneNumber.phone_number,
-    photo: '',
+    photo: get_pokemon_image(pokemon.downcase).first,
     gender: "Male",
     comment: "No comments needed",
     user_id: user.id,
@@ -186,5 +200,24 @@ puts 'Creating user db through FAKER...'
 )
 end
 
+
+
+
 puts 'Finished seeding user db!'
 
+
+
+# require 'open-uri'
+# require 'nokogiri'
+#
+# pokemon_name = ''
+# url = "http://www.letscookfrench.com/recipes/find-recipe.aspx?s=#{pokemon_name}"
+#
+# html_file = open(url).read
+# html_doc = Nokogiri::HTML(html_file)
+#
+# html_doc.search('.m_titre_resultat a').each do |element|
+#   puts element.text.strip
+#   puts element.attribute('href').value
+# end
+#
