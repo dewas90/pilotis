@@ -2,6 +2,7 @@ class Profile < ApplicationRecord
   belongs_to :user
   has_many :invoices
   has_one :admin
+  has_many :messages
   belongs_to :section
 
   validates :first_name, presence: true

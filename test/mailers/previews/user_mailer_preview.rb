@@ -8,4 +8,9 @@ class UserMailerPreview < ActionMailer::Preview
     users = User.all
     UserMailer.invoice(users).deliver_now
   end
+
+  def custom_message
+    users = User.all
+    UserMailer.custom_message(users, message).deliver_now
+  end
 end

@@ -1,7 +1,6 @@
 <h1 class="text-center"> Profiles</h1>
 
-<main>
-
+<main id="profiles">
   <input id="tab1" type="radio" name="tabs" checked>
   <label for="tab1">All</label>
 
@@ -34,15 +33,21 @@
         <tr class="collapse out budgets <%= profile.id %>collapsed">
           <td colspan = "3">
             <ul>
+              <div class="list1">
               <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
               <li><%= profile.user.email %></li>
               <li><%= profile.phone_number %></li>
               <li><%= profile.gender %></li>
               <li><%= profile.birth_date %></li>
+              </div>
+              </div>
+              <div class="list2">
+                <div class="list2">
               <li><%= profile.address %></li>
               <li><%= profile.zip_code %> <%= profile.city %></li>
               <li><%= profile.country %></li>
               <li><%= profile.comment %></li>
+              </div>
             </ul>
           </td>
         </tr>
@@ -69,15 +74,19 @@
         <tr class="collapse out budgets <%= profile.id %>collapsed">
           <td colspan = "3">
             <ul>
+              <div class="list1">
               <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
               <li><%= profile.user.email %></li>
               <li><%= profile.phone_number %></li>
               <li><%= profile.gender %></li>
               <li><%= profile.birth_date %></li>
+              </div>
+              <div class="list2">
               <li><%= profile.address %></li>
               <li><%= profile.zip_code %> <%= profile.city %></li>
               <li><%= profile.country %></li>
               <li><%= profile.comment %></li>
+              </div>
             </ul>
           </td>
         </tr>
@@ -104,15 +113,19 @@
         <tr class="collapse out budgets <%= profile.id %>collapsed">
           <td colspan = "3">
             <ul>
+              <div class="list1">
               <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
               <li><%= profile.user.email %></li>
               <li><%= profile.phone_number %></li>
               <li><%= profile.gender %></li>
               <li><%= profile.birth_date %></li>
+              </div>
+              <div class="list2">
               <li><%= profile.address %></li>
               <li><%= profile.zip_code %> <%= profile.city %></li>
               <li><%= profile.country %></li>
               <li><%= profile.comment %></li>
+              </div>
             </ul>
           </td>
         </tr>
@@ -139,15 +152,19 @@
         <tr class="collapse out budgets <%= profile.id %>collapsed">
           <td colspan = "3">
             <ul>
+              <div class="list1">
               <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
               <li><%= profile.user.email %></li>
               <li><%= profile.phone_number %></li>
               <li><%= profile.gender %></li>
               <li><%= profile.birth_date %></li>
+              </div>
+              <div class="list2">
               <li><%= profile.address %></li>
               <li><%= profile.zip_code %> <%= profile.city %></li>
               <li><%= profile.country %></li>
               <li><%= profile.comment %></li>
+              </div>
             </ul>
           </td>
         </tr>
@@ -155,7 +172,6 @@
     </table>
     <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
   </section>
-
 </main>
 
 

@@ -1,0 +1,30 @@
+#profiles {
+	border-radius:20px;
+
+	ul {
+		list-style: none;
+		background-color: white;
+    	padding: 10px;
+    	border-radius: 6px;
+    	font-weight: bold;
+    	display: flex;
+
+    	.list1 {
+    		flex: 2;
+    	}
+
+    	.list2 {
+    		flex: 2;
+    	}
+
+    	li {
+    		opacity: 0.8;
+    	}
+
+		li:hover {
+			list-style: none; 
+			opacity: 1;
+		}
+
+	}
+}
