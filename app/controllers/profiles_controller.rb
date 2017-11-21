@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
 
   def show
     @events = Event.all
+    @invoices = Invoice.all
   end
 
   def new

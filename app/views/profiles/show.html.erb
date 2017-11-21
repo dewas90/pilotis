@@ -1,18 +1,10 @@
 
 <div id="user-dashboard">
 
-  <div id="headers-box">
-
-    <div id="hbox1"><h5></h5></div>
-    <div id="hbox2"><h5>Calendar</h5></div>
-    <div id="hbox3"><h5>Events</h5></div>
-
-  </div>
-
   <div id="body-box">
 
     <div id="bbox1">
-
+      <h5>.</h5>
       <div class="profile-db card">
         <div class="avatar avatar-large">
         </div>
@@ -31,11 +23,11 @@
           <p><%= current_user.profile.phone_number %></p>
           <p><strong>ADDITIONAL INFORMATION</strong></p>
           <p><%= current_user.profile.comment %></p>
-        </div>
-        <div class="edit-btn">
-          <%= link_to edit_profile_path do %>
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-          <% end %>
+          <div class="edit-btn">
+            <%= link_to edit_profile_path do %>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <% end %>
+          </div>
         </div>
       </div>
 
@@ -45,76 +37,103 @@
 
       <div id="bbox21">
 
-        <div id="bbox211" class="calendar-db card">
+        <div id="bbox211">
+          <h5>Calendar</h5>
+          <div class="calendar-db card">
+            <div class="card-body">
+              <%= month_calendar events: @events, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, events| %>
+                  <%= date.day %>
+                <% events.each do |event| %>
+                  <!-- Modal -->
+                <div class="modal-btn" data-toggle="modal" data-target="#eventsModal"><i class="fa fa-circle" aria-hidden="true"></i></div>
+
+                  <div class="modal fade" id="eventsModal" tabindex="-1" role="dialog" aria-labelledby="eventsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm" role="document">
+                      <div class="modal-content">
+                        <button type=" button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                        <div class="modal-body">
+                          <p><strong><%= event.name %></strong></p>
+                          <p>Start time   <%= event.start_time.strftime("%b %e, %l:%M %p") %></p>
+                          <p>End time   <%= event.end_time.strftime("%b %e, %l:%M %p") %></p>
+                          <p>Description   <%= event.description %></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div id="bbox212">
+          <h5>Reminders</h5>
+          <div class="reminders-db card">
           <div class="card-body">
-            <%= month_calendar events: @events, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, events| %>
-              <%= date.day %>
-              <% events.each do |event| %>
-                <div class="hidden" >
-                  <%= event.name%>
-                </div>
+            <% @events.each do |event| %>
+              <p><i class="fa fa-calendar" aria-hidden="true"></i><strong> <%= event.name %></strong> <%= event.start_time.strftime("%b %e, %l:%M %p") %></p>
+            <% end %>
+            <% @invoices.each do |invoice| %>
+              <% if invoice.profile.user == current_user && invoice.status == "unpaid" %>
+                <p><i class="fa fa-eur" aria-hidden="true"></i><strong> <%= invoice.title %></strong> is due by <%= invoice.due_date.strftime("%b %d")%></p>
               <% end %>
             <% end %>
           </div>
-        </div>
-
-        <div id="bbox212" class="events-db card">
-          <div class="card-body">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Event Name</th>
-                  <th>Start Date</th>
-                  <th>End Date</th>
-                </tr>
-              </thead>
-              <tbody><% @events.each do |event| %>
-                <tr class="clickable" data-toggle="collapse" id="<%= event.id %>" data-target=".<%= event.id %>collapsed">
-                  <%= link_to event_path(event.id) do %>
-                  <td><%= event.name %></td>
-                  <td><%= event.start_time.strftime("%b %d, %Y") %></td>
-                  <td><%= event.end_time.strftime("%b %d, %Y") %></td>
-                  <% end %>
-                </tr>
-              <% end %></tbody>
-            </table>
           </div>
         </div>
 
       </div>
-
-    <div id="hbox4"><h5>Invoices</h5></div>
 
       <div id="bbox22">
 
-        <div class="invoices-db card">
+        <h5>Photos</h5>
+        <div class="photos-db">
           <div class="card-body">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Paid</th>
-                  <th>Pending</th>
-                  <th>Total</th>
-                  <th>Collected amount</th>
-                  <th>Due amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% Invoice.uniq.pluck(:title).each_with_index do |invoice_title, i| %>
-                <tr class="clickable" data-toggle="collapse" id="clickable<%= i + 1 %>" data-target="#collapsed<%= i + 1 %>">
-                  <td> <%= invoice_title %> </td>
-                  <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").count %></td>
-                  <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").count %></td>
-                  <td> <%= Invoice.where("title = ?", invoice_title).count %></td>
-                  <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").pluck(:amount).sum %>€</td>
-                  <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").pluck(:amount).sum %>€</td>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
+
+            <%= render "shared/carousel" %>
           </div>
         </div>
 
       </div>
 
+    </div>
+
+  </div>
+
+  <div id="bottom-box">
+
+    <h5>Invoices</h5>
+    <div class="invoices-db card">
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Paid</th>
+              <th>Pending</th>
+              <th>Total</th>
+              <th>Collected amount</th>
+              <th>Due amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Invoice.uniq.pluck(:title).each_with_index do |invoice_title, i| %>
+            <tr class="clickable" data-toggle="collapse" id="clickable<%= i + 1 %>" data-target="#collapsed<%= i + 1 %>">
+              <td> <%= invoice_title %> </td>
+              <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").count %></td>
+              <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").count %></td>
+              <td> <%= Invoice.where("title = ?", invoice_title).count %></td>
+              <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").pluck(:amount).sum %>€</td>
+              <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").pluck(:amount).sum %>€</td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
