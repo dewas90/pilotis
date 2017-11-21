@@ -72,6 +72,7 @@
 
       <div id="all-invoices" class="tab" style="display:none">
         <h3>All Invoices</h3>
+        <div id="paidbtn" class="btn btn-primary">MarkasPaid</div>
         <div class="row">
           <div id="toolbar">
             <select class="form-control">
@@ -100,7 +101,7 @@
             </thead>
               <tbody id="myTable">
                 <% @invoices.each_with_index do |invoice, i|%>
-                <tr>
+                <tr id="line" data-id="<%=invoice.id%>">
                   <td><input data-index="<% i %>" name="btSelectItem" type="checkbox" id="checkboxfourInput"></td>
                   <td> <%= invoice.title %> </td>
                   <td><%= invoice.date %></td>

@@ -1,7 +1,7 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_invoices, only: [:show, :approve, :edit, :update, :cancel, :paid]
-
+   before_action :find_invoices, only:[:markaspaid]
   def index
     if params[:global_search]  && params[:global_search][:query]
       @invoices = Invoice.global_search(params[:global_search][:query])
@@ -44,6 +44,12 @@ class InvoicesController < ApplicationController
   def edit
   end
 
+  def markaspaid
+    @invoice.status = "paid"
+    @invoice.save
+    redirect_to invoices_path
+  end
+
   def update
     @invoice.update(invoice_params)
     if @invoice.save
@@ -80,7 +86,9 @@ class InvoicesController < ApplicationController
       end
     end
   end
-
+  def find_invoices
+    @invoice = Invoice.find(params[:invoice_id])
+  end
   def set_invoices
     @invoice = Invoice.find(params[:id])
   end

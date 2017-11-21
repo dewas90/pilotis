@@ -32,12 +32,14 @@ Rails.application.routes.draw do
       post 'paid', to: 'invoices#paid'
       post 'unpaid', to: 'invoices#unpaid'
     end
+    collection do
+      post 'markaspaid'
+    end
   end
 
   resources :events
   resources :albums
   resources :sections
-
 
   resources :messages, only: [:new, :create, :index]
 end
