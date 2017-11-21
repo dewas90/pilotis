@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="forms">
+    <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <%= simple_form_for [@message] do |f| %>
+    <%= f.input :subject %>
+    <%= f.input :body, :input_html => {:rows => 12}%>
+    <%= f.input :section_id, collection: Section.all %>
+    <%= f.submit "generate message", class: "btn"%>
+    <% end %>
+  </div>
+</div>
+</div>
