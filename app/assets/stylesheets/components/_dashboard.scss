@@ -147,6 +147,39 @@
       color: #787878;
       font-size: 10px;
     }
+     .has-events{
+        transition: all .3s ease-in-out;
+    }
+
+    .has-events:hover{
+        transform: scale(3.1);
+        background-color:#F5F1E9;
+        box-shadow: 1px 1px 2px #B3B3B3;
+        border-radius:5px;
+    }
+
+    #circle{
+      background-color:rgb(145, 7, 7);
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+    }
+    #hover-content {
+        display:none;
+        opacity:0;
+        -webkit-transition:.5s;
+        -moz-transition:.5s;
+        -o-transition:.5s;
+        -ms-transition:.5s;
+        transition:.5s;
+    }
+    .has-events:hover #hover-content {
+        display:block;
+        opacity:1;
+    }
+    .has-events:hover #circle{
+      opacity:0;
+    }
     .today {
       background-color: $yellow;
     }
