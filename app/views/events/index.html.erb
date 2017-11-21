@@ -1,6 +1,4 @@
-<h1>All events</h1>
-<%=  link_to "create an event", new_event_path, class: "btn btn-primary" %>
-<main>
+<h1 class="text-center"> Events <%= link_to "", new_event_path, class: "fa fa-plus-circle new-btn" %></h1>
   <input id="tab1" type="radio" name="tabs" checked>
   <label for="tab1">All Events</label>
   <section id="content1">
@@ -19,7 +17,7 @@
           <td><%= event.end_time %></td>
           <td><%= link_to 'Show', event_path(event.id), class:"btn-primary" %></td>
           <td><%= link_to 'Edit', edit_event_path(event.id), class:"btn-primary" %></td>
-          <td><%= link_to 'Delete', event_path(event.id), method: :delete, class:"btn-danger" %></td>
+          <td><%= link_to 'Delete', event_path(event.id), method: :delete, class:"btn-danger", data: {confirm: "Are you really sure you want to delete this event?"}  %></td>
         </tr>
       <% end %></tbody>
     </table>
