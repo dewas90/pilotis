@@ -11,6 +11,7 @@
   <% if current_user.nil? || current_user.profile.nil?%>
     <h4 class="navbar-wagon-item navbar-wagon-link">
       <%= link_to "Join Us", new_user_registration_path %>
+      <%= link_to "Log in", new_user_session_path %>
     </h4>
   <% else %>
     <div class="navbar-wagon-right hidden-xs hidden-sm">
