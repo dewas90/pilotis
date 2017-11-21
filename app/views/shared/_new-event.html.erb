@@ -10,11 +10,12 @@
     </div>
     <% end %>
 
+
     <%= simple_form_for [@event] do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :start_time %>
-    <%= f.input :end_time %>
+    <%= f.input :start_time , order: [:day, :month, :year], default: Time.parse('9:00')%>
+    <%= f.input :end_time, order: [:day, :month, :year], default: Time.parse('17:00')%>
     <%= f.input :section_id, collection: Section.all %>
     <%= f.submit "generate event", class: "btn"%>
     <% end %>
