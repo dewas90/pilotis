@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     create_event
     if @event.save
       flash[:notice] = "Event successfully created"
+      UserMailer.event(@event.profile.user).deliver_now
       redirect_to event_path(@event)
     else
       flash[:notice] = "Event not created"
@@ -44,15 +45,22 @@ class EventsController < ApplicationController
   end
 
   def create_event
-    Profile.all.each do |profile|
+    Profile.where(section_id: event_params[:section_id]).each do |profile|
       if profile.user != current_user
         @event = Event.new(event_params)
         @event.admin = current_user.profile.admin
+        @event.profile_id = profile.id
+        if @event.save
+          @event.save
+          UserMailer.event(Profile.find(@event.profile_id).user, @event).deliver_now
+        else
+          render :new
+        end
       end
     end
   end
 
   def event_params
-    params.require(:event).permit(:name, :start_time, :end_time, :admin_id)
+    params.require(:event).permit(:name, :start_time, :end_time, :admin_id, :section_id, :profile_id)
   end
 end

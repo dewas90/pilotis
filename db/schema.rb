@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121134405) do
 
+ActiveRecord::Schema.define(version: 20171121143213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,8 +65,12 @@ ActiveRecord::Schema.define(version: 20171121134405) do
     t.string   "description"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer  "profile_id"
+    t.integer  "section_id"
     t.index ["admin_id"], name: "index_events_on_admin_id", using: :btree
     t.index ["invoice_id"], name: "index_events_on_invoice_id", using: :btree
+    t.index ["profile_id"], name: "index_events_on_profile_id", using: :btree
+    t.index ["section_id"], name: "index_events_on_section_id", using: :btree
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -149,6 +153,8 @@ ActiveRecord::Schema.define(version: 20171121134405) do
   add_foreign_key "attendees", "profiles"
   add_foreign_key "events", "admins"
   add_foreign_key "events", "invoices"
+  add_foreign_key "events", "profiles"
+  add_foreign_key "events", "sections"
   add_foreign_key "invoices", "admins"
   add_foreign_key "invoices", "profiles"
   add_foreign_key "messages", "admins"

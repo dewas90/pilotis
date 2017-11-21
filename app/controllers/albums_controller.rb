@@ -2,6 +2,14 @@ class AlbumsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
+  def index
+    if params[:album]
+    @albums = Album.where("year ILIKE ?", "%#{params[:album]}%")
+    else
+    @albums = Album.all
+    end
+  end
+
   def new
     @album = Album.new
   end
@@ -9,6 +17,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     @album.admin = current_user.profile.admin
+    @album.year = Date.current.year
     if @album.save
       redirect_to album_path(@album)
     else
@@ -32,9 +41,6 @@ class AlbumsController < ApplicationController
   def show
   end
 
-  def index
-    @albums = Album.all
-  end
 
 private
 
@@ -43,7 +49,7 @@ private
   end
 
   def album_params
-    params.require(:album).permit(:name, :admin_id, photos: [])
+    params.require(:album).permit(:name, :year, :admin_id, photos: [])
   end
 
 end

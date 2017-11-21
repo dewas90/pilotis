@@ -16,4 +16,10 @@ class UserMailer < ApplicationMailer
     @message = message
     mail(to: @user.email, subject: 'Custom message')
   end
+
+  def event(user, event)
+    @user = user
+    @event = @user.profile.events.last
+    mail(to: @user.email, subject: 'New event')
+  end
 end

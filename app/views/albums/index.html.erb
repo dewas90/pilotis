@@ -1,5 +1,11 @@
 <h1 class="text-center"> Photo Album <%= link_to "", new_album_path, class: "fa fa-plus-circle new-btn" %></h1>
 
+<%= form_tag(albums_path, method: :get) %>
+  <%= select_tag :album, options_for_select(Album.pluck(:year).uniq), {include_blank: "Choose a year svp"} %>
+   <!-- collection_select(:post, :author_id, Author.all, :id, :name_with_initial, prompt: true)
+ -->
+  <%= submit_tag 'Search' %>
+
 <div class="container">
   <div class="albums">
       <% @albums.each do |album| %>
