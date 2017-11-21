@@ -1,33 +1,120 @@
-<div class="profile text-center">
-  <div class="main">
-    <div class="main-content">
-      <img src="images/seb.jpeg" alt="" width="150" class="img-circle">
-      <h2><%= current_user.profile.first_name %> <%= current_user.profile.last_name %></h2>
-      <p>( <%= current_user.profile.totem %>)</p>
-      <p><strong>EMAIL :</strong> <%= current_user.profile.user.email %></p>
-      <p><strong>BIRTH DATE :</strong> <%= current_user.profile.birth_date %></p>
-      <p><strong>ADDRESS :</strong>  <%= current_user.profile.address %> - <%= current_user.profile.zip_code %> - <%= current_user.profile.city %> (<%= current_user.profile.country %>)</p>
-      <p><strong>PHONE NUMBER :</strong>  <%= current_user.profile.phone_number %></p>
-      <p><strong>COMMENTS :</strong>  <%= current_user.profile.comment %></p>
-      <div class="form-group btn-div">
-        <%= link_to 'Edit your info', edit_profile_path, class: "btn btn-primary" %>
+
+<div id="user-dashboard">
+
+  <div id="headers-box">
+
+    <div id="hbox1"><h5></h5></div>
+    <div id="hbox2"><h5>Calendar</h5></div>
+    <div id="hbox3"><h5>Events</h5></div>
+
+  </div>
+
+  <div id="body-box">
+
+    <div id="bbox1">
+
+      <div class="profile-db card">
+        <div class="avatar avatar-large">
+        </div>
+        <div class="card-header">
+          <h4><%= current_user.profile.first_name %> <%= current_user.profile.last_name %> (<%= current_user.profile.totem %>)</h4>
+        </div>
+        <div class="card-body">
+          <p><strong>EMAIL</strong></p>
+          <p><%= current_user.profile.user.email %></p>
+          <p><strong>BIRTH DATE</strong></p>
+          <p><%= current_user.profile.birth_date %></p>
+          <p><strong>ADDRESS</strong></p>
+          <p><%= current_user.profile.address %>
+          <p><%= current_user.profile.zip_code %> - <%= current_user.profile.city %> (<%= current_user.profile.country %>)</p>
+          <p><strong>PHONE NUMBER</strong></p>
+          <p><%= current_user.profile.phone_number %></p>
+          <p><strong>ADDITIONAL INFORMATION</strong></p>
+          <p><%= current_user.profile.comment %></p>
+        </div>
+        <div class="edit-btn">
+          <%= link_to edit_profile_path do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <% end %>
+        </div>
       </div>
+
     </div>
-  </div>
-  <div class="events">
-    <div class="description-content">
-      <h3>Upcoming Events</h3>
-      <p class="text-justify">
-        aaaaaa
-      </p>
-    </div>
-  </div>
-  <div class="invoices">
-    <div class="description-content">
-      <h3>Invoices overview</h3>
-      <p class="text-justify">
-        @invoices
-      </p>
-    </div>
-  </div>
-</div>
+
+    <div id="bbox2">
+
+      <div id="bbox21">
+
+        <div id="bbox211" class="calendar-db card">
+          <div class="card-body">
+            <%= month_calendar events: @events, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, events| %>
+              <%= date.day %>
+              <% events.each do |event| %>
+                <div class="hidden" >
+                  <%= event.name%>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div id="bbox212" class="events-db card">
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                </tr>
+              </thead>
+              <tbody><% @events.each do |event| %>
+                <tr class="clickable" data-toggle="collapse" id="<%= event.id %>" data-target=".<%= event.id %>collapsed">
+                  <%= link_to event_path(event.id) do %>
+                  <td><%= event.name %></td>
+                  <td><%= event.start_time.strftime("%b %d, %Y") %></td>
+                  <td><%= event.end_time.strftime("%b %d, %Y") %></td>
+                  <% end %>
+                </tr>
+              <% end %></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    <div id="hbox4"><h5>Invoices</h5></div>
+
+      <div id="bbox22">
+
+        <div class="invoices-db card">
+          <div class="card-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Paid</th>
+                  <th>Pending</th>
+                  <th>Total</th>
+                  <th>Collected amount</th>
+                  <th>Due amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Invoice.uniq.pluck(:title).each_with_index do |invoice_title, i| %>
+                <tr class="clickable" data-toggle="collapse" id="clickable<%= i + 1 %>" data-target="#collapsed<%= i + 1 %>">
+                  <td> <%= invoice_title %> </td>
+                  <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").count %></td>
+                  <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").count %></td>
+                  <td> <%= Invoice.where("title = ?", invoice_title).count %></td>
+                  <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").pluck(:amount).sum %>€</td>
+                  <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").pluck(:amount).sum %>€</td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
