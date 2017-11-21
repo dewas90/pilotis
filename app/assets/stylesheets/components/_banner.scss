@@ -1,3 +1,4 @@
+.banner{
   .card {
   position: fixed;
   top: 0;
@@ -8,18 +9,19 @@
   background-size: cover !important;
   background-position: center;
   color: white;
-}
-
-@media (max-width: 992px) {
-  .card {
-    left: 45px ;
-    width: 95%;
   }
-}
 
-@media (max-width: 420px) {
-  .card {
-    left: 45px ;
-    width: 88% !important;
+  @media (max-width: 992px) {
+    .card {
+      left: 45px ;
+      width: 95%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .card {
+      left: 45px ;
+      width: 88% !important;
+    }
   }
 }

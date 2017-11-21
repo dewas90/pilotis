@@ -26,12 +26,14 @@
   </section>
 </main>
 
-<%= month_calendar events: @events, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, events| %>
-   <%= date.day %>
- <% events.each do |event| %>
-    <div>
-      <%= event.name %>
-      <%= event.description %>
-  </div>
+<div id="events-on-calendar">
+  <%= month_calendar events: @events, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, events| %>
+     <%= date.day %>
+   <% events.each do |event| %>
+      <div>
+        <%= event.name %>
+        <%= event.description %>
+    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

@@ -1,4 +1,4 @@
-.simple-calendar {
+#events-on-calendar .simple-calendar {
   margin-left: auto;
   margin-right: auto;
   width: 900px;
@@ -12,7 +12,7 @@
     background-color: $yellow;
     padding: 18px 0;
     -webkit-border-radius: 12px 12px 0px 0px;
-    -moz-border-radius: 12px 12px 0px 0px; 
+    -moz-border-radius: 12px 12px 0px 0px;
     border-radius: 12px 12px 0px 0px;
     display: flex;
       justify-content: space-around;
@@ -34,7 +34,7 @@
     color: $brown;
     width: 68.5714px;
     height: 68.5714px;
-    line-height: 68.5714px;   
+    line-height: 68.5714px;
   }
   th {
     text-align: center;
