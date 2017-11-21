@@ -1,0 +1,61 @@
+a:link,
+a:hover,
+a:active,
+a:visited {
+  -webkit-transition: color 150ms;
+  transition: color 150ms;
+  color: #95a5a6;
+  text-decoration: none;
+}
+a:hover {
+  color: #7f8c8d;
+  text-decoration: underline;
+}
+
+.row__inner {
+  -webkit-transition: 450ms -webkit-transform;
+  transition: 450ms -webkit-transform;
+  transition: 450ms transform;
+  transition: 450ms transform, 450ms -webkit-transform;
+  font-size: 0;
+  white-space: nowrap;
+  margin: 30px 0;
+  padding-bottom: 10px;
+
+}
+.tile {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 140.625px;
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-transition: 450ms all;
+  transition: 450ms all;
+  -webkit-transform-origin: center left;
+          transform-origin: center left;
+}
+.tile__img {
+  width: 250px;
+  height: 140.625px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.row__inner:hover {
+  -webkit-transform: translate3d(-62.5px, 0, 0);
+          transform: translate3d(-62.5px, 0, 0);
+}
+.row__inner:hover .tile {
+  opacity: 0.3;
+}
+.row__inner:hover .tile:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  opacity: 1;
+}
+.tile:hover ~ .tile {
+  -webkit-transform: translate3d(125px, 0, 0);
+          transform: translate3d(125px, 0, 0);
+}
