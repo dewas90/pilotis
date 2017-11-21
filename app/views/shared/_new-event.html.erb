@@ -15,6 +15,7 @@
   <%= f.input :description %>
   <%= f.input :start_time %>
   <%= f.input :end_time %>
+  <%= f.input :section_id, collection: Section.all %>
   <%= f.submit "generate event", class: "btn"%>
 <% end %>
 </div>
