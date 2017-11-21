@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
 
 
   def show
+    @events = Event.all
   end
 
   def new

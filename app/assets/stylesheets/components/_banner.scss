@@ -1,7 +1,10 @@
+.banner{
   .image{
   z-index: 2000;
   margin-left: -75px;
   margin-top: 65px;
+  }
+  .card {
   position: fixed;
   top: 0;
   width: 100%;
@@ -50,3 +53,18 @@
     background-color: #2381d0;
     border-color: #1e6eb2;
 }
+  }
+
+  @media (max-width: 992px) {
+    .card {
+      left: 45px ;
+      width: 95%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .card {
+      left: 45px ;
+      width: 88% !important;
+    }
+  }
