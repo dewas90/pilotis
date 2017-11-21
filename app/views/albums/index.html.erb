@@ -1,5 +1,8 @@
 <h1 class="text-center"> Photo Album <%= link_to "", new_album_path, class: "fa fa-plus-circle new-btn" %></h1>
-
+<%= form_tag(albums_path, method: :get) do %>
+  <%= text_field_tag :query, collection: Album.pluck(:created_at) %>
+  <%= submit_tag 'Search' %>
+<% end %>
 <div class="container">
   <div class="albums">
       <% @albums.each do |album| %>

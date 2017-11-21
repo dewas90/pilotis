@@ -176,6 +176,8 @@
     .has-events:hover #hover-content {
         display:block;
         opacity:1;
+        padding:0px;
+        margin:0px;
     }
     .has-events:hover #circle{
       opacity:0;

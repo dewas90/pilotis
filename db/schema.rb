@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20171120140139) do
-  
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -138,7 +137,6 @@ ActiveRecord::Schema.define(version: 20171120140139) do
   add_foreign_key "events", "invoices"
   add_foreign_key "invoices", "admins"
   add_foreign_key "invoices", "profiles"
-  add_foreign_key "pictures", "albums"
   add_foreign_key "profiles", "sections"
   add_foreign_key "profiles", "users"
 end
