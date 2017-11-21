@@ -1,13 +1,12 @@
 <div class="area"></div><nav class="main-menu">
   <ul>
-      <li>
-          <a href="#">
-              <i class="fa fa-home fa-2x"></i>
-              <span class="nav-text">
-                  Dashboard
-              </span>
-          </a>
-
+      <li class="has-subnav">
+        <%= link_to profile_path(current_user.profile.id) do%>
+          <i class="fa fa-home fa-2x"></i>
+          <span class="nav-text">
+              Dashboard
+          </span>
+        <% end %>
       </li>
       <li class="has-subnav">
         <%= link_to profiles_path do%>
@@ -16,7 +15,6 @@
               Users
           </span>
         <% end %>
-
       </li>
       <li class="has-subnav">
         <%= link_to invoices_path do%>
@@ -25,20 +23,16 @@
               Invoices
           </span>
         <% end %>
-
       </li>
       <li class="has-subnav">
           <%= link_to events_path do%>
              <i class="fa fa-calendar fa-2x"></i>
               <span class="nav-text">
-                  Calendar
+                  Events
               </span>
               <% end %>
-          </a>
-
       </li>
-      <li>
-          <li class="has-subnav">
+      <li class="has-subnav">
           <%= link_to albums_path do%>
               <i class="fa fa-camera-retro fa-2x"></i>
               <span class="nav-text">
@@ -47,12 +41,13 @@
               <% end %>
           </a>
       </li>
-      <li>
-          <a href="#">
+      <li class="has-subnav">
+          <%= link_to messages_path do%>
               <i class="fa fa-envelope-o fa-2x"></i>
               <span class="nav-text">
                   Messages
               </span>
+              <% end %>
           </a>
       </li>
       <li>
