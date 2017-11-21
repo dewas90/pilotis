@@ -61,3 +61,11 @@ body, table{
   border-left: none;
   border-top: none;
 }
+.dropdown-menu li a {
+    color: $brown;
+    font-size: 13px;
+    font-family:$body-font;
+  }
+.dropdown-menu li a:hover {
+    color: #EAB63F;
+  }

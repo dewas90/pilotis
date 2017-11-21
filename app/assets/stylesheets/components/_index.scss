@@ -16,6 +16,7 @@
 @import "new_modal";
 @import "flexbin";
 @import "carousel";
+@import "profiles";
 
 .container {
 	min-height:92.5vh;
@@ -30,3 +31,4 @@
 .profile .main {
     grid-row: 1 / span 2;
 }
+

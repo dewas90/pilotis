@@ -6,9 +6,20 @@ class UserMailer < ApplicationMailer
   end
 
   def invoice(user)
-      @user = user
-      @invoice = @user.profile.invoices.last
-      mail(to: @user.email, subject: 'Invoice')
+    @user = user
+    @invoice = @user.profile.invoices.last
+    mail(to: @user.email, subject: 'Invoice')
   end
 
+  def custom_message(user, message)
+    @user = user
+    @message = message
+    mail(to: @user.email, subject: 'Custom message')
+  end
+
+  def event(user, event)
+    @user = user
+    @event = @user.profile.events.last
+    mail(to: @user.email, subject: 'New event')
+  end
 end

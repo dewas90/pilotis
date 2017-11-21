@@ -2,7 +2,9 @@ class Profile < ApplicationRecord
   belongs_to :user
   has_many :invoices
   has_one :admin
+  has_many :messages
   belongs_to :section
+  has_many :events
 
   validates :first_name, presence: true
   validates :last_name, presence: true

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'sections/show'
 
   get 'sections/index'
@@ -36,4 +37,7 @@ Rails.application.routes.draw do
   resources :events
   resources :albums
   resources :sections
+
+
+  resources :messages, only: [:new, :create, :index]
 end
