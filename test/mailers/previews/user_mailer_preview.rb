@@ -13,4 +13,10 @@ class UserMailerPreview < ActionMailer::Preview
     users = User.all
     UserMailer.custom_message(users, message).deliver_now
   end
+
+  def event
+    users = User.all
+    UserMailer.event(users, event).deliver_now
+  end
+
 end
