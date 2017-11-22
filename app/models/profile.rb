@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
   has_many :messages
   belongs_to :section
   has_many :events
+  has_many :children
 
   validates :first_name, presence: true
   validates :last_name, presence: true

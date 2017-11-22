@@ -6,7 +6,7 @@
     <div id="bbox1">
       <h5>.</h5>
       <div class="profile-db card">
-        <div class="avatar avatarrout-large"></div>
+        <div class="avatar avatar-large"></div>
         <div class="card-header">
           <h4><%= current_user.profile.first_name %> <%= current_user.profile.last_name %> (<%= current_user.profile.totem %>)</h4>
         </div>
@@ -22,6 +22,12 @@
           <p><%= current_user.profile.phone_number %></p>
           <p><strong>ADDITIONAL INFORMATION</strong></p>
           <p><%= current_user.profile.comment %></p>
+          <!-- modal edit profile -->
+          <div class="edit-btn">
+            <%= link_to new_child_path do %>
+              <i class="fa fa-child" aria-hidden="true"></i>
+              <% end %>
+          </div>
           <div class="edit-btn">
             <%= link_to edit_profile_path do %>
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -37,13 +43,14 @@
       <div id="bbox21">
 
         <div id="bbox211">
+
           <h5>Calendar</h5>
           <div class="calendar-db card">
             <div class="card-body">
               <%= month_calendar events: @events, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, events| %>
                   <%= date.day %>
                 <% events.each do |event| %>
-                  <!-- Modal -->
+                  <!-- Modal events show -->
                 <div class="modal-btn" data-toggle="modal" data-target="#eventsModal"><i class="fa fa-circle" aria-hidden="true"></i></div>
 
                   <div class="modal fade" id="eventsModal" tabindex="-1" role="dialog" aria-labelledby="eventsModalLabel" aria-hidden="true">
@@ -65,22 +72,25 @@
               <% end %>
             </div>
           </div>
+
         </div>
 
         <div id="bbox212">
+
           <h5>Reminders</h5>
           <div class="reminders-db card">
-          <div class="card-body">
-            <% @events.each do |event| %>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i><strong> <%= event.name %></strong> <%= event.start_time.strftime("%b %e, %l:%M %p") %></p>
-            <% end %>
-            <% @invoices.each do |invoice| %>
-              <% if invoice.profile.user == current_user && invoice.status == "unpaid" %>
-                <p><i class="fa fa-eur" aria-hidden="true"></i><strong> <%= invoice.title %></strong> is due by <%= invoice.due_date.strftime("%b %d")%></p>
+            <div class="card-body">
+              <% @events.each do |event| %>
+                <p><i class="fa fa-calendar" aria-hidden="true"></i><strong> <%= event.name %></strong> <%= event.start_time.strftime("%b %e, %l:%M %p") %></p>
               <% end %>
-            <% end %>
+              <% @invoices.each do |invoice| %>
+                <% if invoice.profile.user == current_user && invoice.status == "unpaid" %>
+                  <p><i class="fa fa-eur" aria-hidden="true"></i><strong> <%= invoice.title %></strong> is due by <%= invoice.due_date.strftime("%b %d")%></p>
+                <% end %>
+              <% end %>
+            </div>
           </div>
-          </div>
+
         </div>
 
       </div>
@@ -96,9 +106,6 @@
         </div>
 
       </div>
-    </div>
-  </div>
-</div>
 
     </div>
 
