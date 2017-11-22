@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121143213) do
+ActiveRecord::Schema.define(version: 20171122102632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(version: 20171121143213) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attendees_on_event_id", using: :btree
     t.index ["profile_id"], name: "index_attendees_on_profile_id", using: :btree
+  end
+
+  create_table "children", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "profile_id"
+    t.integer  "section_id"
+    t.string   "status",     default: "Pending"
+    t.date     "birthday"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "comment"
+    t.index ["profile_id"], name: "index_children_on_profile_id", using: :btree
+    t.index ["section_id"], name: "index_children_on_section_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -115,9 +129,10 @@ ActiveRecord::Schema.define(version: 20171121143213) do
     t.string   "gender"
     t.string   "comment"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "section_id"
+    t.string   "status",       default: "Pending"
     t.index ["section_id"], name: "index_profiles_on_section_id", using: :btree
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
@@ -151,6 +166,8 @@ ActiveRecord::Schema.define(version: 20171121143213) do
   add_foreign_key "albums", "admins"
   add_foreign_key "attendees", "events"
   add_foreign_key "attendees", "profiles"
+  add_foreign_key "children", "profiles"
+  add_foreign_key "children", "sections"
   add_foreign_key "events", "admins"
   add_foreign_key "events", "invoices"
   add_foreign_key "events", "profiles"

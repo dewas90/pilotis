@@ -45,6 +45,7 @@ class InvoicesController < ApplicationController
   end
 
   def markaspaid
+
     @invoice.status = "paid"
     @invoice.save
     redirect_to invoices_path
