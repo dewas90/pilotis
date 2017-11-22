@@ -1,177 +1,72 @@
-<h1 class="text-center"> Profiles</h1>
 
-<main id="profiles">
-  <input id="tab1" type="radio" name="tabs" checked>
-  <label for="tab1">All</label>
+  <%= content_for(:after_js) do %>
+  <h1 class="text-center"> Invoices</h1>
+    <main class=invoice-tab-box>
 
-  <input id="tab2" type="radio" name="tabs">
-  <label for="tab2">Baladins</label>
+      <div class="tabs-bar">
+<!-- tabs -->
+        <span>
+          <% Section.all.each do |section| %>
+          <button class="tabs-bar-item tab-button" onclick="openTab('<%= section.name %>')"><%= section.name %></button>
+          <% end %>
+          <button class="tabs-bar-item tab-button" onclick="openTab('pending')">Pending</button>
+        </span>
+        </div>
 
-  <input id="tab3" type="radio" name="tabs">
-  <label for="tab3">Nutons</label>
 
-  <input id="tab4" type="radio" name="tabs">
-  <label for="tab4">Louveteaux</label>
+       </main>
+       <main class=invoice-tab-box>
+        <% Section.all.each do |section| %>
+          <div id='<%= section.name %>' class="tab" style="display:none">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Birthday</th>
+                  <th>Section</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Child.where(section_id: section.id).where(status: "Accepted").each do |child| %>
+                  <tr>
+                    <td> <%= child.first_name %> </td>
+                    <td> <%= child.last_name %></td>
+                    <td> <%= child.birthday %> </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+        <div id='pending' class="tab" style="display:none">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Birthday</th>
+                  <th>Section</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Child.where(status: "Pending").each do |child| %>
+                  <tr>
+                    <td> <%= child.first_name %> </td>
+                    <td> <%= child.last_name %></td>
+                    <td> <%= child.birthday %> </td>
+                    <td><%= Section.find_by_id(child.section_id).name  %></td>
+                    <td><%= link_to "approve", approve_child_path(child.id), method: :post %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+    </main>
 
-  <section id="content1">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Section</th>
-        </tr>
-      </thead>
-      <tbody><% @profiles.each do |profile| %>
-        <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
-          <td><%= profile.first_name %></td>
-          <td><%= profile.last_name %></td>
-          <td><%= profile.user.email %></td>
-          <td><%= profile.section.name %></td>
-        </tr>
-        <tr class="collapse out budgets <%= profile.id %>collapsed">
-          <td colspan = "3">
-            <ul>
-              <div class="list1">
-              <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
-              <li><%= profile.user.email %></li>
-              <li><%= profile.phone_number %></li>
-              <li><%= profile.gender %></li>
-              <li><%= profile.birth_date %></li>
-              </div>
-              </div>
-              <div class="list2">
-                <div class="list2">
-              <li><%= profile.address %></li>
-              <li><%= profile.zip_code %> <%= profile.city %></li>
-              <li><%= profile.country %></li>
-              <li><%= profile.comment %></li>
-              </div>
-            </ul>
-          </td>
-        </tr>
-      <% end %></tbody>
-    </table>
-    <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
-  </section>
 
-  <section id="content2">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody><% @profiles.each do |profile| %>
-        <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
-          <td><%= profile.first_name %></td>
-          <td><%= profile.last_name %></td>
-          <td><%= profile.user.email %></td>
-        </tr>
-        <tr class="collapse out budgets <%= profile.id %>collapsed">
-          <td colspan = "3">
-            <ul>
-              <div class="list1">
-              <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
-              <li><%= profile.user.email %></li>
-              <li><%= profile.phone_number %></li>
-              <li><%= profile.gender %></li>
-              <li><%= profile.birth_date %></li>
-              </div>
-              <div class="list2">
-              <li><%= profile.address %></li>
-              <li><%= profile.zip_code %> <%= profile.city %></li>
-              <li><%= profile.country %></li>
-              <li><%= profile.comment %></li>
-              </div>
-            </ul>
-          </td>
-        </tr>
-      <% end %></tbody>
-    </table>
-    <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
-  </section>
-
-  <section id="content3">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody><% @profiles.each do |profile| %>
-        <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
-          <td><%= profile.first_name %></td>
-          <td><%= profile.last_name %></td>
-          <td><%= profile.user.email %></td>
-        </tr>
-        <tr class="collapse out budgets <%= profile.id %>collapsed">
-          <td colspan = "3">
-            <ul>
-              <div class="list1">
-              <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
-              <li><%= profile.user.email %></li>
-              <li><%= profile.phone_number %></li>
-              <li><%= profile.gender %></li>
-              <li><%= profile.birth_date %></li>
-              </div>
-              <div class="list2">
-              <li><%= profile.address %></li>
-              <li><%= profile.zip_code %> <%= profile.city %></li>
-              <li><%= profile.country %></li>
-              <li><%= profile.comment %></li>
-              </div>
-            </ul>
-          </td>
-        </tr>
-      <% end %></tbody>
-    </table>
-    <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
-  </section>
-
-  <section id="content4">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody><% @profiles.each do |profile| %>
-        <tr class="clickable" data-toggle="collapse" id="<%= profile.id %>" data-target=".<%= profile.id %>collapsed">
-          <td><%= profile.first_name %></td>
-          <td><%= profile.last_name %></td>
-          <td><%= profile.user.email %></td>
-        </tr>
-        <tr class="collapse out budgets <%= profile.id %>collapsed">
-          <td colspan = "3">
-            <ul>
-              <div class="list1">
-              <li><%= profile.first_name.capitalize %> <%= profile.last_name.upcase %> (<%= profile.totem.capitalize %>)</li>
-              <li><%= profile.user.email %></li>
-              <li><%= profile.phone_number %></li>
-              <li><%= profile.gender %></li>
-              <li><%= profile.birth_date %></li>
-              </div>
-              <div class="list2">
-              <li><%= profile.address %></li>
-              <li><%= profile.zip_code %> <%= profile.city %></li>
-              <li><%= profile.country %></li>
-              <li><%= profile.comment %></li>
-              </div>
-            </ul>
-          </td>
-        </tr>
-      <% end %></tbody>
-    </table>
-    <%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
-  </section>
+<%= link_to 'Download as .xlsx', profiles_path(format: :xlsx) %>
 </main>
-
+<% end %>
 
