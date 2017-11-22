@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'pages/about'
+
   get 'children/index'
 
   get 'children/show'
