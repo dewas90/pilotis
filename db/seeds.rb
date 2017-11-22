@@ -50,7 +50,6 @@ section7 = Section.create(
   name: "horizon", start_age: 6,
   end_age: 8)
 sections << section7
-section8 = Section.create(name: "all", start_age: 0, end_age: 99)
 puts "Start seeding first profile"
 
 # user n°1 who is an admin
