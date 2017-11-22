@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new
+    @disable_footer = true
   end
 
   def create
