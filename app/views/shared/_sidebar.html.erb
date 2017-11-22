@@ -41,8 +41,7 @@
               <span class="nav-text">
                   Photos
               </span>
-              <% end %>
-          </a>
+          <% end %>
       </li>
       <li class="has-subnav">
           <%= link_to messages_path do%>
@@ -50,8 +49,7 @@
               <span class="nav-text">
                   Messages
               </span>
-              <% end %>
-          </a>
+          <% end %>
       </li>
       <li>
          <a href="#">
@@ -61,13 +59,13 @@
               </span>
           </a>
       </li>
-      <li>
-          <a href="#">
-             <i class="fa fa-info fa-2x"></i>
-              <span class="nav-text">
-                  About
-              </span>
-          </a>
+      <li class="has-subnav">
+          <%= link_to about_path do%>
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+                About
+            </span>
+          <% end %>
       </li>
   </ul>
 
