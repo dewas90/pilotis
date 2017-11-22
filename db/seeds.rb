@@ -2,16 +2,16 @@ require 'faker'
 require 'open-uri'
 require 'nokogiri'
 
-def get_pokemon_image(pokemon)
-  image = []
-  url = "https://pokemondb.net/pokedex/#{pokemon}"
-  html_file = open(url).read
-  html_doc = Nokogiri::HTML(html_file)
-  html_doc.search('.figure').each do |element|
-    image << element.search('img').first.attributes.first[1].value
-  end
-  image
-end
+# def get_pokemon_image(pokemon)
+#   image = []
+#   url = "https://pokemondb.net/pokedex/#{pokemon}"
+#   html_file = open(url).read
+#   html_doc = Nokogiri::HTML(html_file)
+#   html_doc.search('.figure').each do |element|
+#     image << element.search('img').first.attributes.first[1].value
+#   end
+#   image
+# end
 
 puts "cleaning started"
 User.destroy_all
@@ -173,7 +173,7 @@ puts 'Creating user db through FAKER...'
     city: Faker::Address.city,
     country: Faker::Address.country,
     phone_number: Faker::PhoneNumber.phone_number,
-    photo: get_pokemon_image(pokemon.downcase).first,
+    # photo: get_pokemon_image(pokemon.downcase).first,
     gender: "Male",
     comment: "No comments needed",
     user_id: user.id,
@@ -188,36 +188,7 @@ puts 'Creating user db through FAKER...'
     bank_account: "BE50 5000 5000 5000",
     due_date: "31.01.2017",
   )
-    # invoice = Invoice.create(
-    # admin_id: 2,
-    # profile_id: profile.id,
-    # date: "31.10.2017",
-    # amount: "€155",
-    # title: "2017 - Rappel cotisation début d'année",
-    # bank_account: "BE50 5000 5000 5000",
-    # due_date: "30.11.2017",
-  # )
 )
 end
 
-
-
-
 puts 'Finished seeding user db!'
-
-
-
-# require 'open-uri'
-# require 'nokogiri'
-#
-# pokemon_name = ''
-# url = "http://www.letscookfrench.com/recipes/find-recipe.aspx?s=#{pokemon_name}"
-#
-# html_file = open(url).read
-# html_doc = Nokogiri::HTML(html_file)
-#
-# html_doc.search('.m_titre_resultat a').each do |element|
-#   puts element.text.strip
-#   puts element.attribute('href').value
-# end
-#
