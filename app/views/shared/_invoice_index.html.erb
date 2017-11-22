@@ -1,0 +1,11 @@
+<% invoices.each_with_index do |invoice, i|%>
+  <tr id="line" data-id="<%=invoice.id%>">
+    <td><input data-index="<% i %>" name="btSelectItem" type="checkbox" id="checkboxfourInput"></td>
+    <td> <%= invoice.title %> </td>
+    <td><%= invoice.date %></td>
+    <td><%= invoice.profile.first_name %> <%= invoice.profile.last_name %></td>
+    <td><%= invoice.amount %> €</td>
+    <td><%= invoice.status %></td>
+  </tr>
+  <% end %>
+
