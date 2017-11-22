@@ -12,11 +12,13 @@
   color: $light-gray;
   font-size: 11px;
   position: sticky;
+  bottom: 0;
   .fa{
     font-size: 20px;
   }
 }
 .footer-links {
+  padding-left: 10px;
   display: flex;
   align-items: center;
 
@@ -34,8 +36,7 @@
   padding-left: 5px;
 }
 .footer-copyright{
-  padding-right: 5%;
-  min-width: 300px;
+  min-width: 350px;
 }
 
 .fabout {
