@@ -24,6 +24,11 @@
           <p><%= current_user.profile.comment %></p>
           <!-- modal edit profile -->
           <div class="edit-btn">
+            <%= link_to new_child_path do %>
+              <i class="fa fa-child" aria-hidden="true"></i>
+              <% end %>
+          </div>
+          <div class="edit-btn">
             <%= link_to edit_profile_path do %>
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             <% end %>
