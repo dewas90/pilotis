@@ -156,7 +156,7 @@ puts "Finished seeding admin profiles"
 # faker
 
 puts 'Creating user db through FAKER...'
-10.times do (
+30.times do (
   user = User.create(
     email: Faker::Internet.email,
     password: "password"
@@ -178,6 +178,18 @@ puts 'Creating user db through FAKER...'
     user_id: user.id,
     section_id: sections.sample.id
     )
+
+  3.times do(
+    child = Child.create(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      birthday: Faker::Date.birthday(18, 65),
+      section_id: sections.sample.id,
+      profile_id: profile.id
+      )
+      )
+  end
+
   invoice = Invoice.create(
     admin_id: 1,
     profile_id: profile.id,

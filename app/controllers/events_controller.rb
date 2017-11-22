@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     create_event
     if @event.save
       flash[:notice] = "Event successfully created"
-      UserMailer.event(@event.profile.user).deliver_now
+      UserMailer.event(Profile.find(@event.profile_id).user, @event).deliver_now
       redirect_to event_path(@event)
     else
       flash[:notice] = "Event not created"
@@ -50,12 +50,6 @@ class EventsController < ApplicationController
         @event = Event.new(event_params)
         @event.admin = current_user.profile.admin
         @event.profile_id = profile.id
-        if @event.save
-          @event.save
-          UserMailer.event(Profile.find(@event.profile_id).user, @event).deliver_now
-        else
-          render :new
-        end
       end
     end
   end

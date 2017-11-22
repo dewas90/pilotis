@@ -7,28 +7,27 @@
       <div class="modal-body">
 
         <%= simple_form_for(@profile, html: {id: :msform}) do |f| %>
-          <%=  f.error_notification %>
-
-          <div class="form-fields">
-            <%= f.input :first_name %>
-            <%= f.input :last_name %>
-            <%= f.input :totem %>
-            <%= f.input :birth_date %>
-            <%= f.input :address %>
-            <%= f.input :zip_code %>
-            <%= f.input :city %>
-            <%= f.input :phone_number %>
-            <%= f.input :gender %>
-            <%= f.input :comment %>
-          </div>
-
+        <%=  f.error_notification %>
+        <div class="form-fields">
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :totem %>
+          <%= f.input :birth_date %>
+          <%= f.input :address %>
+          <%= f.input :zip_code %>
+          <%= f.input :city %>
+          <%= f.input :phone_number %>
+          <%= f.input :gender %>
+          <%= f.input :comment %>
+          <%= f.input :photo, as: :attachinary %>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
         </button>
         <%= f.button :submit , "Save changes", class: "submit-btn"%>
       </div>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
