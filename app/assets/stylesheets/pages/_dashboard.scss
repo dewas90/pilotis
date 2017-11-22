@@ -143,18 +143,28 @@
     height: 100%;
     width: 100%;
 
+    td {
+      padding: 0px !important;
+      width: 100%;
+      height: 100%;
+      color: black;
+      font-weight: 600;
+    }
+
     .calendar-heading{
       width: 100%;
       height: 10%;
       text-align: center;
+      font-weight: 300;
       background-color: $yellow;
       padding: 0;
       display: flex;
+      color: $white;
       justify-content: space-around;
       }
     .calendar-heading .calendar-title{
       font-size: 16px;
-      color: #FFFFFF;
+      font-weight: bolder;
       float: left;
       width: 70%;
       text-transform: uppercase;
@@ -179,43 +189,12 @@
       height: 30px;
       text-align: left;
       background-color: #FFFFFF;
-      color: #787878;
+      color: $brown;
       font-size: 10px;
+      font-weight: 300;
     }
      .has-events{
         transition: all .3s ease-in-out;
-    }
-
-    .has-events:hover{
-        transform: scale(3.1);
-        background-color:#F5F1E9;
-        box-shadow: 1px 1px 2px #B3B3B3;
-        border-radius:5px;
-    }
-
-    #circle{
-      background-color:rgb(145, 7, 7);
-      border-radius: 50%;
-      width: 8px;
-      height: 8px;
-    }
-    #hover-content {
-        display:none;
-        opacity:0;
-        -webkit-transition:.5s;
-        -moz-transition:.5s;
-        -o-transition:.5s;
-        -ms-transition:.5s;
-        transition:.5s;
-    }
-    .has-events:hover #hover-content {
-        display:block;
-        opacity:1;
-        padding:0px;
-        margin:0px;
-    }
-    .has-events:hover #circle{
-      opacity:0;
     }
     .today {
       background-color: $yellow;
@@ -228,10 +207,13 @@
 
 
   .modal-btn{
-    font-size: 10px;
-    display: inline-block;
-    padding-left: 5px;
+    background-color: $light-yellow;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    color: $brown;
   }
+
   #eventsModal{
     margin-top: 10vW;
   }
