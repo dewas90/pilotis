@@ -21,6 +21,7 @@
           <th>Last Name</th>
           <th>Email</th>
           <th>Section</th>
+          <th>Edit</th>
         </tr>
       </thead>
       <tbody><% @profiles.each do |profile| %>
@@ -29,6 +30,7 @@
           <td><%= profile.last_name %></td>
           <td><%= profile.user.email %></td>
           <td><%= profile.section.name %></td>
+          <td><%= link_to 'Edit', edit_profile_path(profile.id), class:"btn-primary" %></td>
         </tr>
         <tr class="collapse out budgets <%= profile.id %>collapsed">
           <td colspan = "3">
