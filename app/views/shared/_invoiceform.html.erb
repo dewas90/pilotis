@@ -18,7 +18,7 @@
       <%= f.input :due_date %>
       <%= f.input :amount %>
       <%= f.input :bank_account %>
-      <%= f.input :section, collection: Section.all %>
+      <%= collection_check_boxes :sections, :section_ids, Section.all, :id, :name, prompt: true %>
     </div>
     <div class="submit-btn">
       <%= f.submit "generate invoice", class: "btn"%>
