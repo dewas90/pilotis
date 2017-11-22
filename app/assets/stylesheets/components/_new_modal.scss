@@ -10,8 +10,9 @@
   .modal-body{
   padding: 1px;
   overflow-y: scroll;
+  }
 }
-}
+
 .new-btn{
   color: $yellow;
   font-size: 36px;
@@ -29,7 +30,6 @@
 .close-btn{
   display: inline-block;
 }
-
 .invoice-form{
   .submit-btn{
     font-family: $headers-font;
@@ -63,5 +63,18 @@
   #invoice_date_2i,
   #invoice_due_date_2i{
     width: 100%;
+  }
+}
+
+#editprofileModal{
+  .submit-btn,
+  .btn-secondary{
+    font-family: $headers-font;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .submit-btn{
+  background-color: $yellow;
+  border-color: $yellow;
   }
 }
