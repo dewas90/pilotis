@@ -59,3 +59,68 @@
 .album-picture:hover .album-hover {
   opacity: 1;
 }
+
+.album-select {
+  position: absolute;
+  left: 150px;
+  top: 200px;
+}
+
+#search-btn {
+  width: 70px;
+  height: 41px;
+  border-radius: 5px;
+  background-color: $yellow;
+  opacity: 1;
+  color:white;
+}
+  
+
+#search-btn:hover {
+  opacity: 0.8;
+}
+
+
+#album {
+      height: 40px;
+    background-color: white;
+}
+
+.btn-album-show {
+  display: flex;
+
+   h4 {
+    margin: 5px 0px 0px 3px;
+    font-size: 15px;
+    color: $yellow;
+   }
+}
+
+#btn-back {
+  font-size: 25px;
+  color: $yellow;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+#btn-delete{
+  display: flex;
+  position: absolute;
+  top: 80px;
+  right: 27px;
+  color: red;
+  opacity: 0.8;
+  text-decoration: none;
+
+  #icon-delete {
+    font-size: 25px;
+    color:red;
+    text-decoration: none;
+  }
+
+  h4 {
+        padding-right: 4px;
+    color: red;
+  }
+}
+

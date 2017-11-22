@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
   	@disable_sidebar = true
   end
+
+  def about
+    @disable_sidebar = true
+  end
 end

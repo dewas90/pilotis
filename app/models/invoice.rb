@@ -3,6 +3,7 @@ class Invoice < ApplicationRecord
   pg_search_scope :global_search, against: [ :title, :date, :status], associated_against: { profile: [ :first_name, :last_name ] }
   attr_accessor :section
   belongs_to :admin
+  belongs_to :section
   belongs_to :profile
   has_one :event
 

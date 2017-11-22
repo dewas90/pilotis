@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  root to: 'pages#home'
+
+  get '/about' => 'pages#about'
+
+  get 'children/index'
+
+  get 'children/show'
+
+  get 'children/create'
+
+  get 'children/update'
+
   get 'sections/show'
 
   get 'sections/index'
@@ -21,7 +33,6 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'pages#home'
 
   resources :profiles, except: [:destroy]
 
@@ -40,6 +51,11 @@ Rails.application.routes.draw do
   resources :events
   resources :albums
   resources :sections
+  resources :children do
+    member do
+      post 'approve', to: 'children#approve'
+    end
+  end
 
   resources :messages, only: [:new, :create, :index]
 end
