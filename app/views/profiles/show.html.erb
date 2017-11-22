@@ -22,17 +22,21 @@
           <p><%= current_user.profile.phone_number %></p>
           <p><strong>ADDITIONAL INFORMATION</strong></p>
           <p><%= current_user.profile.comment %></p>
-          <!-- modal edit profile -->
+
           <div class="edit-btn">
             <%= link_to new_child_path do %>
               <i class="fa fa-child" aria-hidden="true"></i>
               <% end %>
           </div>
-          <div class="edit-btn">
-            <%= link_to edit_profile_path do %>
+
+          <!-- modal edit profile -->
+
+          <!-- Button trigger modal -->
+          <div class="edit-btn" data-toggle="modal" data-target="#editprofileModal">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            <% end %>
           </div>
+          <!-- Modal -->
+          <%= render "form" %>
         </div>
       </div>
 
@@ -48,10 +52,13 @@
           <div class="calendar-db card">
             <div class="card-body">
               <%= month_calendar events: @events, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, events| %>
+                <% if !events.present? %>
                   <%= date.day %>
-                <% events.each do |event| %>
+
+                <%#= if day has event dont show this one date.day %>
+                <% else %>
                   <!-- Modal events show -->
-                <div class="modal-btn" data-toggle="modal" data-target="#eventsModal"><i class="fa fa-circle" aria-hidden="true"></i></div>
+                <div class="modal-btn" data-toggle="modal" data-target="#eventsModal"><%= date.day %></div>
 
                   <div class="modal fade" id="eventsModal" tabindex="-1" role="dialog" aria-labelledby="eventsModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
@@ -60,10 +67,12 @@
                           <i class="fa fa-times" aria-hidden="true"></i>
                         </button>
                         <div class="modal-body">
-                          <p><strong><%= event.name %></strong></p>
-                          <p>Start time   <%= event.start_time.strftime("%b %e, %l:%M %p") %></p>
-                          <p>End time   <%= event.end_time.strftime("%b %e, %l:%M %p") %></p>
-                          <p>Description   <%= event.description %></p>
+                          <% events.each do |event| %>
+                            <p><strong><%= event.name %></strong></p>
+                            <p>Start time   <%= event.start_time.strftime("%b %e, %l:%M %p") %></p>
+                            <p>End time   <%= event.end_time.strftime("%b %e, %l:%M %p") %></p>
+                            <p>Description   <%= event.description %></p>
+                          <% end %>
                         </div>
                       </div>
                     </div>

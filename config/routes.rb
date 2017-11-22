@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  root to: 'pages#home'
+
+  get '/about' => 'pages#about'
+
   get 'children/index'
 
   get 'children/show'
@@ -25,11 +29,12 @@ Rails.application.routes.draw do
   get 'photos/destroy'
 
   # devise_for :users
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: {
+    registrations: "registrations"
+  }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'pages#home'
 
   resources :profiles, except: [:destroy]
 

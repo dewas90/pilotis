@@ -1,23 +1,34 @@
-<%= simple_form_for(@profile, html: {id: :msform}) do |f| %>
-  <%=  f.error_notification %>
+<div class="new-modal modal fade" id="editprofileModal" tabindex="-1" role="dialog" aria-labelledby="editprofileModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editprofileModalLabel">Edit profile</h5>
+      </div>
+      <div class="modal-body">
 
-<fieldset>
-<h2>Edit profile</h2>
-  <div class="form-inputs">
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :totem %>
-    <%= f.input :birth_date %>
-    <%= f.input :address %>
-    <%= f.input :zip_code %>
-    <%= f.input :city %>
-    <%= f.input :phone_number %>
-    <%= f.input :gender %>
-    <%= f.input :comment %>
+        <%= simple_form_for(@profile, html: {id: :msform}) do |f| %>
+        <%=  f.error_notification %>
+        <div class="form-fields">
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :totem %>
+          <%= f.input :birth_date %>
+          <%= f.input :address %>
+          <%= f.input :zip_code %>
+          <%= f.input :city %>
+          <%= f.input :phone_number %>
+          <%= f.input :gender %>
+          <%= f.input :comment %>
+          <%= f.input :photo, as: :attachinary %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+        </button>
+        <%= f.button :submit , "Save changes", class: "submit-btn"%>
+      </div>
+      <% end %>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-</fieldset>
-<% end %>
