@@ -100,7 +100,6 @@ class InvoicesController < ApplicationController
     @section_ids = params.require(:sections)["section_ids"].reject { |x| x.blank? }
   end
 
-
   def find_invoices
     @invoice = Invoice.find(params[:invoice_id])
   end
