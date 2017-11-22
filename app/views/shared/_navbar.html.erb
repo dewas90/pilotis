@@ -3,9 +3,6 @@
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
-<!--   <a href="/" class="navbar-wagon-brand">
-    <img src="images/logo.png" alt="logo">
-  </a> -->
 
   <!-- Right Navigation -->
   <% if current_user.nil? || current_user.profile.nil?%>
