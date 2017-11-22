@@ -1,10 +1,11 @@
 .albums {
   display: flex;
-  justify-content: space-between;
   flex-wrap:wrap;
+
 }
 .album {
  flex: 0 0 32%;
+ margin: 5px;
 }
 
 .album-body {
@@ -74,7 +75,7 @@
   opacity: 1;
   color:white;
 }
-  
+
 
 #search-btn:hover {
   opacity: 0.8;
