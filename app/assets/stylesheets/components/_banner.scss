@@ -2,9 +2,10 @@
   .image{
   z-index: 2000;
   margin-left: -75px;
-  margin-top: 65px;
+  margin-top: 50px;
   }
-  .card {
+
+  .image {
   position: fixed;
   top: 0;
   width: 100%;
@@ -14,57 +15,45 @@
   background-position: center;
   color: white;
   text-align: center;
-}
-
-.image .banner-content {
-      margin: 150px 125px;
-}
-
-.banner-content h1 {
-    font-size: 100px;
-    font-weight: bold;
-    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-    font-family: 'Caveat Brush', cursive;
-    }
-
-    .banner-content p {
-    font-size: 25px;
-    font-weight: lighter;
-    color: white;
-    opacity: 0.6;
-    margin-bottom: 30px;
-}
-
-.btn-lg, .btn-group-lg > .btn {
-    padding: 10px 16px;
-    font-size: 22px;
-    line-height: 1.3333333;
-    border-radius: 2px;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: $yellow;
-    border-color: $brown ;
-}
-
-.btn-primary:hover {
-    color: #fff;
-    background-color: #2381d0;
-    border-color: #1e6eb2;
-}
   }
 
-  @media (max-width: 992px) {
-    .card {
-      left: 45px ;
-      width: 95%;
-    }
+  .image .banner-content {
+        margin: 150px 125px;
   }
 
-  @media (max-width: 420px) {
-    .card {
-      left: 45px ;
-      width: 88% !important;
-    }
+  .banner-content h1 {
+      font-size: 100px;
+      font-weight: bold;
+      text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+      font-family: 'Caveat Brush', cursive;
   }
+
+  .banner-content p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: white;
+  opacity: 0.6;
+  margin-bottom: 30px;
+  }
+
+  .btn-lg, .btn-group-lg > .btn {
+      padding: 10px 16px;
+      font-size: 22px;
+      line-height: 1.3333333;
+      border-radius: 2px;
+  }
+
+  .btn-primary {
+      color: #fff;
+      background-color: $yellow;
+      border-color: $brown ;
+      border-radius: 5px;
+  }
+
+  .btn-primary:hover {
+      color: #fff;
+      background-color: $yellow;
+      border-color: $brown ;
+      opacity: 0.9;
+  }
+}
