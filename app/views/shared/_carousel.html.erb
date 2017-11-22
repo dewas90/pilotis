@@ -1,47 +1,15 @@
     <div class="row__inner">
 <!-- faut ajouter la loop sur les photos -->
-
+    <% Album.last(4).each do |album|
+      album.photos.last(7).each do |photo| %>
       <div class="tile">
         <div class="tile__media">
-          <img class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-8.jpg" alt=""  />
+          <img class="tile__img" src=<%= cl_image_path photo.path %> alt=""  />
         </div>
       </div>
+     <% end %>
+     <% end %>
 
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-9.jpg" alt=""  />
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-10.jpg" alt=""  />
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-19.jpg" alt=""  />
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-9.jpg" alt=""  />
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-10.jpg" alt=""  />
-        </div>
-      </div>
-
-      <div class="tile">
-        <div class="tile__media">
-          <img class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-19.jpg" alt=""  />
-        </div>
-      </div>
 
 
     </div>
