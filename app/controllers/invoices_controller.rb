@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_section_ids, only: [:create]
   before_action :set_invoices, only: [:show, :approve, :edit, :update, :cancel, :paid]
    before_action :find_invoices, only:[:markaspaid]
   def index
@@ -32,8 +33,11 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    create_invoices
-    if @invoice.save
+    @section_ids.each do |id|
+      @success = create_invoices(id)
+      break unless @success
+    end
+    if @success
       flash[:notice] = "Invoices successfully created"
       redirect_to invoices_path
     else
@@ -72,8 +76,9 @@ class InvoicesController < ApplicationController
 
   private
 
-  def create_invoices
-    Profile.where(section_id: invoice_params[:section]).each do |profile|
+  def create_invoices(section_id)
+    success = true
+    Profile.where(section_id: section_id).each do |profile|
       if profile.user != current_user
         @invoice = Invoice.new(invoice_params)
         @invoice.admin = current_user.profile.admin
@@ -82,11 +87,18 @@ class InvoicesController < ApplicationController
           @invoice.save
           UserMailer.invoice(@invoice.profile.user).deliver_now
         else
-          render :new
+          success = false
         end
       end
     end
+    success
   end
+
+  def set_section_ids
+    @section_ids = params.require(:sections)["section_ids"].reject { |x| x.blank? }
+  end
+
+
   def find_invoices
     @invoice = Invoice.find(params[:invoice_id])
   end
