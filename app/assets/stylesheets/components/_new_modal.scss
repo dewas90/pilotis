@@ -1,5 +1,5 @@
 .new-modal{
-  margin-top: 10vW;
+  margin-top: 7vW;
   #msform{
   margin-top: 0px;
   margin-bottom: 0px;
@@ -67,6 +67,19 @@
 }
 
 #editprofileModal{
+  .submit-btn,
+  .btn-secondary{
+    font-family: $headers-font;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .submit-btn{
+  background-color: $yellow;
+  border-color: $yellow;
+  }
+}
+
+#addChildModal{
   .submit-btn,
   .btn-secondary{
     font-family: $headers-font;
