@@ -46,6 +46,10 @@
     
 }
 
+.f-about {
+    text-decoration: none;
+}
+
 .about-page .container {
     background: $yellow;
     color: white;
@@ -74,6 +78,8 @@
 }
 
 #team {
+    
+    padding: 15px 15px 0px 15px; 
 
     .icon {
     height: 100px;

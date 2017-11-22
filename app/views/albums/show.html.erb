@@ -1,6 +1,11 @@
-<%= link_to "all albums", albums_path, class: "btn btn-primary" %>
-<%= link_to "delete this album", album_path(@album), method: :delete, class: "btn btn-danger" %>
-
+<div class="btn-album-show">	
+<%= link_to "", albums_path, id: "btn-back", class: "fa fa-arrow-circle-left"%>
+<h4>Back</h4>
+<div id="btn-delete">
+<h4>Delete</h4>
+<%= link_to "", album_path(@album), method: :delete, id: "icon-delete", class: "fa fa-minus-circle"%>
+</div>
+</div>
 
 <div class="flexbin flexbin-margin">
   <% @album.photos.each do |photo|  %>
