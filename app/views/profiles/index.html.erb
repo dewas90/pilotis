@@ -30,6 +30,7 @@
                     <td> <%= child.first_name %> </td>
                     <td> <%= child.last_name %></td>
                     <td> <%= child.birthday %> </td>
+                    <td> <%= link_to "edit", edit_child_path(child) %></td>
                   </tr>
                 <% end %>
               </tbody>

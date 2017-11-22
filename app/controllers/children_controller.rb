@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-  before_action :find_invoices, only: [:show, :approve]
+  before_action :find_invoices, only: [:show, :approve, :update, :edit]
   def index
     @childre = Child.all
   end
@@ -21,7 +21,7 @@ class ChildrenController < ApplicationController
     end
   end
 
-  def update
+  def edit
   end
 
   def approve
@@ -29,6 +29,10 @@ class ChildrenController < ApplicationController
     @child.save
     @child.profile.status = "Accepted"
     @child.profile.save
+  end
+  def update
+    @child.update(child_params)
+    redirect_to child_path(@child)
   end
 
   private
