@@ -68,11 +68,11 @@ profile = Profile.create(
   city: "Brussels",
   country: "Belgium",
   phone_number: "0476322388",
-  photo: '',
   gender: "Male",
   comment: "No comments needed",
   user_id: user.id,
-  section_id: section5.id
+  section_id: section5.id,
+  photo: "http://res.cloudinary.com/dk1neawlw/image/upload/v1511369590/redg_zmsbks.jpg"
   )
 
 admin = Admin.create(
@@ -93,11 +93,11 @@ profile = Profile.create(
   city: "Brussels",
   country: "Belgium",
   phone_number: "0477985918",
-  photo: '',
   gender: "Male",
   comment: "Allergic to chicken",
   user_id: user.id,
-  section_id: section4.id
+  section_id: section4.id,
+  photo: "http://res.cloudinary.com/dk1neawlw/image/upload/v1511369811/10433886_10204564611300492_6167623058537536103_n-2_ptq9dr.jpg"
   )
 admin = Admin.create(
   profile_id: user.id
@@ -117,11 +117,11 @@ profile = Profile.create(
   city: "Brussels",
   country: "Belgium",
   phone_number: "0497485083",
-  photo: '',
   gender: "Female",
   comment: "No comments needed",
   user_id: user.id,
-  section_id: section1.id
+  section_id: section1.id,
+  photo: "http://res.cloudinary.com/dk1neawlw/image/upload/v1511369590/carmen_wsfcx3.jpg"
   )
 admin = Admin.create(
   profile_id: user.id
@@ -141,11 +141,11 @@ profile = Profile.create(
   city: "Brussels",
   country: "Belgium",
   phone_number: "0493169067",
-  photo: '',
   gender: "Male",
   comment: "No comments needed",
   user_id: user.id,
-  section_id: section2.id
+  section_id: section2.id,
+  photo: "http://res.cloudinary.com/dk1neawlw/image/upload/v1511369591/Capture_d_écran_2017-11-22_à_17.52.48_iywnox.png"
   )
 admin = Admin.create(
   profile_id: user.id

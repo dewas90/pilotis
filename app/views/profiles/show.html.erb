@@ -6,7 +6,7 @@
     <div id="bbox1">
       <h5>.</h5>
       <div class="profile-db card">
-        <div class="avatar avatar-large"></div>
+        <img class="avatar-large avatar-profile" src=" <%= cl_image_path current_user.profile.photo, {gravity: :face} %> " >
         <div class="card-header">
           <h4><%= current_user.profile.first_name %> <%= current_user.profile.last_name %> (<%= current_user.profile.totem %>)</h4>
         </div>
@@ -22,13 +22,13 @@
           <p><%= current_user.profile.phone_number %></p>
           <p><strong>ADDITIONAL INFORMATION</strong></p>
           <p><%= current_user.profile.comment %></p>
-          
+
           <div class="edit-btn">
             <%= link_to new_child_path do %>
               <i class="fa fa-child" aria-hidden="true"></i>
               <% end %>
           </div>
-          
+
           <!-- modal edit profile -->
 
           <!-- Button trigger modal -->
