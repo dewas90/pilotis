@@ -49,10 +49,12 @@ class InvoicesController < ApplicationController
   end
 
   def markaspaid
-
+    respond_to do |format|
+      format.js
+    end
     @invoice.status = "paid"
     @invoice.save
-    redirect_to invoices_path
+    render js: "window.location = '/invoices'"
   end
 
   def update
