@@ -51,8 +51,6 @@
     position: initial;
   }
 
-
-
   .profile-db{
     height: 524px;
     p{
@@ -65,14 +63,16 @@
       padding: 7px;
       font-size: 20px;
       position: relative;
-      right: -40%;
     }
     .card-body{
       padding: 10px;
     }
+    .card-footer{
+      padding: 10px;
+      display: flex;
+      justify-content: space-evenly;
+    }
   }
-
-
 
   .calendar-db{
     padding: 10px;
@@ -120,6 +120,8 @@
 
   .invoices-db{
     height: 185px;
+    overflow-y: scroll;
+
     table{
       font-size: 14px;
       font-family: $body-font;
@@ -128,12 +130,7 @@
     th{
       text-align: center;
     }
-    tbody{
-      overflow-y: scroll;
-    }
   }
-
-
 
   .calendar-db .simple-calendar {
     margin-left: auto;

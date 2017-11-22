@@ -1,35 +1,28 @@
-<div class="content">
-  <%= simple_form_for(@child, html: {id: :msform}) do |f| %>
-  <%=  f.error_notification %>
-
-  <!-- progressbar -->
-  <ul id="progressbar">
-    <li class="active">Personal Details</li>
-    <li>Wich section</li>
-    <li>Other Details</li>
-  </ul>
-  <!-- fieldsets -->
-  <fieldset>
-    <h2 class="fs-title">Add your Child</h2>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :birthday %>
-    <input type="button" name="next" class="next action-button" value="Next" />
-  </fieldset>
-  <fieldset>
-    <h2 class="fs-title">Add your Child</h2>
-    <%= f.input :section_id, collection: Section.all %>
-
-    <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="button" name="next" class="next action-button" value="Next" />
-  </fieldset>
-  <fieldset>
-    <h2 class="fs-title">Add your Child</h2>
-    <%= f.input :comment %>
-    <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <div class="form-actions">
-      <%= f.button :submit %>
+<div class="new-modal modal fade" id="addChildModal" tabindex="-1" role="dialog" aria-labelledby="editprofileModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editprofileModalLabel">Add a child</h5>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(@child, html: {id: :msform}) do |f| %>
+          <%=  f.error_notification %>
+        <div class="form-fields">
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :birthday %>
+          <%= f.input :section_id, collection: Section.all %>
+          <%= f.input :comment %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+        </button>
+        <%= f.button :submit , "Save changes", class: "submit-btn"%>
+      </div>
+      <% end %>
     </div>
-  </fieldset>
-  <% end %>
+  </div>
 </div>
+
+

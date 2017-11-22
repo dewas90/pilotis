@@ -22,21 +22,21 @@
           <p><%= current_user.profile.phone_number %></p>
           <p><strong>ADDITIONAL INFORMATION</strong></p>
           <p><%= current_user.profile.comment %></p>
+        </div>
+        <div class="card-footer">
 
-          <div class="edit-btn">
-            <%= link_to new_child_path do %>
-              <i class="fa fa-child" aria-hidden="true"></i>
-              <% end %>
-          </div>
-
-          <!-- modal edit profile -->
-
-          <!-- Button trigger modal -->
-          <div class="edit-btn" data-toggle="modal" data-target="#editprofileModal">
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <div class="edit-btn text-center" data-toggle="modal" data-target="#addChildModal">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           </div>
           <!-- Modal -->
           <%= render "form" %>
+
+          <div class="edit-btn text-center" data-toggle="modal" data-target="#editprofileModal">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </div>
+          <!-- Modal -->
+          <%= render "shared/new-children" %>
+
         </div>
       </div>
 
