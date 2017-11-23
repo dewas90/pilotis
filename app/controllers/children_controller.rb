@@ -34,7 +34,7 @@ class ChildrenController < ApplicationController
 
   def update
     @child.update(child_params)
-    redirect_to child_path(@child)
+    redirect_to profiles_path
   end
 
   private
