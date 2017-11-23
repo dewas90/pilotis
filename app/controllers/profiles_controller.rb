@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
     @events = Event.all
     @invoices = Invoice.all
     @child = Child.new
+    @child = Child.find(params[:id])
   end
 
   def new
