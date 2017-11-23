@@ -8,7 +8,9 @@
       <div class="profile-db card">
         <img class="avatar-large avatar-profile" src=" <%= cl_image_path current_user.profile.photo.path, {gravity: :face} if current_user.profile.photo %> " >
         <div class="card-header">
-          <h4><%= current_user.profile.first_name %> <%= current_user.profile.last_name %> (<%= current_user.profile.totem %>)</h4>
+          <h4><strong><%= current_user.profile.first_name %> <%= current_user.profile.last_name %></strong></h4>
+          <h4><%= current_user.profile.totem %></h4>
+          <p>• • • • • • • • • • • • • • • • •</p>
         </div>
         <div class="card-body">
           <p><strong>EMAIL</strong></p>
@@ -25,8 +27,14 @@
         </div>
         <div class="card-footer">
 
-          <div class="edit-btn text-center" data-toggle="modal" data-target="#addChildModal">
+          <div class="edit-btn text-center" data-toggle="modal" data-target="#viewChildModal">
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          </div>
+          <!-- Modal -->
+          <%= render "children/show" %>
+
+          <div class="edit-btn text-center" data-toggle="modal" data-target="#addChildModal">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i></i>
           </div>
           <!-- Modal -->
           <%= render "form" %>
