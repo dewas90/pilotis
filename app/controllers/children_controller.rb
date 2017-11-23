@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
   before_action :find_invoices, only: [:show, :approve, :update, :edit]
   def index
-    @childre = Child.all
+    @children = Child.all
   end
 
   def show
