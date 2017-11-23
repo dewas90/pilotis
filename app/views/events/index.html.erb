@@ -44,7 +44,7 @@
             <th>End Date</th>
           </tr>
         </thead>
-        <tbody><% @events.each do |event| %>
+        <tbody><% @past_events = Event.where("start_time > ?", Time.now).each do |event| %>
           <tr class="clickable" data-toggle="collapse" id="<%= event.id %>" data-target=".<%= event.id %>collapsed">
             <td><%= event.name.upcase %></td>
             <td><%= event.start_time %></td>
@@ -93,7 +93,7 @@
             <th>End Date</th>
           </tr>
         </thead>
-        <tbody><% @events.each do |event| %>
+        <tbody><% @past_events = Event.where("start_time < ?", Time.now).each do |event| %>
           <tr class="clickable" data-toggle="collapse" id="<%= event.id %>" data-target=".<%= event.id %>collapsed">
             <td><%= event.name %></td>
             <td><%= event.start_time %></td>
