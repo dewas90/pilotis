@@ -2,17 +2,6 @@ require 'faker'
 # require 'open-uri'
 # require 'nokogiri'
 
-# def get_pokemon_image(pokemon)
-#   image = []
-#   url = "https://pokemondb.net/pokedex/#{pokemon}"
-#   html_file = open(url).read
-#   html_doc = Nokogiri::HTML(html_file)
-#   html_doc.search('.figure').each do |element|
-#     image << element.search('img').first.attributes.first[1].value
-#   end
-#   image
-# end
-
 puts "cleaning started"
 User.destroy_all
 Profile.destroy_all
@@ -98,8 +87,8 @@ profile = Profile.create(
   comment: "Allergic to chicken",
   user_id: user.id,
   section_id: section4.id,
-  status: "Approved"
- # photo_url: "http://res.cloudinary.com/dk1neawlw/image/upload/v1511369811/10433886_10204564611300492_6167623058537536103_n-2_ptq9dr.jpg"
+  status: "Approved",
+  photo_url: "https://res.cloudinary.com/dwuowqi7r/image/upload/v1510330827/rmrwwvvqfzoczs1vlxql.jpg"
   )
 admin = Admin.create(
   profile_id: user.id
@@ -123,8 +112,8 @@ profile = Profile.create(
   comment: "No comments needed",
   user_id: user.id,
   section_id: section1.id,
-  status: "Approved"
-  # photo_url: "http://res.cloudinary.com/dk1neawlw/image/upload/v1511369590/carmen_wsfcx3.jpg"
+  status: "Approved",
+  photo_url: "https://res.cloudinary.com/dwuowqi7r/image/upload/v1511380318/qkmivxcvf1x0fvydjtcl.jpg"
   )
 admin = Admin.create(
   profile_id: user.id
@@ -148,8 +137,8 @@ profile = Profile.create(
   comment: "No comments needed",
   user_id: user.id,
   section_id: section2.id,
-  status: "Approved"
-  # photo: "http://res.cloudinary.com/dk1neawlw/image/upload/v1511369591/Capture_d_écran_2017-11-22_à_17.52.48_iywnox.png"
+  status: "Approved",
+  photo_url: "https://res.cloudinary.com/dwuowqi7r/image/upload/v1511433404/yass_vgmphi.jpg"
   )
 admin = Admin.create(
   profile_id: user.id

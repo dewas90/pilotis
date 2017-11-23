@@ -6,7 +6,7 @@
     <div id="bbox1">
       <h5>.</h5>
       <div class="profile-db card">
-        <img class="avatar-large avatar-profile" src=" <%= cl_image_path current_user.profile.photo, {gravity: :face} %> " >
+        <img class="avatar-large avatar-profile" src=" <%= cl_image_path current_user.profile.photo.path, {gravity: :face} if current_user.profile.photo %> " >
         <div class="card-header">
           <h4><%= current_user.profile.first_name %> <%= current_user.profile.last_name %> (<%= current_user.profile.totem %>)</h4>
         </div>
