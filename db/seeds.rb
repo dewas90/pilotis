@@ -12,31 +12,31 @@ sections = []
 puts "start creating sections"
 
 section1 = Section.create(
-  name: "baladin", start_age: 6,
+  name: "Baladin", start_age: 6,
   end_age: 8)
 sections << section1
 section2 = Section.create(
-  name: "louveteau", start_age: 6,
+  name: "Louveteau", start_age: 6,
   end_age: 8)
 sections << section2
 section3 = Section.create(
-  name: "éclaireur", start_age: 6,
+  name: "Eclaireur", start_age: 6,
   end_age: 8)
 sections << section3
 section4 = Section.create(
-  name: "pionnier", start_age: 6,
+  name: "Pionnier", start_age: 6,
   end_age: 8)
 sections << section4
 section5 = Section.create(
-  name: "guide", start_age: 6,
+  name: "Guide", start_age: 6,
   end_age: 8)
 sections << section5
 section6 = Section.create(
-  name: "lutin", start_age: 6,
+  name: "Lutin", start_age: 6,
   end_age: 8)
 sections << section6
 section7 = Section.create(
-  name: "horizon", start_age: 6,
+  name: "Horizon", start_age: 6,
   end_age: 8)
 sections << section7
 puts "Start seeding first profile"
@@ -183,15 +183,15 @@ puts 'Creating user db through FAKER...'
       )
   end
 
-  invoice = Invoice.create(
-    admin_id: 1,
-    profile_id: profile.id,
-    date: "30.09.2017",
-    amount: 150,
-    title: "2017 - Cotisation début d'année",
-    bank_account: "BE50 5000 5000 5000",
-    due_date: "31.01.2017",
-  )
+#  invoice = Invoice.create(
+#    admin_id: 1,
+#    profile_id: profile.id,
+#    date: "30.09.2017",
+#    amount: 150,
+#    title: "2017 - Cotisation début d'année",
+#    bank_account: "BE50 5000 5000 5000",
+#    due_date: "31.01.2017",
+#  )
 )
 end
 
