@@ -9,7 +9,7 @@
   </div>
   <% end %>
 
-  <%= simple_form_for [@event], html: {id: :msform} do |f| %>
+  <%= simple_form_for [event], html: {id: :msform} do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :start_time , order: [:day, :month, :year], default: Time.parse('9:00')%>

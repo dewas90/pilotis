@@ -1,112 +1,110 @@
 <div class="invoices-index">
   <%= content_for(:after_js) do %>
 
-
   <h1 class="text-center"> Invoices</h1>
-    <main class=invoice-tab-box>
 
-      <div class="tabs-bar">
+  <main class=tab-box>
 
-<!-- tabs -->
-        <span>
-          <button class="tabs-bar-item tab-button" onclick="openTab('overview')">Overview</button>
-          <button class="tabs-bar-item tab-button" onclick="openTab('all-invoices')">All Invoices</button>
-        </span>
+    <div class="tabs-bar">
+      <!-- tabs -->
+      <span>
+        <button class="tabs-bar-item tab-button" onclick="openTab('overview')">Overview</button>
+        <button class="tabs-bar-item tab-button" onclick="openTab('all-invoices')">All Invoices</button>
+      </span>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="new-btn" data-toggle="modal" data-target="#newInvoiceModal">
-          <i class="fa fa-plus-circle" aria-hidden="true"></i>
-        </button>
+      <!-- Button trigger modal -->
+      <button type="button" class="new-btn" data-toggle="modal" data-target="#newInvoiceModal">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      </button>
 
-        <!-- Modal -->
-        <div class="new-modal modal fade" id="newInvoiceModal" tabindex="-1" role="dialog" aria-labelledby="newInvoiceModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="newInvoiceModalLabel">New invoice</h5>
-                <button type="button" class="close close-btn " data-dismiss="modal" aria-label="Close">
-                  <i class="fa fa-times" aria-hidden="true"></i>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= render 'shared/invoiceform' %>
-              </div>
+      <!-- Modal -->
+      <div class="new-modal modal fade" id="newInvoiceModal" tabindex="-1" role="dialog" aria-labelledby="newInvoiceModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="newInvoiceModalLabel">New invoice</h5>
+              <button type="button" class="close close-btn " data-dismiss="modal" aria-label="Close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render 'shared/invoiceform' %>
             </div>
           </div>
         </div>
-
-
       </div>
 
+    </div>
 
-      <div id="overview" class="tab">
-        <h3>Overview</h3>
-        <table class="table table-hover">
+
+    <div id="overview" class="tab">
+      <h3>Overview</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Paid</th>
+            <th>Pending</th>
+            <th>Total</th>
+            <th>Collected amount</th>
+            <th>Due amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Invoice.uniq.pluck(:title).each_with_index do |invoice_title, i| %>
+          <tr class="clickable" data-toggle="collapse" id="clickable<%= i + 1 %>" data-target="#collapsed<%= i + 1 %>">
+            <td> <%= invoice_title %> </td>
+            <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").count %></td>
+            <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").count %></td>
+            <td> <%= Invoice.where("title = ?", invoice_title).count %></td>
+            <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").pluck(:amount).sum %>€</td>
+            <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").pluck(:amount).sum %>€</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <div id="all-invoices" class="tab" style="display:none">
+      <h3>All Invoices</h3>
+      <div id="paidbtn" class="btn btn-primary">MarkasPaid</div>
+      <div class="row">
+        <div id="toolbar">
+          <select class="form-control">
+            <option value="">Export Basic</option>
+            <option value="all">Export All</option>
+            <option value="selected">Export Selected</option>
+          </select>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover"
+          data-toggle="table"
+          data-search="true"
+          data-filter-control="true"
+          data-show-export="true"
+          data-click-to-select="true"
+          data-toolbar="#toolbar">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Paid</th>
-              <th>Pending</th>
-              <th>Total</th>
-              <th>Collected amount</th>
-              <th>Due amount</th>
+              <th data-field="state" data-checkbox="true" data-sortable="true"></th>
+              <th data-field="title" data-filter-control="input" data-sortable="true">title</th>
+              <th data-field="date" data-filter-control="select" data-sortable="true">Date</th>
+              <th data-field="name" data-filter-control="select" data-sortable="true">name</th>
+              <th data-field="amount" data-sortable="true">Amount</th>
+              <th data-field="status" data-sortable="true">Status</th>
             </tr>
           </thead>
-          <tbody>
-            <% Invoice.uniq.pluck(:title).each_with_index do |invoice_title, i| %>
-            <tr class="clickable" data-toggle="collapse" id="clickable<%= i + 1 %>" data-target="#collapsed<%= i + 1 %>">
-              <td> <%= invoice_title %> </td>
-              <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").count %></td>
-              <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").count %></td>
-              <td> <%= Invoice.where("title = ?", invoice_title).count %></td>
-              <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "paid").pluck(:amount).sum %>€</td>
-              <td> <%= Invoice.where("title = ? AND status = ?", invoice_title, "unpaid").pluck(:amount).sum %>€</td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-
-
-
-      <div id="all-invoices" class="tab" style="display:none">
-        <h3>All Invoices</h3>
-        <div id="paidbtn" class="btn btn-primary">MarkasPaid</div>
-        <div class="row">
-          <div id="toolbar">
-            <select class="form-control">
-              <option value="">Export Basic</option>
-              <option value="all">Export All</option>
-              <option value="selected">Export Selected</option>
-            </select>
-          </div>
-          <div class="table-responsive">
-            <table class="table table-hover"
-            data-toggle="table"
-            data-search="true"
-            data-filter-control="true"
-            data-show-export="true"
-            data-click-to-select="true"
-            data-toolbar="#toolbar">
-            <thead>
-              <tr>
-                <th data-field="state" data-checkbox="true" data-sortable="true"></th>
-                <th data-field="title" data-filter-control="input" data-sortable="true">title</th>
-                <th data-field="date" data-filter-control="select" data-sortable="true">Date</th>
-                <th data-field="name" data-filter-control="select" data-sortable="true">name</th>
-                <th data-field="amount" data-sortable="true">Amount</th>
-                <th data-field="status" data-sortable="true">Status</th>
-              </tr>
-            </thead>
-              <tbody id="myTable">
-                <%= render partial: 'shared/invoice_index', locals: {invoices: @invoices} %>
-              </tbody>
-            </table>
-          </div>
+            <tbody id="myTable">
+              <%= render partial: 'shared/invoice_index', locals: {invoices: @invoices} %>
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
 
-    </main>
+  </main>
 
   <% end %>
 </div>

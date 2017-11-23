@@ -1,88 +1,43 @@
-*, *:before, *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.tab-box{
+      min-width: 320px;
+      max-width: 880px;
+      padding: 50px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      background: #fff;
+      min-height: 400px;
+    }
+
+.tabs-bar{
+      text-align: center;
+      border-bottom: 2px;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      }
+.tab-button{
+  padding: 10px 20px 10px 20px;
+  background-color: $white;
+  border-color: $brown;
+  border-radius: 0%;
+  border-width: 0.2px;
+  border-bottom-width: 5px;
+  font-family: $headers-font;
+  text-transform: uppercase;
+  margin: 10px 20px 10px 20px;
 }
-
-table {
-  margin: 0 0 20px;
-  line-height: 1.5;
+.tab-button:hover{
+  color: $yellow;
+  border-bottom-color: $yellow;
+  border-right: none;
+  border-left: none;
+  border-top: none;
 }
-
-main {
-  min-width: 320px;
-  max-width: 880px;
-  padding: 50px;
-  margin: 0 auto;
-  margin-bottom: 50px;
-  background: #fff;
-}
-
-section {
-  display: none;
-  padding: 20px 0 0;
-  border-top: 1px solid #ddd;
-}
-
-label {
-  display: inline-block;
-  margin: 0 0 -1px;
-  padding: 15px 25px;
-  font-weight: 600;
-  text-align: center;
-  color: #bbb;
-  border: 1px solid transparent;
-}
-
-label:before {
-  font-family: fontawesome;
-  font-weight: normal;
-  margin-right: 10px;
-}
-
-label[for*='1']:before { content: '\1F464'; }
-label[for*='2']:before { content: '\1F344'; }
-label[for*='3']:before { content: '\1F392'; }
-label[for*='4']:before { content: '\1F43A'; }
-
-
-
-label:hover {
-  color: #888;
-  cursor: pointer;
-}
-
-input:checked + label {
-  color: #555;
-  border: 1px solid #ddd;
-  border-top: 2px solid orange;
-  border-bottom: 1px solid #fff;
-}
-
-#tab1:checked ~ #content1,
-#tab2:checked ~ #content2,
-#tab3:checked ~ #content3,
-#tab4:checked ~ #content4 {
-  display: block;
-}
-
-@media screen and (max-width: 650px) {
-  label {
-    font-size: 0;
-  }
-  label:before {
-    margin: 0;
-    font-size: 18px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  label {
-    padding: 15px;
-  }
-}
-
-#events {
-  padding: 5px 50px 50px 50px;
-  border-radius: 10px;
+.tab-button:active{
+  color: $yellow;
+  border-bottom-color: $yellow;
+  border-right: none;
+  border-left: none;
+  border-top: none;
 }
