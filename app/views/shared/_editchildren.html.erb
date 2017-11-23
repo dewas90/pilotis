@@ -1,0 +1,35 @@
+<div class="content">
+  <%= simple_form_for(@child, html: {id: :msform}) do |f| %>
+   <%=  f.error_notification %>
+
+   <!-- progressbar -->
+   <ul id="progressbar">
+     <li class="active">Personal Details</li>
+     <li>Wich section</li>
+    <li>Other Details</li>
+   </ul>
+   <!-- fieldsets -->
+   <fieldset>
+     <h2 class="fs-title">Add your Child</h2>
+     <%= f.input :first_name %>
+     <%= f.input :last_name %>
+     <%= f.input :birthday %>
+     <input type="button" name="next" class="next action-button" value="Next" />
+   </fieldset>
+   <fieldset>
+     <h2 class="fs-title">Add your Child</h2>
+     <%= f.input :section_id, collection: Section.all %>
+
+     <input type="button" name="previous" class="previous action-button" value="Previous" />
+     <input type="button" name="next" class="next action-button" value="Next" />
+   </fieldset>
+   <fieldset>
+     <h2 class="fs-title">Add your Child</h2>
+     <%= f.input :comment %>
+     <input type="button" name="previous" class="previous action-button" value="Previous" />
+     <div class="form-actions">
+       <%= f.button :submit %>
+  </div>
+   </fieldset>
+   <% end %>
+  </div>

@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
     if @profile.save
-      redirect_to profile_path(@profile)
+      redirect_to new_child_path
     else
       render :new
     end

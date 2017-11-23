@@ -1,3 +1,4 @@
+<% if current_user.profile.status == "Approved" %>
 <main id="events">
 <h1 class="text-center"> Events <%= link_to "", new_event_path, class: "fa fa-plus-circle new-btn" %></h1>
   <input id="tab1" type="radio" name="tabs" checked>
@@ -36,3 +37,6 @@
     <% end %>
   <% end %>
 </div>
+<% else %>
+<h1>sorry your request is still pending</h1>
+<% end %>

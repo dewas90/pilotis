@@ -35,9 +35,8 @@ class MessagesController < ApplicationController
         if @message.save
           @message.save
           UserMailer.custom_message(@message.profile.user, @message).deliver_now
-        else
-          render :new
         end
+
       end
     end
   end
