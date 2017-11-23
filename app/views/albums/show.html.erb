@@ -1,4 +1,4 @@
-<% if current_user.profile.status == "Approved" %>
+<% if current_user.profile.status == "Accepted" %>
 <div class="btn-album-show">
   <%= link_to "", albums_path, id: "btn-back", class: "fa fa-arrow-circle-left"%>
   <h4>Back</h4>
@@ -16,7 +16,7 @@
   <% end %>
 </div>
 <% else %>
-<h1>Sorry your request is still pending</h1>
+<%= render "shared/pending" %>
 <% end %>
 
 

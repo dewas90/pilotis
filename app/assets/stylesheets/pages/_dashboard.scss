@@ -42,7 +42,6 @@
     width: 100%;
   }
 
-
   .card{
     height: 100%;
     margin: 0px 30px 30px 30px;
@@ -54,7 +53,7 @@
   .profile-db{
     height: 524px;
     p{
-      margin-bottom: 10px;
+      margin-bottom: 7px;
     }
     .edit-btn .fa{
       background-color: $yellow;
@@ -64,6 +63,22 @@
       font-size: 20px;
       position: relative;
     }
+    .card-header{
+      h4{
+        font-weight: 400;
+        font-family: $headers-font;
+        font-size: 20px;
+        text-align: text-center;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      p{
+        color: $yellow;
+        margin: 0px;
+        font-size: 15px;
+      }
+    }
+
     .card-body{
       padding: 10px;
     }
@@ -213,17 +228,28 @@
 
   #eventsModal{
     margin-top: 10vW;
-  }
-  .modal-body{
-    padding: 10px;
-    overflow-y: scroll;
-    .fa{
-      font-size: 15px !important;
-      padding: 5px !important;
+    .modal-body{
+      padding: 10px;
+      overflow-y: scroll;
+      .fa{
+        font-size: 15px !important;
+        padding: 5px !important;
+      }
+      p{
+        font-family: $body-font;
+        font-size: 15px;
+      }
     }
-    p{
-      font-family: $body-font;
-      font-size: 15px;
+  }
+
+  #viewChildModal{
+    .modal-body{
+      text-align: left;
+      padding: 30px;
+      overflow-y: scroll;
+    }
+    .card-header{
+      text-align: center;
     }
   }
 }

@@ -1,0 +1,28 @@
+
+  #pendingcontainer{
+  background-image: url("pendingbck.jpg");
+  background-repeat: no-repeat;
+  background-color: #cccccc;
+  -webkit-background-size: cover;
+}
+
+.pendingbox{
+  height: 250px;
+  width: 700px;
+  background-color: rgba(255,255,255,0.7);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  padding: 3px;
+  box-shadow: 5px 5px 5px;
+  h1{
+    font-size: 30px;
+  }
+  p{
+    font-size: 15px;
+  }
+}
+
+#adminimg{
+
+}

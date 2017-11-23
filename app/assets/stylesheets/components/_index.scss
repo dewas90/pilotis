@@ -16,6 +16,7 @@
 @import "flexbin";
 @import "carousel";
 @import "profiles";
+@import "pending";
 
 .container {
 	min-height:100vh;
@@ -25,6 +26,9 @@
     width: 100%;
     padding-left: 75px;
     padding-top: 80px;
+  .taboo{
+   padding-top: 45px;
+  }
 }
 
 .profile .main {

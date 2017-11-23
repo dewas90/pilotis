@@ -14,9 +14,10 @@
     
 }
 .about {
-      background: white;
+      background: $yellow;
       margin: -40px -15px 0px -15px;
       padding : 15px;
+      color: white;
 
 }
 
@@ -32,7 +33,13 @@
     grid-template-columns: 350px 1fr 1fr 1fr;
     grid-template-rows: 50% 50%;
     height: calc(100vh - 200px);
-    background: white;
+    background: $yellow;
+
+}
+
+.profile-content {
+    flex: 1;
+    min-height: 400px;
 }
 
 .text-center {
@@ -51,11 +58,11 @@
 }
 
 .about-page .container {
-    background: $yellow;
-    color: white;
+    background: white;
+    color: $yellow;
     min-height: 0;
     padding: 0px 50px 50px 50px;
-    margin: 0px -15px;
+    margin: -30px -15px;
     padding-left: 0px !important;
     width: 102.5%;
 }
@@ -77,9 +84,15 @@
 
 }
 
+#profile {
+    background-color: white;
+}
+
 #team {
     
     padding: 15px 15px 0px 15px; 
+    background-color: white;
+    color: $yellow;
 
     .icon {
     height: 100px;

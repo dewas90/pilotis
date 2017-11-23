@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
   before_action :find_invoices, only: [:show, :approve, :update, :edit]
   def index
-    @childre = Child.all
+    @children = Child.all
   end
 
   def show
@@ -27,9 +27,11 @@ class ChildrenController < ApplicationController
   def approve
     @child.status = "Accepted"
     @child.save
-    @child.profile.status = "Accepted"
-    @child.profile.save
+    @profile = Profile.find(@child.profile_id)
+    @profile.status = "Accepted"
+    @profile.save
   end
+
   def update
     @child.update(child_params)
     redirect_to child_path(@child)
