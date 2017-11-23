@@ -1,0 +1,28 @@
+<div class="new-modal modal fade" id="viewChildModal" tabindex="-1" role="dialog" aria-labelledby="viewChildModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewChildModalLabel">View children</h5>
+        <button type="button" class="close close-btn " data-dismiss="modal" aria-label="Close">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- !!!
+        Need to loop over the children of each current user - back end team help?
+        !!! -->
+        <div class="child-box">
+          <div class="card-header">
+            <% Child.where(profile_id: current_user.profile).each do |child| %>
+            <h4><strong><%= child.first_name %> <%= child.last_name %></strong></h4>
+            <p>• • • • • • • • • • • • • • • • •</p>
+          </div>
+            <p><strong>BIRTH DATE </strong>  <%= child.birthday %></p>
+            <p><strong>SECTION </strong>  <%= Section.find_by_id(child.section_id).name %></p>
+            <p></p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
