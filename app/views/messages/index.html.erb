@@ -1,3 +1,4 @@
+<% if current_user.profile.admin %>
 <h1 class="text-center"> Messages </h1>
 
 <main id="messages" class="table table-hover">
@@ -13,11 +14,14 @@
 		<tbody>
 	  			<% Message.all.uniq.pluck(:subject, :body, :section_id).each do |message| %>
 			<tr>
-			     <td><%= Section.find_by_id(message[2]).name %></td> 
-			     <td><%= message[0] %></td> 
-			     <td><%= message[1] %></td> 
+			     <td><%= Section.find_by_id(message[2]).name %></td>
+			     <td><%= message[0] %></td>
+			     <td><%= message[1] %></td>
 			    <% end %>
 			</tr>
 		</tbody>
 	</table>
 </main>
+<% else %>
+<%= render "shared/taboo" %>
+<% end %>
