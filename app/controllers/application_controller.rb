@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-  { host: ENV["HOST"] || "www.pilotis.be" }
+  { host: ENV["www.pilotis.be"] || "localhost:3000" }
   end
 end
