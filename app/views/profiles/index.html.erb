@@ -1,4 +1,4 @@
-
+<% if current_user.profile.admin %>
   <%= content_for(:after_js) do %>
   <h1 class="text-center">Users</h1>
     <main class="profile-tab invoice-tab-box">
@@ -86,5 +86,8 @@
           </div>
     </main>
 </main>
+<% end %>
+<% else %>
+<%= render "shared/taboo" %>
 <% end %>
 
