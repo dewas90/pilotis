@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   before_action :set_invoices, only: [:show, :approve, :edit, :update, :cancel, :paid]
    before_action :find_invoices, only:[:markaspaid]
   def index
-    if params[:global_search]  && params[:global_search][:query]
+    if params[:global_search] && params[:global_search][:query]
       @invoices = Invoice.global_search(params[:global_search][:query])
       @query = params[:global_search][:query]
     else

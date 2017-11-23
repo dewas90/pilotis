@@ -1,42 +1,48 @@
-<% if current_user.profile.status == "Accepted" %>
-<h1 class="text-center"> Photo Album <%= link_to "", new_album_path, class: "fa fa-plus-circle new-btn" %></h1>
 
-<div class="album-select">
-<%= form_tag(albums_path, method: :get, id: "chose") %>
-  <%= select_tag :album, options_for_select(Album.pluck(:year).uniq), {include_blank: "Choose a year svp"} %>
-   <!-- collection_select(:post, :author_id, Author.all, :id, :name_with_initial, prompt: true)
- -->
-  <%= submit_tag 'Search', class: "albun-tag", id: "search-btn" %>
-</div>
+<div id="albums-index">
+  <% if current_user.profile.status == "Accepted" %>
+  <h1 class="text-center"> Photo Albums 
+    <%= link_to new_album_path, class: "fa fa-plus-circle new-btn" %>
+    <%= link_to "", new_album_path, class: "fa fa-plus-circle new-btn" %> 
+    # choose between the two
+  </h1>
 
-<div class="container">
-  <div class="albums">
-      <% @albums.each do |album| %>
-        <div class="album">
-          <div class="album-body">
-            <div class="album-picture" style="background-image: url('<%= cl_image_path album.photos.sample.path  %>')">
-              <div class="album-hover">
-                <h4><%= album.name %></h4>
-                <p><%= album.created_at %></p>
+    <div class="album-select">
+    <%= form_tag(albums_path, method: :get, id: "chose") %>
+      <%= select_tag :album, options_for_select(Album.pluck(:year).uniq), {include_blank: "Choose a year svp"} %>
+       <!-- collection_select(:post, :author_id, Author.all, :id, :name_with_initial, prompt: true)
+     -->
+      <%= submit_tag 'Search', class: "albun-tag", id: "search-btn" %>
+    </div>
+
+    <div class="container">
+      <div class="albums">
+        <% @albums.each do |album| %>
+          <div class="album">
+            <div class="album-body">
+              <div class="album-picture" style="background-image: url('<%= cl_image_path album.photos.sample.path  %>')">
+                <div class="album-hover">
+                  <h4><%= album.name %></h4>
+                  <p><%= album.created_at %></p>
+                </div>
               </div>
-            </div>
-            <div class="album-likes">
-              <ul class="list-inline">
-                <li><%= link_to "See the album", album_path(album) %></li>
-                <li>Published by <%= album.admin.profile.first_name %></li>
-                <li><%= album.created_at.year %></li>
+              <div class="album-likes">
+                <ul class="list-inline">
+                  <li><%= link_to "See the album", album_path(album) %></li>
+                  <li>Published by <%= album.admin.profile.first_name %></li>
+                  <li><%= album.created_at.year %></li>
                 </ul>
               </div>
             </div>
-              <div class="album-footer">
-              </div>
+            <div class="album-footer">
             </div>
-      <% end %>
-       </div>
-  </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% else %>
    <%= render "shared/pending" %>
   <% end %>
-
+</div>
 
 
