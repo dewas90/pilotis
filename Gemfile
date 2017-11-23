@@ -25,6 +25,7 @@ gem 'webpacker', '~> 3.0'
 gem "simple_calendar", "~> 2.0"
 
 #photos
+
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
