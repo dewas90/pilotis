@@ -12,9 +12,9 @@
     <% end %>
 
     <%= simple_form_for [@message] do |f| %>
+    <%= f.input :section_id, collection: Section.all %>
     <%= f.input :subject %>
     <%= f.input :body, label: false, as: :text, autofocus: true, :input_html => {:style => 'width: 100%', :rows => 5, class: 'response-project'} %>
-    <%= f.input :section_id, collection: Section.all %>
     <%= f.submit "generate message", class: "btn"%>
     <% end %>
   </div>

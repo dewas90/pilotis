@@ -1,8 +1,14 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
-  <% end %>
+  <% if current_user.nil? || current_user.profile.nil? %>
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.png" %>
+    <% end %>
+  <% else %>
+    <%= link_to profile_path(current_user.profile.id), class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.png" %>
+    <% end %>
+  <% end  %>
 
   <!-- Right Navigation -->
   <% if current_user.nil? || current_user.profile.nil?%>
