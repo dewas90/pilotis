@@ -1,5 +1,4 @@
-<% if current_user.profile.status == "Approved" %>
-
+<% if current_user.profile.status == "Accepted" %>
   <h1 class="text-center">Events</h1>
 
   <main id="events" class=tab-box>
@@ -118,5 +117,6 @@
     <% end %>
   </div>
 <% else %>
-  <h1>Sorry, your request is still pending...</h1>
+
+<%= render "shared/pending" %>
 <% end %>

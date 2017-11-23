@@ -134,11 +134,12 @@
 
   #messages {
     max-width: 800px;
+    margin-bottom: 0px;
   }
 
-  thead {
+  #messages thead {
     tr{
-      border-bottom: 2px solid #ddd;
+      display:inline-flex;
        th {
         text-align: center;
       }
@@ -146,7 +147,15 @@
 
     }
   }
-  tbody {
+
+ #messages tbody {
+    
+    border-top: 1px solid #ddd; 
+   max-height: 200px;       
+    display: inline-block;
+    width: 100%;
+    overflow-y:scroll;
+
     tr {
       text-transform: capitalize;
       border-top: 1px solid #ddd;
@@ -157,12 +166,19 @@
    }
   }
 
+
+  #sms {
+    padding-left: 230px;
+  }
+
   #messages td, th {
           padding: 10px 15px 10px 16px;
           opacity: 0.8;
   }
 
-  #plus .fa-plus-circle {
+  #plus {
+    position:relative;
+    left: 670px;
     color:$yellow;
     text-decoration: none;
     padding: 0px;

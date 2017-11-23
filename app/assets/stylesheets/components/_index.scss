@@ -4,8 +4,12 @@
 @import "avatar";
 @import "banner";
 @import "footer";
+
+//bad
 @import "forms";
 @import "tabs";
+
+
 @import "sidebar";
 @import "checkbox";
 @import "login";
@@ -16,15 +20,19 @@
 @import "flexbin";
 @import "carousel";
 @import "profiles";
+@import "pending";
 
 .container {
-	min-height:100vh;
+	min-height:92.5vh;
 }
 
 .container {
     width: 100%;
     padding-left: 75px;
     padding-top: 80px;
+  .taboo{
+   padding-top: 45px;
+  }
 }
 
 .profile .main {
