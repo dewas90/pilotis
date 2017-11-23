@@ -1,4 +1,4 @@
-
+<% if current_user.profile.status == "Approved" %>
 <div id="user-dashboard">
 
   <div id="body-box">
@@ -155,3 +155,6 @@
   </div>
 
 </div>
+<% else %>
+<h1>Sorry you're request is still pending</h1>
+<% end %>

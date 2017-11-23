@@ -61,7 +61,8 @@ profile = Profile.create(
   comment: "No comments needed",
   user_id: user.id,
   section_id: section5.id,
-  photo_url: 'https://res.cloudinary.com/dwuowqi7r/image/upload/v1511373312/nqymhzsew3sykxhwywhr.jpg'
+  photo_url: 'https://res.cloudinary.com/dwuowqi7r/image/upload/v1511373312/nqymhzsew3sykxhwywhr.jpg',
+  status: "Approved"
   )
 
 admin = Admin.create(
@@ -86,6 +87,7 @@ profile = Profile.create(
   comment: "Allergic to chicken",
   user_id: user.id,
   section_id: section4.id,
+  status: "Approved",
   photo_url: "https://res.cloudinary.com/dwuowqi7r/image/upload/v1510330827/rmrwwvvqfzoczs1vlxql.jpg"
   )
 admin = Admin.create(
@@ -110,6 +112,7 @@ profile = Profile.create(
   comment: "No comments needed",
   user_id: user.id,
   section_id: section1.id,
+  status: "Approved",
   photo_url: "https://res.cloudinary.com/dwuowqi7r/image/upload/v1511380318/qkmivxcvf1x0fvydjtcl.jpg"
   )
 admin = Admin.create(
@@ -134,6 +137,7 @@ profile = Profile.create(
   comment: "No comments needed",
   user_id: user.id,
   section_id: section2.id,
+  status: "Approved",
   photo_url: "https://res.cloudinary.com/dwuowqi7r/image/upload/v1511433404/yass_vgmphi.jpg"
   )
 admin = Admin.create(
