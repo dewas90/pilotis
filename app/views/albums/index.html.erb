@@ -1,10 +1,8 @@
 
 <div id="albums-index">
   <% if current_user.profile.status == "Accepted" %>
-  <h1 class="text-center"> Photo Albums 
-    <%= link_to new_album_path, class: "fa fa-plus-circle new-btn" %>
-    <%= link_to "", new_album_path, class: "fa fa-plus-circle new-btn" %> 
-    # choose between the two
+  <h1 class="text-center"> Photo Albums
+    <%= link_to "", new_album_path, class: "fa fa-plus-circle new-btn" %>
   </h1>
 
     <div class="album-select">
