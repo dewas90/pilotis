@@ -41,12 +41,10 @@
       <div class="container">
 
         <%= yield %>
-
-
-        <%= cloudinary_js_config %>
         <%= yield(:after_js) %>
-
         <%= javascript_include_tag 'application' %>
+        <%= cloudinary_js_config %>
+
       </div>
         <%= render 'shared/footer' unless @disable_footer %>
 
