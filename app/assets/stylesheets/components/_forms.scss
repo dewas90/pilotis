@@ -133,12 +133,17 @@
 
 
   #messages {
-    border-radius: 10px;
+    max-width: 800px;
   }
 
   thead {
     tr{
       border-bottom: 2px solid #ddd;
+       th {
+        text-align: center;
+      }
+
+
     }
   }
   tbody {
@@ -155,5 +160,12 @@
   #messages td, th {
           padding: 10px 15px 10px 16px;
           opacity: 0.8;
+  }
+
+  #plus .fa-plus-circle {
+    color:$yellow;
+    text-decoration: none;
+    padding: 0px;
+    opacity: 1;
   }
 }

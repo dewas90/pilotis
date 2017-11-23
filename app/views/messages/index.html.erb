@@ -1,4 +1,4 @@
-<h1 class="text-center"> Messages <%= link_to "", new_message_path, class: "fa fa-plus-circle new-btn" %></h1>
+<h1 class="text-center"> Messages </h1>
 
 <main id="messages" class="table table-hover">
 	<table>
@@ -7,6 +7,7 @@
 				<th>Section</th>
 				<th>Subject</th>
 				<th>Message</th>
+				<th id="plus"><%= link_to "", new_message_path, class: "fa fa-plus-circle new-btn" %></th>
 			</tr>
 		</thead>
 		<tbody>
