@@ -1,13 +1,13 @@
 <h1 class="text-center"> Messages </h1>
 
 <main id="messages" class="table table-hover">
-	<table>
+	<%= link_to "", new_message_path, class: "fa fa-plus-circle new-btn", id: "plus" %>
+	<table >
 		<thead>
 			<tr>
 				<th>Section</th>
 				<th>Subject</th>
-				<th>Message</th>
-				<th id="plus"><%= link_to "", new_message_path, class: "fa fa-plus-circle new-btn" %></th>
+				<th id="sms">Message</th>
 			</tr>
 		</thead>
 		<tbody>
